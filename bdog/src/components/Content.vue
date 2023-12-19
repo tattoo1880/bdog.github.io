@@ -9,13 +9,16 @@
             撰写
           </el-button>
 
-          <el-dialog v-model="dialogFormVisible" title="撰写文章">
-            <el-form :model="form">
+          <el-dialog v-model="dialogFormVisible" title="撰写文章" width="1080px">
+            <el-form :model="form" >
               <el-form-item label="文章标题" :label-width="formLabelWidth">
                 <el-input v-model="form.title" autocomplete="off"/>
               </el-form-item>
+              <el-form-item label="简介" :label-width="formLabelWidth">
+                <el-input v-model="form.desc" autocomplete="off"/>
+              </el-form-item>
               <el-form-item label="文章内容" :label-width="formLabelWidth">
-                <el-input v-model="form.content" type="textarea" autocomplete="off"/>
+                <MdEditor v-model="form.content" />
               </el-form-item>
             </el-form>
             <template #footer>
@@ -31,15 +34,17 @@
         <div>
           <el-table :data="allArticle" style="width: 100% ;margin-left:50px">
             <el-table-column prop="title" label="标题" width="300"></el-table-column>
-            <el-table-column prop="content" label="内容" width="300"></el-table-column>
+            <el-table-column prop="desc" label="描述" width="300"></el-table-column>
             <!--           查看按钮-->
             <el-table-column label="操作">
               <template #default="{row}">
                 <el-button type="primary" @click="() => handleLook(row)">查看</el-button>
 <!--                查看文章的对话框          -->
-                <el-dialog title="文章详情" v-model="contentIs" center>
+                <el-dialog title="详情" v-model="contentIs" center>
                   <div class="dialog-header">{{ currentRow.title }}</div>
-                  <div class="dialog-content" style="height: 300px">{{ currentRow.content }}</div>
+<!--                  <div class="dialog-content" style="height: 300px">{{ currentRow.content }}</div>-->
+                  <MdPreview :editorId="kid" :modelValue="currentRow.content" />
+
                   <div slot="footer" class="dialog-footer">
                     <el-button @click="contentIs = false">取消</el-button>
                   </div>
@@ -59,19 +64,28 @@
 <script setup>
 import {onBeforeMount, reactive, ref} from 'vue'
 import service from "@/utils/request.js";
+
+import { MdEditor ,MdPreview} from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
+
+
 const formLabelWidth = ref('120px');
 const allArticle = reactive(ref([]))
 const handleCreate = ref(false)
 const dialogFormVisible = ref(false)
+const kid = "preview-only"
+
+
 let form = reactive(
     {
       title: '',
+      desc: '',
       content: ''
     }
 )
 onBeforeMount(async () => {
   try {
-    const res = await service.get('/all')
+    const res = await service.get('/article/all')
     console.log(res.data)
     allArticle.value = res.data
     console.log(allArticle.value)
@@ -83,7 +97,7 @@ onBeforeMount(async () => {
 
 const postarticle = async () => {
   try {
-    const res = await service.post('/create', form)
+    const res = await service.post('/article/create', form)
     dialogFormVisible.value = false
     console.log(res)
     window.location.reload()
@@ -102,7 +116,7 @@ const handleLook = async(row) => {
 const handleDelete = async(row) => {
   try {
     console.log(row)
-    const res = await service.post('/delete', row)
+    const res = await service.post('/article/delete', row)
     console.log(res)
     window.location.reload()
   } catch (e) {
