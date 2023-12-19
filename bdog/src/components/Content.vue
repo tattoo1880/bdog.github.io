@@ -5,11 +5,24 @@
       <el-main>
         <!--        撰写的按钮-->
         <div>
-          <el-button type="success" @click="dialogFormVisible = true" style="margin-left: 800px">
-            撰写
-          </el-button>
+          <el-row>
+            <el-col :span="12" style="margin-left: 50px">
+              <el-input v-model="searchKeyword" placeholder="搜索标题..."></el-input>
+            </el-col>
+            <el-col :span="4" style="margin-left: 5px">
+<!--              <el-button type="danger" @click="SearchItem">搜索</el-button>-->
+              <el-button type="info" :icon="Search" circle @click="SearchItem"/>
+            </el-col>
+            <el-col :span="6">
+              <el-button type="success" :icon="Edit" circle @click="dialogFormVisible = true" style="float: right;"/>
+<!--              <el-button type="success" >-->
+<!--                +-->
+<!--              </el-button>-->
+            </el-col>
+          </el-row>
 
-          <el-dialog v-model="dialogFormVisible" title="撰写文章" width="1080px">
+
+          <el-dialog v-model="dialogFormVisible" title="撰写" width="1280px">
             <el-form :model="form" >
               <el-form-item label="文章标题" :label-width="formLabelWidth">
                 <el-input v-model="form.title" autocomplete="off"/>
@@ -18,7 +31,7 @@
                 <el-input v-model="form.desc" autocomplete="off"/>
               </el-form-item>
               <el-form-item label="文章内容" :label-width="formLabelWidth">
-                <MdEditor v-model="form.content" />
+                <MdEditor v-model="form.content" theme="dark"/>
               </el-form-item>
             </el-form>
             <template #footer>
@@ -43,7 +56,7 @@
                 <el-dialog title="详情" v-model="contentIs" center>
                   <div class="dialog-header">{{ currentRow.title }}</div>
 <!--                  <div class="dialog-content" style="height: 300px">{{ currentRow.content }}</div>-->
-                  <MdPreview :editorId="kid" :modelValue="currentRow.content" />
+                  <MdPreview :editorId="kid" :modelValue="currentRow.content" theme="dark"/>
 
                   <div slot="footer" class="dialog-footer">
                     <el-button @click="contentIs = false">取消</el-button>
@@ -62,13 +75,21 @@
 </template>
 
 <script setup>
+import {
+  Check,
+  Delete,
+  Edit,
+  Message,
+  Search,
+  Star,
+} from '@element-plus/icons-vue'
 import {onBeforeMount, reactive, ref} from 'vue'
 import service from "@/utils/request.js";
 
 import { MdEditor ,MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-
+const searchKeyword = ref('')
 const formLabelWidth = ref('120px');
 const allArticle = reactive(ref([]))
 const handleCreate = ref(false)
@@ -93,6 +114,17 @@ onBeforeMount(async () => {
     console.log(e)
   }
 });
+
+const SearchItem = async () => {
+  try {
+    const res = await service.post('/article/findByTitle', {title: searchKeyword.value})
+    console.log(res.data)
+    allArticle.value = res.data
+    console.log(allArticle.value)
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 
 const postarticle = async () => {
