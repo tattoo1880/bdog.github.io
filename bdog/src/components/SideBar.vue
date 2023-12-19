@@ -2,9 +2,9 @@
   <aside class="sidebar">
     <!-- 个人简介 -->
     <section class="profile">
-      <img src="" alt="Your Name" />
-      <h3>你的名字</h3>
-      <p>这里是你的简短介绍。</p>
+      <img src="../assets/GA_ZLJ3WYAAETew.jpeg" alt="Your Name" width="150px" height="200px" />
+      <h3>Townly Stone</h3>
+      <p>一只迷路的Blind Dog</p>
     </section>
 
     <!-- 最新文章 -->
@@ -47,9 +47,27 @@
 
 <script setup>
 import { ref } from 'vue'
-const recentPosts = ref([])
-const categories = ref([])
-const tags = ref([])
+const recentPosts = ref([
+  { id: 1, title: 'Hello World' },
+  { id: 2, title: 'Hello Vue 3' },
+  { id: 3, title: 'Hello Vite' },
+])
+const categories = ref([
+  'Vue',
+  'React',
+  'Angular',
+  'JavaScript',
+  'CSS',
+  'HTML',
+])
+const tags = ref([
+  'Vue',
+  'React',
+  'Angular',
+  'JavaScript',
+  'CSS',
+  'HTML',
+])
 
 </script>
 

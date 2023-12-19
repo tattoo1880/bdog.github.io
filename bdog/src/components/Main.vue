@@ -4,11 +4,13 @@
     <el-container>
       <el-main>
         <div class="content">
+        <Content />
         </div>
       </el-main>
     </el-container>
   </div>
 </template>
 <script setup>
-
+import { ref } from 'vue'
+import Content from '../components/Content.vue'
 </script>
