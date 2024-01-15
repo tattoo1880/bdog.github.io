@@ -85,10 +85,10 @@ import {
 } from '@element-plus/icons-vue'
 import {onBeforeMount, reactive, ref} from 'vue'
 import service from "@/utils/request.js";
-
+import {FormdataStore} from "@/stores/formdata";
 import { MdEditor ,MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-
+const useFormData = FormdataStore()
 const searchKeyword = ref('')
 const formLabelWidth = ref('120px');
 const allArticle = reactive(ref([]))
@@ -104,17 +104,20 @@ let form = reactive(
       content: ''
     }
 )
-onBeforeMount(async () => {
+
+
+const fetchData = async () => {
   try {
     const res = await service.get('/article/all')
-    console.log(res.data)
+    // console.log(res.data)
     allArticle.value = res.data
-    console.log(allArticle.value)
+    useFormData.setFormdata(res.data)
+    // console.log(allArticle.value)
   } catch (e) {
     console.log(e)
   }
-});
-
+}
+fetchData()
 const SearchItem = async () => {
   try {
     const res = await service.post('/article/findByTitle', {title: searchKeyword.value})
