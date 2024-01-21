@@ -6,6 +6,11 @@ const service = axios.create({
     timeout: 5000
 })
 
+const service2 = axios.create({
+    baseURL: 'http://127.0.0.1:8001',
+    timeout: 500000
+})
 
 
 export default service
+export { service2 }

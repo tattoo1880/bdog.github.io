@@ -16,6 +16,9 @@
         <li>
           <a href="/movie">视频库</a>
         </li>
+        <li>
+          <a href="/av">AV库</a>
+        </li>
       </ul>
     </section>
     <!-- 最新文章 -->
