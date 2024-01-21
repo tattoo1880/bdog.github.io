@@ -2,14 +2,25 @@
   <aside class="sidebar">
     <!-- 个人简介 -->
     <section class="profile">
-      <img src="../assets/joker.jpeg" alt="Your Name" width="200px" height="200px" />
-      <h3>Townly Stone</h3>
-      <p>一只迷路的Blind Dog</p>
+      <img src="../assets/joker.jpeg" alt="Your Name" width="200px" height="200px"
+        style="border-radius: 50%; margin-left:5px;margin-top: 2px;" />
+      <h3 style="margin-left: 50px;">Townly Stone</h3>
+      <p style="margin-left: 10px;">一只迷路的Blind Dog</p>
     </section>
-
+    <section class="my_info">
+      <h4>资料库</h4>
+      <ul>
+        <li>
+          <a href="/lib">资料库</a>
+        </li>
+        <li>
+          <a href="/movie">视频库</a>
+        </li>
+      </ul>
+    </section>
     <!-- 最新文章 -->
     <section class="recent-posts">
-      <h4>最新文章</h4>
+      <h4><a href="/home">最新文章</a></h4>
       <ul>
         <li v-for="post in recentPosts" :key="post.id">
           <a href="#">{{ post.title }}</a>
@@ -28,26 +39,26 @@
     </section>
 
     <!-- 标签云 -->
-<!--    <section class="tags">-->
-<!--      <h4>标签</h4>-->
-<!--      <div>-->
-<!--        <a v-for="tag in tags" :key="tag" href="#" class="tag">{{ tag }}</a>-->
-<!--      </div>-->
-<!--    </section>-->
+    <!--    <section class="tags">-->
+    <!--      <h4>标签</h4>-->
+    <!--      <div>-->
+    <!--        <a v-for="tag in tags" :key="tag" href="#" class="tag">{{ tag }}</a>-->
+    <!--      </div>-->
+    <!--    </section>-->
 
     <!-- 社交媒体链接 -->
     <section class="social-media">
       <h4>关注我</h4>
       <a href="https://github.com/tattoo1880">GitHub</a>
-<!--      <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>-->
-<!--      <a href="https://twitter.com/your-twitter">Twitter</a>-->
+      <!--      <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>-->
+      <!--      <a href="https://twitter.com/your-twitter">Twitter</a>-->
     </section>
   </aside>
 </template>
 
 <script setup>
-import {ref, onBeforeMount,watchEffect} from 'vue'
-import {FormdataStore} from "@/stores/formdata"
+import { ref, onBeforeMount, watchEffect } from 'vue'
+import { FormdataStore } from "@/stores/formdata"
 const formData = FormdataStore()
 
 const recentPosts = ref(formData.formdata)
@@ -58,44 +69,7 @@ onBeforeMount(() => {
   })
 })
 
-
-
-const categories = ref([
-  'Vue',
-  'React',
-  'Angular',
-  'JavaScript',
-  'CSS',
-  'HTML',
-])
-const tags = ref([
-  'Vue',
-  'React',
-  'Angular',
-  'JavaScript',
-  'CSS',
-  'HTML',
-])
-
-
-
-
 </script>
 
 <style scoped>
-.sidebar {
-  /* 你的侧边栏样式 */
-}
-
-.profile img {
-  /* 个人照片样式 */
-}
-
-.recent-posts ul, .categories ul, .tags div {
-  /* 列表样式 */
-}
-
-.tag {
-  /* 标签样式 */
-}
 </style>
