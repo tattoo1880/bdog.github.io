@@ -7,10 +7,22 @@
             </el-col>
             <el-col :span="4" style="margin-left: 5px">
                 <!--              <el-button type="danger" @click="SearchItem">搜索</el-button>-->
-                <el-button type="info" :icon="Search" circle @click="SearchItem" />
+                <el-button type="success" :icon="Search" circle @click="SearchItem" />
             </el-col>
         </el-row>
     </div>
+    <div>
+        <el-row>
+            <el-col :span="12" style="margin-left: 250px">
+                <el-input v-model="searchLibKeyword" placeholder="搜索本地数据库"></el-input>
+            </el-col>
+            <el-col :span="4" style="margin-left: 5px">
+                <!--              <el-button type="danger" @click="SearchItem">搜索</el-button>-->
+                <el-button type="warning" :icon="Search" circle @click="SearchLibItem" />
+            </el-col>
+        </el-row>
+    </div>
+
     <div :class="{ 'hidden': showVideo }">
         <el-table :data="tableData" style="width: 100%">
             <el-table-column label="序号">
@@ -24,6 +36,12 @@
                 <template #default="{ row }">
                     <el-button type="primary" @click="palyvideo(row.url)" class="button_one">
                         播放
+                    </el-button>
+                    <el-button v-show="showButton" type="success" @click="domyfav(row)" class="button_one">
+                        收藏
+                    </el-button>
+                    <el-button v-show="showButton2" type="danger" @click="del(row)" class="button_one">
+                        删除
                     </el-button>
                 </template>
             </el-table-column>
@@ -53,10 +71,12 @@ import {
 } from '@element-plus/icons-vue'
 import Hls from 'hls.js';
 import { ref, onMounted } from 'vue';
-import {service2} from '@/utils/request';
+import { service2 } from '@/utils/request';
 const searchKeyword = ref()
 const showVideo = ref(false)
 const tableData = ref()
+const showButton = ref(true)
+const showButton2 = ref(false)
 const plist = ref()
 const initializeHLS = async (url) => {
     var video = document.getElementById('videoPlayer');
@@ -75,9 +95,25 @@ const initializeHLS = async (url) => {
         });
     }
 }
+
+
+//读取后段所有数据库的数
+let getAlllib = async () => {
+    try {
+        const res = await service2.get('/getMovies')
+        console.log(res.data)
+        tableData.value = res.data.data
+        showButton.value = false
+        showButton2.value = true
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 onMounted(() => {
     // 在组件挂载后初始化HLS.js
     initializeHLS();
+    getAlllib()
 });
 
 const palyvideo = async (playurl) => {
@@ -102,6 +138,50 @@ const SearchItem = async () => {
         })
         console.log(res.data)
         tableData.value = res.data.data
+        showButton.value = true
+        showButton2.value = false
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const searchLibKeyword = ref()
+const SearchLibItem = async () => {
+    try {
+        showVideo.value = false
+        const res = await service2.post('/getMoviesByKw', {
+            'data': searchLibKeyword.value
+        })
+        console.log(res.data)
+        tableData.value = res.data.data
+        showButton.value = false
+        showButton2.value = true
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+const domyfav = async (row) => {
+    try {
+        const res = await service2.post('/createMovie', {
+            'data': row
+        })
+        console.log(res.data)
+        alert("收藏成功")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const del = async (row) => {
+    try {
+        const res = await service2.post('/delMovie', {
+            'data': row
+        })
+        console.log(res.data)
+        alert("删除成功")
+        getAlllib()
     } catch (error) {
         console.log(error)
     }
@@ -135,4 +215,5 @@ const SearchItem = async () => {
 .buttoncard {
     width: 600px;
     height: 300px;
-}</style>
+}
+</style>

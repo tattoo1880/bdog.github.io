@@ -19,6 +19,9 @@
         <li>
           <a href="/av">AV库</a>
         </li>
+        <li>
+          <a href="/pdf">pdf转换</a>
+        </li>
       </ul>
     </section>
     <!-- 最新文章 -->

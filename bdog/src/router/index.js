@@ -28,6 +28,11 @@ const router = createRouter({
       name: 'av',
       path: '/av',
       component: () => import('../views/Av.vue')
+    },
+    {
+      name: 'pdf',
+      path: '/pdf',
+      component: () => import('../views/Pdf.vue')
     }
   ]
 })
