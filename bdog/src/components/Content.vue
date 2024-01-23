@@ -51,7 +51,7 @@
             <!--           查看按钮-->
             <el-table-column label="操作">
               <template #default="{row}">
-                <el-button type="primary" @click="() => handleLook(row)">查看</el-button>
+                <el-button type="primary" @click="() => handleLook(row)" plain>查看</el-button>
 <!--                查看文章的对话框          -->
                 <el-dialog title="详情" v-model="contentIs" center>
                   <div class="dialog-header">{{ currentRow.title }}</div>
@@ -64,7 +64,7 @@
                 </el-dialog>
 <!--                <el-button type="info" @click="handleEdit(row)">编辑</el-button>-->
                 <!--                删除-->
-                <el-button type="danger" @click="handleDelete(row)" style="margin-left: 30px">删除</el-button>
+                <el-button type="danger" @click="handleDelete(row)" style="margin-left: 30px" plain>删除</el-button>
               </template>
             </el-table-column>
           </el-table>

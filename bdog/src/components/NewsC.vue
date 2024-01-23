@@ -20,7 +20,7 @@
         </span>
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="showNew = false" type="success">Cancel</el-button>
+                <el-button @click="showNew = false" type="success" plain>Cancel</el-button>
             </span>
         </template>
     </el-dialog>

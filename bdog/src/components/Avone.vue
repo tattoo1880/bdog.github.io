@@ -34,13 +34,13 @@
             <el-table-column prop="url" label="原视频链接" width="400" />
             <el-table-column label="内容">
                 <template #default="{ row }">
-                    <el-button type="primary" @click="palyvideo(row.url)" class="button_one">
+                    <el-button type="primary" @click="palyvideo(row.url)" class="button_one" plain>
                         播放
                     </el-button>
-                    <el-button v-show="showButton" type="success" @click="domyfav(row)" class="button_one">
+                    <el-button v-show="showButton" type="success" @click="domyfav(row)" class="button_one" plain>
                         收藏
                     </el-button>
-                    <el-button v-show="showButton2" type="danger" @click="del(row)" class="button_one">
+                    <el-button v-show="showButton2" type="danger" @click="del(row)" class="button_one" plain>
                         删除
                     </el-button>
                 </template>
