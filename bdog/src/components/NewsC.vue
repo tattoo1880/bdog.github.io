@@ -74,6 +74,11 @@ const viewnews = async (url) => {
     try {
         const response = await axios.get(url);
         console.log(response.data);
+        const html = response.data
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const content = doc.querySelector(".article-paragraph")
+        console.log(content);
     } catch (error) {
         console.log(error);
     }
