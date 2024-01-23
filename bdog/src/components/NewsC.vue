@@ -97,7 +97,7 @@ const viewnews = async (url,title) => {
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += '<div>' + + '   ' + element.innerText + "</div>"
+            text += '<div>' + + '\t' + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
