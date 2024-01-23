@@ -6,8 +6,8 @@
                 <div style="padding: 14px">
                     <p class="title">{{ news.title }}</p>
                     <div class="bottom">
-                        <p class="sum" :sapn="4">&emsp;&emsp;&emsp;{{ news.summary }}</p>
-                        <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="1" plain>详情</el-button>
+                        <p class="sum" :sapn="3">&emsp;&emsp;&emsp;{{ news.summary }}</p>
+                        <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="2" plain>详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
@@ -153,6 +153,7 @@ const viewnews = async (url,title) => {
     height: 30px;
     font-family: sans-serif;
     color:#0f0;
+    padding-right: 5px;
     /* animation: glow 3s ease-in-out infinite alternate; */
 }
 
