@@ -86,7 +86,7 @@ onBeforeMount(() => {
 .atitle {
     color: #0f0;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 10px;
     text-align: center;
     margin-bottom: 20px;
     text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0;
