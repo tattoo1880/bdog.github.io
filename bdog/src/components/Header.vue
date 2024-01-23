@@ -21,6 +21,7 @@
             <p>湿度：{{weather.humidity}}%</p>
           </div>
         </el-card>
+      </el-col>
     </el-row>
   </el-header>
 </template>
