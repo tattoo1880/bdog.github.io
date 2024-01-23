@@ -120,6 +120,7 @@ const viewnews = async (url,title) => {
 .button {
     /* 距离父组件底部2px */
     margin-bottom: 2px;
+    margin-left: 10px;
     /* 距离父组件左边距离2px */
     margin-left: 2px;
 }
