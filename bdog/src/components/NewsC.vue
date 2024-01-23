@@ -14,7 +14,7 @@
             </el-card>
         </el-col>
     </el-row>
-    <el-dialog v-model="showNew" title="Warning" width="30%" center>
+    <el-dialog v-model="showNew" title="Warning" width="50%" center>
         <span>
             <p>{{ articleNew }}</p>
         </span>
