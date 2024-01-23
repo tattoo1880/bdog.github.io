@@ -142,7 +142,7 @@ const viewnews = async (url,title) => {
     width: 320px;
     margin-top: 20px;
     height: 550px;
-    border: 1px solid #0f0;
+    border: 1px solid rgb(36, 104, 36);
 }
 
 .title {
