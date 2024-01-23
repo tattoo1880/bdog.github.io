@@ -49,7 +49,7 @@ const getNews = async () => {
         //     'sec-ch-ua-platform': '"macOS"'
         // }
     });
-    // console.log(response.data.list.daily);
+    console.log(response.data.list.daily);
     const l = response.data.list.daily
     let news = []
     // map l to news
