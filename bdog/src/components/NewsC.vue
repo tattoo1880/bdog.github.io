@@ -19,6 +19,7 @@
         <span slot="footer" class="dialog-footer">
             <el-button @click="showNew = false">取 消</el-button>
         </span>
+    </el-dialog>
 </template>
   
 <script setup>
