@@ -94,7 +94,9 @@ onMounted(() => {
     height: 250px;
     display: block;
 }
-
+.button {
+    padding-top: 30px;
+}
 .card {
     display: flex;
     flex-direction: column;
