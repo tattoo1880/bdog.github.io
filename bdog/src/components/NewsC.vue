@@ -1,16 +1,14 @@
 <template>
     <el-row>
-        <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="1">
+        <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="4">
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
                     <div class="bottom">
                         <p class="sum">{{ news.summary }}</p>
-                        <!-- <time class="time"></time> -->
-                        <!-- <el-button text class="button">Operating</el-button> -->
-                        <a :href="news.url" type="button" class="button">详情</a>
                     </div>
+                    <a :href="news.url" type="button" class="button">详情</a>
                 </div>
             </el-card>
         </el-col>
@@ -93,14 +91,14 @@ onMounted(() => {
 }
 
 .image {
-    width: 280%;
+    width: 280px;
     height: 140px;
     display: block;
 }
 .card {
     width: 300px;
     margin-top: 10px;
-    height: 400px;
+    height: 300px;
 }
 .sum {
     line-height: 1.5;
