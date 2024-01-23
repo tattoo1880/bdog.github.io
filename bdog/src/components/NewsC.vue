@@ -93,11 +93,11 @@ const viewnews = async (url,title) => {
         const doc = parser.parseFromString(html, "text/html");
         // 找到所有的div class = "article-paragraph"
         const article = doc.querySelectorAll(".article-paragraph")
-        let text = "\t"
+        let text = "&emsp;"
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += '<div>' + '\t' + element.innerText + "</div>"
+            text += '<div>' + '&emsp; + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
