@@ -1,6 +1,6 @@
 <template>
     <el-row>
-        <el-col v-for="(news, index) in newsData" :key="index" :span="6" :offset="2">
+        <el-col v-for="(news, index) in newsData" :key="index" :span="5" :offset="2">
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
@@ -102,7 +102,7 @@ onMounted(() => {
 .card {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 320px;
     margin-top: 20px;
     height: 550px;
 }
