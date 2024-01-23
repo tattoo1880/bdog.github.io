@@ -1,6 +1,6 @@
 <template>
     <el-row>
-        <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="4">
+        <el-col v-for="(news,index) in newsData" :key="index" :span="4" :offset="1">
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
@@ -97,8 +97,8 @@ onMounted(() => {
 }
 .card {
     width: 300px;
-    margin-top: 10px;
-    height: 300px;
+    margin-top: 20px;
+    height: 400px;
 }
 .sum {
     line-height: 1.5;
