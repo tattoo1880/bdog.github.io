@@ -73,16 +73,11 @@ onMounted(() => {
 </script>
   
 <style>
-.time {
-    font-size: 12px;
-    color: #999;
-}
-
 .bottom {
     margin-top: 13px;
     line-height: 12px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
 }
@@ -101,6 +96,8 @@ onMounted(() => {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     width: 300px;
     margin-top: 20px;
     height: 500px;
