@@ -14,13 +14,13 @@
             </el-card>
         </el-col>
     </el-row>
-    <el-dialog v-model="showNew" :title="articleT" width="50%" center>
+    <el-dialog v-model="showNew" :title="articleT" width="80%" center>
         <span>
             <div v-html="articleNew" ></div>
         </span>
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="showNew = false">Cancel</el-button>
+                <el-button @click="showNew = false" type="success">Cancel</el-button>
             </span>
         </template>
     </el-dialog>
@@ -93,11 +93,11 @@ const viewnews = async (url,title) => {
         const doc = parser.parseFromString(html, "text/html");
         // 找到所有的div class = "article-paragraph"
         const article = doc.querySelectorAll(".article-paragraph")
-        let text = '&emsp;'
+        let text = '&emsp;&emsp;'
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += '<div>' + '&emsp;' + element.innerText + "</div>"
+            text += '<div>' + '&emsp;&emsp;' + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
