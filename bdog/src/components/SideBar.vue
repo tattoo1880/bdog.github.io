@@ -26,7 +26,7 @@
     </section>
     <!-- 最新文章 -->
     <section class="recent-posts" style="margin-left: 50px;">
-      <h4><a href="/home">最新文章</a></h4>
+      <h4><a href="/home">代码区</a></h4>
 
       <ul>
         <li v-for="post in recentPosts" :key="post.id">
