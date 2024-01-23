@@ -100,13 +100,13 @@ onMounted(() => {
 .card {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 400px;
     margin-top: 20px;
     height: 500px;
 }
 
 .sum {
-    width: 200px;
+    width: 250px;
     height: 200px;
     line-height: 1.5;
 }
