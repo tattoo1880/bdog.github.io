@@ -142,15 +142,18 @@ const viewnews = async (url,title) => {
     width: 320px;
     margin-top: 20px;
     height: 550px;
+    border: 1px solid #0f0;
 }
 
 .title {
     height: 30px;
     font-family: sans-serif;
+    color:#0f0
 }
 
 .sum {
     height: 200px;
     line-height: 1.5;
+    color: #0f0;
 }</style>
   
