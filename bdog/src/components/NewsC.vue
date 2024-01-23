@@ -70,7 +70,13 @@ onMounted(() => {
 })
 
 const viewnews = async (url) => {
-    window.open(url)
+    // window.open(url)
+    try {
+        const response = await axios.get(url);
+        console.log(response.data);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 
