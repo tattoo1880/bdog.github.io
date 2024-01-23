@@ -146,6 +146,7 @@ const viewnews = async (url,title) => {
 
 .title {
     height: 30px;
+    font-family: sans-serif;
 }
 
 .sum {
