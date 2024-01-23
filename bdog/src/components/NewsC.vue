@@ -7,7 +7,7 @@
                     <p class="title">{{ news.title }}</p>
                     <div class="bottom">
                         <p class="sum" :sapn="4">{{ news.summary }}</p>
-                        <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="1">详情</el-button>
+                        <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="1" plain>详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
