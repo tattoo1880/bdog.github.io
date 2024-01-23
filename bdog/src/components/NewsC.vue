@@ -2,7 +2,7 @@
     <el-row>
         <el-col v-for="news in newsData" :key="o" :span="8" :offset="index > 0 ? 2 : 0">
             <el-card :body-style="{ padding: '0px' }">
-                <img src="news.photo"
+                <img :src="news.photo"
                     class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
@@ -19,11 +19,12 @@
   
 <script setup>
 import { ref } from 'vue'
+import { Axios } from 'axios';
 const newsData = ref([])
 const getNews = async () => {
 
     const baseUrl = "https://cn.nytimes.com/async/mostviewed/all/"
-    const response = await axios.get(baseUrl, {
+    const response = await Axios.get(baseUrl, {
         params: {
             lang: 'zh-hans',
 
@@ -61,7 +62,7 @@ const getNews = async () => {
     }
     return news
 }
-newsData.value = getNews()
+newsData.value = await getNews()
 
 
 
