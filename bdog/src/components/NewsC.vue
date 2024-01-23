@@ -161,7 +161,7 @@ const viewnews = async (url,title) => {
     line-height: 1.5;
     font-family:monospace;
     font-size: 14px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     /* color: #0f0; */
 }
 /* @keyframes glow {
