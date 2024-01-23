@@ -55,10 +55,10 @@ onMounted(() => {
 }
 
 .box-card{
-  width: 200px;
+  width: 20px;
   height: 100px;
-  margin-left: 100px;
-  margin-top: 20px;
-  font-size: 5px;
+  margin-left: 0px;
+  margin-top: 1px;
+  font-size: 10px;
 }
 </style>
