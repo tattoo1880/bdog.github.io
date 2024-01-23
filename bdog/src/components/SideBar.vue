@@ -4,8 +4,8 @@
     <section class="profile">
       <img src="../assets/joker.jpeg" alt="Your Name" width="180px" height="180px"
         style="border-radius: 50%; margin-left:5px;margin-top: 2px;" />
-      <h3 style="margin-left: 30px;" class="atitle">Townly Stone</h3>
-      <p style="margin-left: 30px;" class="atitle">----------------</p>
+      <h3 style="margin-left: 10px;" class="atitle">Townly Stone</h3>
+      <p style="margin-left: 10px;" class="atitle">----------------</p>
     </section>
     <section class="my_info" style="margin-left: 50px;">
       <h4>资料库</h4>
