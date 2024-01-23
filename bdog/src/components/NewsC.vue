@@ -78,6 +78,7 @@ const showNew = ref(false)
 const viewnews = async (url) => {
     // window.open(url)
     try {
+        showNew.value = true
         const response = await axios.get(url);
         // console.log(response.data);
         const html = response.data
