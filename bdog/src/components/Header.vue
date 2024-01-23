@@ -20,7 +20,7 @@ const getWeather = async () => {
   try {
     const response = await service2.get('/weather')
     // console.log(response.data)
-    weather.value = response.data.now
+    weather.value = response.data
     console.log(weather.value)
   } catch (error) {
     console.log(error)
