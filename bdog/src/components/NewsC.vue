@@ -4,7 +4,7 @@
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
-                    <span class="title">{{ news.title }}</span>
+                    <p class="title">{{ news.title }}</p>
                     <div class="bottom">
                         <p class="sum" :sapn="4">{{ news.summary }}</p>
                         <el-button :href="news.url" type="success" class="button" :sapn="1">详情</el-button>
