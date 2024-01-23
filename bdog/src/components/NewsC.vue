@@ -7,7 +7,7 @@
                     <span>{{ news.title }}</span>
                     <div class="bottom">
                         <p class="sum">{{ news.summary }}</p>
-                        <el-button :href="news.url" type="success" class="button">详情</el-button>
+                        <el-button :href="news.url" type="success" class="button" style="margin-right: 0px;">详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
