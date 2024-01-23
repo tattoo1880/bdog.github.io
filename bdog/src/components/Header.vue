@@ -80,7 +80,7 @@ const handleLogout = () => {
     }
 }
 .logout {
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-right: 920px;
 }
 </style>
