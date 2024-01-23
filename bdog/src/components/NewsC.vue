@@ -16,7 +16,7 @@
     </el-row>
     <el-dialog v-model="showNew" title="Warning" width="50%" center>
         <span>
-            <div>{{ articleNew }}</div>
+            <div v-html="articleNew" ></div>
         </span>
         <template #footer>
             <span class="dialog-footer">
