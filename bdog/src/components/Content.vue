@@ -36,8 +36,8 @@
             </el-form>
             <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="postarticle">
+        <el-button @click="dialogFormVisible = false" plain>Cancel</el-button>
+        <el-button type="primary" @click="postarticle" plain>
           Confirm
         </el-button>
       </span>
