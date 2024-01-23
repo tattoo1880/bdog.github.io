@@ -1,7 +1,7 @@
 <template>
     <el-row>
         <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="3">
-            <el-card :body-style="{ padding: '0px' }">
+            <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
@@ -95,6 +95,10 @@ onMounted(() => {
     width: 100%;
     height: 200px;
     display: block;
+}
+.card {
+    margin-top: 10px;
+    height: 400px;
 }
 </style>
   
