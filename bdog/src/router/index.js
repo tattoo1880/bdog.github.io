@@ -33,6 +33,11 @@ const router = createRouter({
       name: 'pdf',
       path: '/pdf',
       component: () => import('../views/Pdf.vue')
+    },
+    {
+      name: 'news',
+      path: '/news',
+      component: () => import('../views/News.vue')
     }
   ]
 })
