@@ -44,10 +44,10 @@
             </template>
           </el-dialog>
         </div>
-        <div class="colorfont">
+        <div>
           <el-table :data="allArticle" style="width: 100% ;margin-left:50px">
             <el-table-column prop="title" label="标题" width="300"></el-table-column>
-            <el-table-column prop="desc" label="描述" width="300"></el-table-column>
+            <el-table-column prop="desc" label="描述" width="600"></el-table-column>
             <!--           查看按钮-->
             <el-table-column label="操作">
               <template #default="{row}">
@@ -184,8 +184,5 @@ const handleDelete = async(row) => {
 
 .dialog-footer {
   text-align: right;
-}
-.colorfont{
-  color: #0f0;
 }
 </style>
