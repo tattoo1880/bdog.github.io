@@ -7,6 +7,20 @@
           <h1>Tattoo B-Dog</h1>
         </div>
       </el-col>
+      <!-- 做一个天气预报的卡片 -->
+      <el-col :span="8">
+        <el-card class="box-card" style="margin-top: 20px">
+          <div slot="header" class="clearfix">
+            <span>天气预报</span>
+          </div>
+          <div>
+            <p>城市：天津</p>
+            <p>温度：{{weather.temperature}}℃</p>
+            <p>风向：{{weather.windDirection}}</p>
+            <p>风力：{{weather.windScale}}级</p>
+            <p>湿度：{{weather.humidity}}%</p>
+          </div>
+        </el-card>
     </el-row>
   </el-header>
 </template>
