@@ -82,8 +82,9 @@ onMounted(() => {
     margin-top: 13px;
     line-height: 12px;
     display: flex;
-    justify-content:space-evenly;
-    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
 }
 
 .button {
