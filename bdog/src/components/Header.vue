@@ -9,25 +9,19 @@
       </el-col>
       <!-- 做一个天气预报的卡片 -->
       <el-col :span="8">
-        <el-card class="box-card" style="margin-top: 20px">
-          <div slot="header" class="clearfix">
-            <span>天气预报</span>
-          </div>
-          <div>
-            <p>城市：天津</p>
-            <p>温度：{{weather.temperature}}℃</p>
-            <p>风向：{{weather.windDirection}}</p>
-            <p>风力：{{weather.windScale}}级</p>
-            <p>湿度：{{weather.humidity}}%</p>
-          </div>
-        </el-card>
+        <template>
+          <el-alert title="success alert" type="success" show-icon />
+          <el-alert title="info alert" type="info" show-icon />
+          <el-alert title="warning alert" type="warning" show-icon />
+          <el-alert title="error alert" type="error" show-icon />
+        </template>
       </el-col>
     </el-row>
   </el-header>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
-import {service2} from '@/utils/request'
+import { service2 } from '@/utils/request'
 
 const weather = ref([])
 
@@ -54,7 +48,7 @@ onMounted(() => {
   font-family: "Times New Roman", Times, serif;
 }
 
-.box-card{
+.box-card {
   width: 100px;
   height: 300px;
   /* margin-right: 0px; */
