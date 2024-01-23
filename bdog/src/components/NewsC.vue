@@ -106,8 +106,7 @@ onMounted(() => {
     line-height: 1.5;
 }
 .xiang {
-    margin-bottom: 30px;
-    margin-left: 1px;
+    margin-right: 100px;
 }
 </style>
   
