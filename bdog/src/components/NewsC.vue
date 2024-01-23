@@ -113,7 +113,7 @@ const viewnews = async (url,title) => {
     line-height: 12px;
     display: flex;
     /* flex-direction: column; */
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
 }
 
@@ -161,8 +161,6 @@ const viewnews = async (url,title) => {
     line-height: 1.5;
     font-family:monospace;
     font-size: 14px;
-    margin-bottom: 10px;
-    /* color: #0f0; */
 }
 /* @keyframes glow {
 from {
