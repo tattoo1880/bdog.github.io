@@ -44,7 +44,7 @@ const getNews = async () => {
             // 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
             'Cache-Control': 'max-age=600',
-            'Referer': 'https://cn.nytimes.com/',
+            // 'Referer': 'https://cn.nytimes.com/',
             'X-Requested-With': 'XMLHttpRequest',
             // 'sec-ch-ua-platform': '"macOS"'
         }
