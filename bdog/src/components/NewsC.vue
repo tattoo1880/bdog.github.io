@@ -9,7 +9,8 @@
                         <p class="sum">{{ news.summary }}</p>
                     </div>
                 </div>
-                    <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a>
+                    <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
+                    <el-button :href="news.url" type="success" style="margin-bottom: 1px;">详情</el-button>
             </el-card>
         </el-col>
     </el-row>
