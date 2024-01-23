@@ -2,8 +2,7 @@
     <el-row>
         <el-col v-for="news in newsData" :key="o" :span="8" :offset="index > 0 ? 2 : 0">
             <el-card :body-style="{ padding: '0px' }">
-                <img :src="news.photo"
-                    class="image" />
+                <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
                     <div class="bottom">
@@ -60,10 +59,14 @@ const getNews = async () => {
             }
         }
     }
+    console.log(news);
     return news
 }
-newsData.value = await getNews()
-
+onMounted(() => {
+    getNews().then((res) => {
+        newsData.value = res
+    })
+})
 
 
 </script>
