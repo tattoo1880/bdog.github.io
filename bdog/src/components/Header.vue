@@ -5,7 +5,7 @@
       <el-col :span="16">
         <div class="grid-content bg-purple fonnnn" style=" margin-left: 650px">
           <h1 class="atitle">Tattoo B-Dog</h1>
-          <el-button type="danger" @click="handleLogout" class="logout">Logout</el-button>
+          <el-button type="success" @click="handleLogout" class="logout" plain>Logout</el-button>
         </div>
       </el-col>
       <!-- 做一个天气预报的卡片 -->
@@ -83,6 +83,6 @@ const handleLogout = () => {
 .logout {
   position: fixed;
   right: 30px;
-  top: 70px;
+  top: 50px;
 }
 </style>
