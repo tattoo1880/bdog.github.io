@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { service2 } from '@/utils/request'
-import useLoginStore from '@/stores/logstore.js'
+import {useLoginStore} from '@/stores/logstore.js'
 const weather = ref([])
 const weatherTitle = ref()
 const loginStore = useLoginStore()
