@@ -58,7 +58,9 @@
     <section class="social-media">
       <h4>关注我</h4>
       <a href="https://github.com/tattoo1880">GitHub</a>
+      <br>
       <a href="https://www.youtube.com">Youtube</a>
+      <br>
       <a href="https://twitter.com/">Twitter</a>
     </section>
 
