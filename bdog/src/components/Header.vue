@@ -12,9 +12,7 @@
           <el-alert :title="weatherTitle" type="success" show-icon />
       </el-col>
       <!-- logout 按钮 -->
-      <el-col :span="1">
         <el-button type="danger" @click="handleLogout" class="logout">Logout</el-button>
-      </el-col>
     </el-row>
   </el-header>
 </template>
