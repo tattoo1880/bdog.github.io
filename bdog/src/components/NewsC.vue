@@ -107,7 +107,7 @@ onMounted(() => {
     height: 500px;
 }
 .title{
-    height: 150px;
+    height: 250px;
 }
 .sum {
     height: 200px;
