@@ -9,7 +9,7 @@
       </el-col>
       <!-- 做一个天气预报的卡片 -->
       <el-col :span="8">
-          <el-alert title="success alert" type="success" show-icon />
+          <el-alert :title="weather.temperature" type="success" show-icon />
       </el-col>
     </el-row>
   </el-header>
@@ -19,13 +19,14 @@ import { ref, onMounted } from 'vue'
 import { service2 } from '@/utils/request'
 
 const weather = ref([])
-
+const weatherTitle = ref()
 const getWeather = async () => {
   try {
     const response = await service2.get('/weather')
     // console.log(response.data)
     weather.value = response.data.data.now
     console.log(weather.value)
+    weatherTitle.value = "气温：" + weather.temperature + "℃" + "  " + "降水量：" + weather.precipitation
   } catch (error) {
     console.log(error)
   }
