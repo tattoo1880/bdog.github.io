@@ -25,12 +25,12 @@ const getWeather = async () => {
     const response = await service2.get('/weather')
     // console.log(response.data)
     weather.value = response.data.data.now
-    console.log(weather.value)
+    // console.log(weather.value)
     weatherTitle.value = "气温：" + weather.value.temperature + "℃" + " | " + "降水量：" + weather.value.precipitation +  "mm" +" | " + "风向：" + weather.value.windDirection + " | " + "风力：" + weather.value.windScale
   } catch (error) {
     console.log(error)
   }
-}
+} 
 
 onMounted(() => {
   getWeather()
