@@ -122,6 +122,7 @@ const viewnews = async (url,title) => {
     margin-bottom: 2px;
     /* 距离父组件左边距离2px */
     margin-left: 2px;
+    margin-top: 150px;
 }
 
 .image {
