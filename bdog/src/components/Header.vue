@@ -81,6 +81,7 @@ const handleLogout = () => {
 }
 
 .logout {
+  float: left;
   margin-right: 1024px;
 }
 </style>
