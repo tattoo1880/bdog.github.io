@@ -11,15 +11,20 @@
       <el-col :span="8">
           <el-alert :title="weatherTitle" type="success" show-icon />
       </el-col>
+      <!-- logout 按钮 -->
+      <el-col :span="1">
+        <el-button type="danger" @click="handleLogout" style="margin-left: 50px;">Logout</el-button>
+      </el-col>
     </el-row>
   </el-header>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
 import { service2 } from '@/utils/request'
-
+import useLoginStore from '@/stores/logstore.js'
 const weather = ref([])
 const weatherTitle = ref()
+const loginStore = useLoginStore()
 const getWeather = async () => {
   try {
     const response = await service2.get('/weather')
@@ -35,6 +40,10 @@ const getWeather = async () => {
 onMounted(() => {
   getWeather()
 })
+
+const handleLogout = () => {
+  loginStore.setLogout()
+}
 </script>
 <style>
 .fonnnn {
