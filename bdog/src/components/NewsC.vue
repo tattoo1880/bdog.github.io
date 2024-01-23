@@ -83,7 +83,7 @@ onMounted(() => {
     line-height: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
