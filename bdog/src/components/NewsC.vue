@@ -1,6 +1,6 @@
 <template>
     <el-row>
-        <el-col v-for="(news,index) in newsData" :key="index" :span="4" :offset="1">
+        <el-col v-for="(news,index) in newsData" :key="index" :span="6" :offset="2">
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
