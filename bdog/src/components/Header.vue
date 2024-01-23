@@ -9,7 +9,7 @@
       </el-col>
       <!-- 做一个天气预报的卡片 -->
       <el-col :span="8">
-          <el-alert :title="weather.temperature" type="success" show-icon />
+          <el-alert :title="weatherTitle" type="success" show-icon />
       </el-col>
     </el-row>
   </el-header>
