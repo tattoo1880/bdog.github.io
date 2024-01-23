@@ -8,7 +8,9 @@
                     <div class="bottom">
                         <p class="sum">{{ news.summary }}</p>
                     </div>
-                    <a :href="news.url"  class="el-button xiang">详情</a>
+                </div>
+                <div class="xiang">
+                    <a :href="news.url"  class="el-button">详情</a>
                 </div>
             </el-card>
         </el-col>
