@@ -149,8 +149,6 @@ const viewnews = async (url,title) => {
     font-family: sans-serif;
     color:#0f0;
     padding-right: 5px;
-    position:fixed;
-    
     /* animation: glow 3s ease-in-out infinite alternate; */
 }
 
@@ -159,6 +157,7 @@ const viewnews = async (url,title) => {
     line-height: 1.5;
     font-family:monospace;
     font-size: 14px;
+    margin-bottom: 3px;
 }
 /* @keyframes glow {
 from {
