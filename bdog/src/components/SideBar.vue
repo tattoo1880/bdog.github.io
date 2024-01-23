@@ -4,8 +4,8 @@
     <section class="profile">
       <img src="../assets/joker.jpeg" alt="Your Name" width="200px" height="200px"
         style="border-radius: 50%; margin-left:5px;margin-top: 2px;" />
-      <h3 style="margin-left: 50px;">Townly Stone</h3>
-      <p style="margin-left: 30px;">----------------</p>
+      <h3 style="margin-left: 50px;" class="atitle">Townly Stone</h3>
+      <p style="margin-left: 30px;" class="atitle">----------------</p>
     </section>
     <section class="my_info" style="margin-left: 50px;">
       <h4>资料库</h4>
@@ -82,4 +82,24 @@ onBeforeMount(() => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.atitle {
+    color: #0f0;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
+    }
+
+    to {
+        text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0, 0 0 60px #0f0;
+    }
+}
+</style>
