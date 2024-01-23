@@ -2,7 +2,7 @@
     <el-row>
         <el-col v-for="{ index, news } in newsData" :key="index" :span="8" :offset="index > 0 ? 2 : 0">
             <el-card :body-style="{ padding: '4px' }">
-                <el-image :src="news.photo" class="image" />
+                <!-- <el-image :src="news.photo" class="image" /> -->
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
                     <div class="bottom">
