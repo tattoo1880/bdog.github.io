@@ -6,7 +6,7 @@
                 <div style="padding: 14px">
                     <p class="title">{{ news.title }}</p>
                     <div class="bottom">
-                        <p class="sum" :sapn="4">&emsp;&emsp;{{ news.summary }}</p>
+                        <p class="sum" :sapn="4">&emsp;&emsp;&emsp;{{ news.summary }}</p>
                         <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="1" plain>详情</el-button>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ const viewnews = async (url,title) => {
     line-height: 12px;
     display: flex;
     /* flex-direction: column; */
-    justify-content:space-around;
+    justify-content:space-between;
     align-items: center;
 }
 
