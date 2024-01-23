@@ -14,10 +14,14 @@
 import { ref, onMounted } from 'vue'
 import {service2} from '@/utils/request'
 
+const weather = ref([])
+
 const getWeather = async () => {
   try {
     const response = await service2.get('/weather')
-    console.log(response.data)
+    // console.log(response.data)
+    weather.value = response.data.now
+    console.log(weather.value)
   } catch (error) {
     console.log(error)
   }
