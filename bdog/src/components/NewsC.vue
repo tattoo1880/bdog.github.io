@@ -97,7 +97,7 @@ const viewnews = async (url,title) => {
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += '<div>' + + '\t' + element.innerText + "</div>"
+            text += '<div>' + '\t' + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
@@ -105,11 +105,6 @@ const viewnews = async (url,title) => {
         console.log(error);
     }
 }
-const handleClose = (done) => {
-    showNew.value = false
-    done()
-}
-
 </script>
   
 <style>
