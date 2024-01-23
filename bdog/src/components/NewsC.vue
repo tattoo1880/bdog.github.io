@@ -102,9 +102,9 @@ onMounted(() => {
 .card {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     margin-top: 20px;
-    height: 500px;
+    height: 550px;
 }
 .title{
     height: 30px;
