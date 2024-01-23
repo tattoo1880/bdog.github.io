@@ -83,7 +83,7 @@ onMounted(() => {
     margin-top: 13px;
     line-height: 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-evenly;
     align-items: center;
 }
 
@@ -93,11 +93,12 @@ onMounted(() => {
 }
 
 .image {
-    width: 100%;
-    height: 200px;
+    width: 280%;
+    height: 140px;
     display: block;
 }
 .card {
+    width: 300px;
     margin-top: 10px;
     height: 400px;
 }
