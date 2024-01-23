@@ -9,9 +9,7 @@
                         <p class="sum">{{ news.summary }}</p>
                     </div>
                 </div>
-                <div class="xiang">
-                    <a :href="news.url"  class="el-button">详情</a>
-                </div>
+                    <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a>
             </el-card>
         </el-col>
     </el-row>
@@ -93,7 +91,7 @@ onMounted(() => {
 }
 
 .image {
-    width: 280px;
+    width: 100%;
     height: 140px;
     display: block;
 }
@@ -105,8 +103,6 @@ onMounted(() => {
 .sum {
     line-height: 1.5;
 }
-.xiang {
-    margin-right: 100px;
-}
+
 </style>
   
