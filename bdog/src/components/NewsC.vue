@@ -1,7 +1,7 @@
 <template>
     <el-row>
-        <el-col v-for="news in newsData" :key="o" :span="8" :offset="index > 0 ? 2 : 0">
-            <el-card :body-style="{ padding: '0px' }">
+        <el-col v-for="{ index, news } in newsData" :key="o" :span="8" :offset="index > 0 ? 2 : 0">
+            <el-card :body-style="{ padding: '4px' }">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
@@ -17,8 +17,8 @@
 </template>
   
 <script setup>
-import { ref ,onMounted} from 'vue'
-import axios  from 'axios';
+import { ref, onMounted } from 'vue'
+import axios from 'axios';
 const newsData = ref([])
 const getNews = async () => {
 
@@ -91,7 +91,8 @@ onMounted(() => {
 }
 
 .image {
-    width: 100%;
+    width: 200px;
+    height: 200px;
     display: block;
 }
 </style>
