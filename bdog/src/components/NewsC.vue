@@ -10,7 +10,7 @@
                     </div>
                 </div>
                     <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
-                    <el-button :href="news.url" type="success" style="margin-bottom: 1px;">详情</el-button>
+                    <el-button :href="news.url" type="success" class="button">详情</el-button>
             </el-card>
         </el-col>
     </el-row>
