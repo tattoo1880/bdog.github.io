@@ -25,7 +25,7 @@
       </ul>
     </section>
     <!-- 最新文章 -->
-    <section class="recent-posts">
+    <section class="recent-posts" style="margin-left: 10px;">
       <h4><a href="/home">最新文章</a></h4>
 
       <ul>
