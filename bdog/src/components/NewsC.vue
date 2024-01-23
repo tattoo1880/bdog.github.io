@@ -73,12 +73,18 @@ const viewnews = async (url) => {
     // window.open(url)
     try {
         const response = await axios.get(url);
-        console.log(response.data);
+        // console.log(response.data);
         const html = response.data
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
-        const content = doc.querySelector(".article-paragraph")
-        console.log(content);
+        // 找到所有的div class = "article-paragraph"
+        const article = doc.querySelectorAll(".article-paragraph")
+        let text = ""
+        for (let i = 0; i < article.length; i++) {
+            const element = article[i];
+            text += element.innerText
+        }
+        console.log(text);
     } catch (error) {
         console.log(error);
     }
