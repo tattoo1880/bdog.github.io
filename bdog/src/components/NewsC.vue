@@ -7,14 +7,14 @@
                     <p class="title">{{ news.title }}</p>
                     <div class="bottom">
                         <p class="sum" :sapn="4">{{ news.summary }}</p>
-                        <el-button @click="viewnews(news.url)" type="success" class="button" :sapn="1">详情</el-button>
+                        <el-button @click="viewnews(news.url,news.title)" type="success" class="button" :sapn="1">详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
             </el-card>
         </el-col>
     </el-row>
-    <el-dialog v-model="showNew" title="Warning" width="50%" center>
+    <el-dialog v-model="showNew" :title="articleT" width="50%" center>
         <span>
             <div v-html="articleNew" ></div>
         </span>
@@ -79,11 +79,13 @@ onMounted(() => {
     })
 })
 const articleNew = ref()
+const articleT = ref()
 const showNew = ref(false)
-const viewnews = async (url) => {
+const viewnews = async (url,title) => {
     // window.open(url)
     try {
         showNew.value = true
+        articleT.value = title
         const response = await axios.get(url);
         // console.log(response.data);
         const html = response.data
@@ -95,7 +97,7 @@ const viewnews = async (url) => {
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += '<div>' + element.innerText + "</div>"
+            text += '<div>' + + '   ' + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
