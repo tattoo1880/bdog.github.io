@@ -17,7 +17,7 @@
 </template>
   
 <script setup>
-import { ref } from 'vue'
+import { ref ,onMounted} from 'vue'
 import { Axios } from 'axios';
 const newsData = ref([])
 const getNews = async () => {
