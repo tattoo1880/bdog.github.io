@@ -146,18 +146,21 @@ const viewnews = async (url,title) => {
 }
 
 .title {
+    /* 字体加粗 */
+    font-weight: bold;
     height: 30px;
     font-family: sans-serif;
     color:#0f0;
-    animation: glow 3s ease-in-out infinite alternate;
+    /* animation: glow 3s ease-in-out infinite alternate; */
 }
 
 .sum {
     height: 200px;
     line-height: 1.5;
+    font-family:monospace;
     /* color: #0f0; */
 }
-@keyframes glow {
+/* @keyframes glow {
 from {
         text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
     }
@@ -165,6 +168,6 @@ from {
     to {
         text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0, 0 0 60px #0f0;
     }
-}
+} */
 </style>
   
