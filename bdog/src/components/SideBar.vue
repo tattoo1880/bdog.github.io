@@ -5,9 +5,9 @@
       <img src="../assets/joker.jpeg" alt="Your Name" width="200px" height="200px"
         style="border-radius: 50%; margin-left:5px;margin-top: 2px;" />
       <h3 style="margin-left: 50px;">Townly Stone</h3>
-      <p style="margin-left: 50px;">一只迷路的Blind Dog</p>
+      <p style="margin-left: 50px;">----------------</p>
     </section>
-    <section class="my_info">
+    <section class="my_info" style="margin-left: 50px;">
       <h4>资料库</h4>
       <ul>
         <li>
