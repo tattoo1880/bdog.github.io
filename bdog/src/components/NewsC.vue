@@ -8,7 +8,7 @@
                     <div class="bottom">
                         <p class="sum">{{ news.summary }}</p>
                     </div>
-                    <a :href="news.url" type="button" class="button">详情</a>
+                    <a :href="news.url"  class="el-button xiang">详情</a>
                 </div>
             </el-card>
         </el-col>
@@ -102,6 +102,10 @@ onMounted(() => {
 }
 .sum {
     line-height: 1.5;
+}
+.xiang {
+    margin-bottom: 30px;
+    margin-left: 1px;
 }
 </style>
   
