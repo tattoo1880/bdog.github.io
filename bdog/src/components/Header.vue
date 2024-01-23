@@ -4,7 +4,7 @@
     <el-row>
       <el-col :span="16">
         <div class="grid-content bg-purple fonnnn" style=" margin-left: 650px">
-          <h1 class="title">Tattoo B-Dog</h1>
+          <h1 class="atitle">Tattoo B-Dog</h1>
         </div>
       </el-col>
       <!-- 做一个天气预报的卡片 -->
@@ -53,7 +53,7 @@ onMounted(() => {
   font-size: 10px;
 }
 
-.title {
+.atitle {
     color: #0f0;
     font-weight: bold;
     font-size: 2em;
