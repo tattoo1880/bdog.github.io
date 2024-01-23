@@ -14,11 +14,15 @@
             </el-card>
         </el-col>
     </el-row>
-    <el-dialog :visible="showNew" width="100%" >
-        <span>{{ articleNew }}</span>
-        <span slot="footer" class="dialog-footer">
-            <el-button @click="showNew = false">取 消</el-button>
+    <el-dialog v-model="showNew" title="Warning" width="30%" center>
+        <span>
+            <p>{{ articleNew }}</p>
         </span>
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="showNew = false">Cancel</el-button>
+            </span>
+        </template>
     </el-dialog>
 </template>
   
@@ -128,11 +132,13 @@ const handleClose = (done) => {
     height: 250px;
     display: block;
 }
+
 .button {
     margin-top: 130px;
     /* display: float; */
     float: right;
 }
+
 .card {
     display: flex;
     flex-direction: column;
@@ -140,12 +146,13 @@ const handleClose = (done) => {
     margin-top: 20px;
     height: 550px;
 }
-.title{
+
+.title {
     height: 30px;
 }
+
 .sum {
     height: 200px;
     line-height: 1.5;
-}
-</style>
+}</style>
   
