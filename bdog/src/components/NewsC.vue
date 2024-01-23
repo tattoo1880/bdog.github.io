@@ -59,12 +59,13 @@ const getNews = async () => {
             }
         }
     }
-    console.log(news);
+    // console.log(news);
     return news
 }
 onMounted(() => {
     getNews().then((res) => {
         newsData.value = res
+        console.log(newsData);
     })
 })
 
