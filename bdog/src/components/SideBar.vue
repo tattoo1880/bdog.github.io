@@ -83,6 +83,18 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
+a {
+  color :#0f0;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0f0; /* 可根据需要更改颜色 */
+}
 .atitle {
     color: #0f0;
     font-weight: bold;
