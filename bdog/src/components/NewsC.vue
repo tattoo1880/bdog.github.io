@@ -120,7 +120,6 @@ const viewnews = async (url,title) => {
 .button {
     /* 距离父组件底部2px */
     margin-bottom: 2px;
-    margin-left: 10px;
     /* 距离父组件左边距离2px */
     margin-left: 2px;
 }
@@ -131,11 +130,6 @@ const viewnews = async (url,title) => {
     display: block;
 }
 
-.button {
-    margin-top: 130px;
-    /* display: float; */
-    float: right;
-}
 
 .card {
     display: flex;
@@ -155,6 +149,8 @@ const viewnews = async (url,title) => {
     font-family: sans-serif;
     color:#0f0;
     padding-right: 5px;
+    position:fixed;
+    
     /* animation: glow 3s ease-in-out infinite alternate; */
 }
 
