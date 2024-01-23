@@ -13,7 +13,7 @@
       </el-col>
       <!-- logout 按钮 -->
       <el-col :span="1">
-        <el-button type="danger" @click="handleLogout" style="margin-left: 50px;">Logout</el-button>
+        <el-button type="danger" @click="handleLogout" class="logout">Logout</el-button>
       </el-col>
     </el-row>
   </el-header>
@@ -80,5 +80,9 @@ const handleLogout = () => {
     to {
         text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0, 0 0 60px #0f0;
     }
+}
+.logout {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 </style>
