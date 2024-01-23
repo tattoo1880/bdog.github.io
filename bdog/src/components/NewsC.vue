@@ -7,10 +7,10 @@
                     <span>{{ news.title }}</span>
                     <div class="bottom">
                         <p class="sum">{{ news.summary }}</p>
+                        <el-button :href="news.url" type="success" class="button">详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
-                <el-button :href="news.url" type="success" class="button">详情</el-button>
             </el-card>
         </el-col>
     </el-row>
@@ -92,8 +92,6 @@ onMounted(() => {
     margin-bottom: 2px;
     /* 距离父组件左边距离2px */
     margin-left: 2px;
-    /* 显示方式为 */
-    display: inline-flexbox;
 }
 
 .image {
