@@ -6,8 +6,8 @@
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
                     <div class="bottom">
-                        <p class="sum">{{ news.summary }}</p>
-                        <el-button :href="news.url" type="success" class="button">详情</el-button>
+                        <p class="sum" :sapn="4">{{ news.summary }}</p>
+                        <el-button :href="news.url" type="success" class="button" :sapn="1">详情</el-button>
                     </div>
                 </div>
                 <!-- <a :href="news.url"  class="el-button" type="success" style="margin-bottom: 1px;">详情</a> -->
@@ -100,13 +100,12 @@ onMounted(() => {
 .card {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 350px;
     margin-top: 20px;
     height: 500px;
 }
 
 .sum {
-    width: 250px;
     height: 200px;
     line-height: 1.5;
 }
