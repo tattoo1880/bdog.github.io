@@ -12,7 +12,20 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import {service2} from '@/utils/request'
+
+const getWeather = async () => {
+  try {
+    const response = await service2.get('/weather')
+    console.log(response.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+onMounted(() => {
+  getWeather()
+})
 </script>
 <style>
 .fonnnn {
