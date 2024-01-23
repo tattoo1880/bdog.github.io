@@ -14,6 +14,11 @@
             </el-card>
         </el-col>
     </el-row>
+    <el-dialog :visible.sync="showNew" width="30%" :before-close="handleClose">
+        <span>{{ articleNew }}</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="showNew = false">取 消</el-button>
+        </span>
 </template>
   
 <script setup>
@@ -68,7 +73,8 @@ onMounted(() => {
         console.log(newsData);
     })
 })
-
+const articleNew = ref()
+const showNew = ref(false)
 const viewnews = async (url) => {
     // window.open(url)
     try {
@@ -84,14 +90,17 @@ const viewnews = async (url) => {
             const element = article[i];
             // 换行拼接
             text += element.innerText + "\n\t"
-
         }
+        articleNew.value = text
         console.log(text);
     } catch (error) {
         console.log(error);
     }
 }
-
+const handleClose = (done) => {
+    showNew.value = false
+    done()
+}
 
 </script>
   
