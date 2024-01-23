@@ -96,7 +96,8 @@ onMounted(() => {
 }
 .button {
     margin-top: 130px;
-    display: block;
+    /* display: float; */
+    float: right;
 }
 .card {
     display: flex;
