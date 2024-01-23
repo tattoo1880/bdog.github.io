@@ -4,7 +4,7 @@
             <el-card :body-style="{ padding: '0px' }" class="card">
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
-                    <span>{{ news.title }}</span>
+                    <span class="title">{{ news.title }}</span>
                     <div class="bottom">
                         <p class="sum" :sapn="4">{{ news.summary }}</p>
                         <el-button :href="news.url" type="success" class="button" :sapn="1">详情</el-button>
@@ -102,11 +102,13 @@ onMounted(() => {
 .card {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 300px;
     margin-top: 20px;
     height: 500px;
 }
-
+.title{
+    height: 150px;
+}
 .sum {
     height: 200px;
     line-height: 1.5;
