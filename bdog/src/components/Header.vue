@@ -21,6 +21,9 @@ const getweather = async() =>{
     console.log(error);
   }
 }
+onMounted(async()=>{
+  await getweather()
+})
 </script>
 <style>
 .fonnnn{
