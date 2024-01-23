@@ -26,7 +26,7 @@ const getWeather = async () => {
     // console.log(response.data)
     weather.value = response.data.data.now
     console.log(weather.value)
-    weatherTitle.value = "气温：" + weather.temperature + "℃" + "  " + "降水量：" + weather.precipitation
+    weatherTitle.value = "气温：" + weather.value.temperature + "℃" + "  " + "降水量：" + weather.value.precipitation
   } catch (error) {
     console.log(error)
   }
