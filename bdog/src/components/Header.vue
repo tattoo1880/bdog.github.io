@@ -13,18 +13,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-const getweather = async () => {
-  try {
-
-    const response = await axios.get('https://weather.cma.cn/web/weather/54517.html');
-    console.log(response.data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-onMounted(async () => {
-  await getweather()
-})
 </script>
 <style>
 .fonnnn {
