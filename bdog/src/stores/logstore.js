@@ -17,7 +17,7 @@ export const useLoginStore = defineStore('login', () => {
         username.value = ''
         console.log('logout')
         // 跳转到登陆页面
-        router.push('/login')
+        router.push('/')
     }
     return {
         isLogin,
