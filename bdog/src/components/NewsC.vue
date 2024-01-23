@@ -16,7 +16,7 @@
     </el-row>
     <el-dialog v-model="showNew" title="Warning" width="50%" center>
         <span>
-            <p>{{ articleNew }}</p>
+            <div>{{ articleNew }}</div>
         </span>
         <template #footer>
             <span class="dialog-footer">
@@ -95,7 +95,7 @@ const viewnews = async (url) => {
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += element.innerText + "\n\t"
+            text += '<div>' + element.innerText + "</div>"
         }
         articleNew.value = text
         console.log(text);
