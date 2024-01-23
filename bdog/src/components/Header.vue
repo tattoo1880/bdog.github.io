@@ -56,7 +56,7 @@ onMounted(() => {
 
 .box-card{
   width: 100px;
-  height: 100px;
+  height: 300px;
   /* margin-right: 0px; */
   float: right;
   margin-top: 1px;
