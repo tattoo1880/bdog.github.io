@@ -5,6 +5,7 @@
       <el-col :span="16">
         <div class="grid-content bg-purple fonnnn" style=" margin-left: 650px">
           <h1 class="atitle">Tattoo B-Dog</h1>
+          <el-button type="danger" @click="handleLogout" class="logout">Logout</el-button>
         </div>
       </el-col>
       <!-- 做一个天气预报的卡片 -->
@@ -12,7 +13,6 @@
         <el-alert :title="weatherTitle" type="success" show-icon />
       </el-col>
       <!-- logout 按钮 -->
-      <el-button type="danger" @click="handleLogout" class="logout" :span="2">Logout</el-button>
     </el-row>
   </el-header>
 </template>
