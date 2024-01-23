@@ -87,7 +87,14 @@ onMounted(() => {
     align-items: center;
 }
 
-.button {}
+.button {
+    /* 距离父组件底部2px */
+    margin-bottom: 2px;
+    /* 距离父组件左边距离2px */
+    margin-left: 2px;
+    /* 显示方式为 */
+    display: inline-flexbox;
+}
 
 .image {
     width: 100%;
