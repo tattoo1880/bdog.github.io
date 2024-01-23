@@ -1,8 +1,7 @@
 <template>
     <el-row>
-        <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="index > 0 ? 2 : 0">
+        <el-col v-for="(news,index) in newsData" :key="index" :span="8" :offset="index > 0 ? 3 : 0">
             <el-card :body-style="{ padding: '4px' }">
-                {{ news }}
                 <img :src="news.photo" class="image" />
                 <div style="padding: 14px">
                     <span>{{ news.title }}</span>
