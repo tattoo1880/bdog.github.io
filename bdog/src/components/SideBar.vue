@@ -118,4 +118,20 @@ h4 {
         text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0, 0 0 60px #0f0;
     }
 }
+li {
+  color: #0f0; /* 列表项文本颜色 */
+  list-style-type: none; /* 去除默认的列表标记 */
+  position: relative; /* 设置相对定位，以便为 ::before 伪元素做绝对定位 */
+}
+
+/* 使用 ::before 伪元素创建自定义的列表标记 */
+li::before {
+  content: '\2022'; /* 使用 Unicode 实体，这里是实心圆点（&bull;）*/
+  color: #0f0; /* 列表标记颜色，可以根据需要调整 */
+  display: inline-block; /* 将 ::before 伪元素设为内联块级元素 */
+  width: 1em; /* 设置宽度，可以根据需要调整 */
+  margin-left: -1em; /* 负的左外边距，使列表标记与文本对齐 */
+  position: absolute; /* 绝对定位，相对于 li 元素定位 */
+  left: 0; /* 位置居左 */
+}
 </style>
