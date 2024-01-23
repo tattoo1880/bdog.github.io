@@ -4,7 +4,7 @@
     <el-row>
       <el-col :span="16">
         <div class="grid-content bg-purple fonnnn" style=" margin-left: 650px">
-          <h1>Tattoo B-Dog</h1>
+          <h1 class="title">Tattoo B-Dog</h1>
         </div>
       </el-col>
       <!-- 做一个天气预报的卡片 -->
@@ -51,5 +51,25 @@ onMounted(() => {
   float: right;
   margin-top: 1px;
   font-size: 10px;
+}
+
+.title {
+    color: #0f0;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
+    }
+
+    to {
+        text-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0, 0 0 60px #0f0;
+    }
 }
 </style>
