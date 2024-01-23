@@ -18,12 +18,12 @@
   
 <script setup>
 import { ref ,onMounted} from 'vue'
-import { Axios } from 'axios';
+import axios  from 'axios';
 const newsData = ref([])
 const getNews = async () => {
 
     const baseUrl = "https://cn.nytimes.com/async/mostviewed/all/"
-    const response = await Axios.get(baseUrl, {
+    const response = await axios.get(baseUrl, {
         params: {
             lang: 'zh-hans',
 
