@@ -87,8 +87,10 @@ onMounted(() => {
 }
 
 .button {
+    display :block;
     padding: 0;
     min-height: auto;
+    margin-bottom: 0px;
 }
 
 .image {
