@@ -27,11 +27,13 @@
     <!-- 最新文章 -->
     <section class="recent-posts">
       <h4><a href="/home">最新文章</a></h4>
+
       <ul>
         <li v-for="post in recentPosts" :key="post.id">
           <a href="#">{{ post.title }}</a>
         </li>
       </ul>
+      <h4><a href="/news">今日新闻</a></h4>
     </section>
 
     <!-- 分类列表 -->
@@ -77,5 +79,4 @@ onBeforeMount(() => {
 
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
