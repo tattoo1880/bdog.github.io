@@ -79,11 +79,11 @@ const viewnews = async (url) => {
         const doc = parser.parseFromString(html, "text/html");
         // 找到所有的div class = "article-paragraph"
         const article = doc.querySelectorAll(".article-paragraph")
-        let text = "        "
+        let text = "\t"
         for (let i = 0; i < article.length; i++) {
             const element = article[i];
             // 换行拼接
-            text += element.innerText + "\n"
+            text += element.innerText + "\n\t"
 
         }
         console.log(text);
