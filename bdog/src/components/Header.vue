@@ -16,16 +16,7 @@ import axios from 'axios'
 const getweather = async () => {
   try {
 
-    const response = await axios.get('https://weather.cma.cn/web/weather/54517.html', {
-      headers: {
-        'Referer': 'https://weather.cma.cn/web/weather/54517.html',
-        'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"macOS"'
-      }
-    });
+    const response = await axios.get('https://weather.cma.cn/web/weather/54517.html');
     console.log(response.data);
   } catch (error) {
     console.log(error);
