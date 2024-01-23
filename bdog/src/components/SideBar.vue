@@ -38,8 +38,8 @@
 
     <!-- 分类列表 -->
     <section class="categories">
-      <h4>描述</h4>
-      <ul>
+      <h4 style="margin-left: 50px;">描述</h4>
+      <ul style="margin-left: 50px;">
         <li v-for="post in recentPosts" :key="post.id">
           <a href="#">{{ post.desc }}</a>
         </li>
@@ -55,7 +55,7 @@
     <!--    </section>-->
 
     <!-- 社交媒体链接 -->
-    <section class="social-media">
+    <section class="social-media" style="margin-left: 50px;">
       <h4>关注我</h4>
       <a href="https://github.com/tattoo1880">GitHub</a>
       <br>
