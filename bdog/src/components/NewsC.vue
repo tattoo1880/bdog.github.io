@@ -1,14 +1,94 @@
 <template>
-    <div class="title">
-        <h3>
-            今日新闻
-        </h3>
-    </div>
+    <el-row>
+        <el-col v-for="news in newsData" :key="o" :span="8" :offset="index > 0 ? 2 : 0">
+            <el-card :body-style="{ padding: '0px' }">
+                <img src="news.photo"
+                    class="image" />
+                <div style="padding: 14px">
+                    <span>{{ news.title }}</span>
+                    <div class="bottom">
+                        <p>{{ news.summary }}</p>
+                        <!-- <time class="time"></time> -->
+                        <!-- <el-button text class="button">Operating</el-button> -->
+                    </div>
+                </div>
+            </el-card>
+        </el-col>
+    </el-row>
 </template>
-
+  
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
+const newsData = ref([])
+const getNews = async () => {
+
+    const baseUrl = "https://cn.nytimes.com/async/mostviewed/all/"
+    const response = await axios.get(baseUrl, {
+        params: {
+            lang: 'zh-hans',
+
+        },
+        headers: {
+            'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+            'sec-ch-ua-mobile': '?0',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+            'Cache-Control': 'max-age=600',
+            'Referer': 'https://cn.nytimes.com/',
+            'X-Requested-With': 'XMLHttpRequest',
+            'sec-ch-ua-platform': '"macOS"'
+        }
+    });
+    // console.log(response.data.list.daily);
+    const l = response.data.list.daily
+    let news = []
+    // map l to news
+    for (let i = 0; i < l.length; i++) {
+        let item = l[i]
+        // 如果type 是article 并且有summary
+        if (item.type == "article" && item.summary) {
+            try {
+                news.push({
+                    title: item.headline,
+                    summary: item.summary,
+                    url: item.url,
+                    photo: item.photo.url,
+                })
+            } catch (error) {
+                continue
+            }
+        }
+    }
+    return news
+}
+newsData.value = getNews()
+
+
 
 </script>
+  
+<style>
+.time {
+    font-size: 12px;
+    color: #999;
+}
 
-<style scoped></style>
+.bottom {
+    margin-top: 13px;
+    line-height: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    padding: 0;
+    min-height: auto;
+}
+
+.image {
+    width: 100%;
+    display: block;
+}
+</style>
+  
