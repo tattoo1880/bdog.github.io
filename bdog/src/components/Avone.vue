@@ -3,8 +3,8 @@
  <div>
     <el-row>
         <el-input v-model="keyword" placeholder="请输入关键字" style="width: 800px;"></el-input>
-        <el-button type="primary" @click="getMovieList(keyword)" style="margin-left: 20px;width: 80px;">搜索</el-button>
-        <el-button type="warning" @click="findfav" style="width: 80px;">搜索收藏</el-button>
+        <el-button type="success" :icon="Search" circle @click="getMovieList(keyword)" style="margin-left: 20px;width: 80px;">搜索</el-button>
+        <el-button type="warning" :icon="Star" circle @click="findfav" style="width: 80px;">搜索收藏</el-button>
     </el-row>
 
     <div :class="{ 'hidden': showVideo }">
@@ -22,8 +22,8 @@
             <el-table-column prop="href" label="名称" width="740"></el-table-column>
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
-                    <el-button type="primary" @click="play(row.href)">播放</el-button>
-                    <el-button type="warning" @click="fav(row)">收藏</el-button>
+                    <el-button type="primary" @click="play(row.href)" plain>播放</el-button>
+                    <el-button type="warning" @click="fav(row)" plain>收藏</el-button>
                 </template>
 
             </el-table-column>
@@ -40,8 +40,8 @@
             <el-table-column prop="url" label="名称" width="740"></el-table-column>
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
-                    <el-button type="primary" @click="play2(row.hls)">播放</el-button>
-                    <el-button type="danger" @click="de(row)">删除</el-button>
+                    <el-button type="primary" @click="play2(row.hls)" plain>播放</el-button>
+                    <el-button type="danger" @click="de(row)" plain>删除</el-button>
                 </template>
 
             </el-table-column>
@@ -60,7 +60,7 @@
   <!-- </div> -->
   <template #footer>
       <span class="dialog-footer">
-        <el-button type="success" @click="handleclosewindow">
+        <el-button type="success" @click="handleclosewindow" plain>
           关闭视频
         </el-button>
       </span>
@@ -69,6 +69,14 @@
 </template>
 
 <script setup>
+import {
+    Check,
+    Delete,
+    Edit,
+    Message,
+    Search,
+    Star,
+} from '@element-plus/icons-vue'
 import { ref, onMounted } from 'vue'
 import { service3 } from '@/utils/request.js'
 import Hls from 'hls.js'
