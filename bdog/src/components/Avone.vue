@@ -3,8 +3,8 @@
  <div>
     <el-row>
         <el-input v-model="keyword" placeholder="请输入关键字" style="width: 800px;"></el-input>
-        <el-button type="success" :icon="Search" circle @click="getMovieList(keyword)" style="margin-left: 20px;width: 80px;"></el-button>
-        <el-button type="warning" :icon="Star" circle @click="findfav" style="width: 80px;"></el-button>
+        <el-button type="success" :icon="Search" circle @click="getMovieList(keyword)" style="margin-left: 20px;"></el-button>
+        <el-button type="warning" :icon="Star" circle @click="findfav" ></el-button>
     </el-row>
 
     <div :class="{ 'hidden': showVideo }">
