@@ -121,7 +121,8 @@ const getdata = async(kw) =>{
                 url: `/movie2/list/${kw}/${index}`,
                 method: 'get',
             })
-            k.append(res.data)    
+            //将每次请求的数据添加到k中
+            k = k.concat(res.data)   
         }
         console.log(k)
         return k
