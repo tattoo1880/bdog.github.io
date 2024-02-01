@@ -208,7 +208,7 @@ const getMovieList = async (keyword) => {
         //     item.$index = index + 1
         // })
         let starttime = new Date().getTime()
-        const data = await getdata2(keyword)
+        const data = await getdata1(keyword)
         movieList.value = data
         viewdata.value = movieList.value.slice(0, pageSize.value)
         showVideo.value = false
