@@ -121,7 +121,7 @@ const getdata = async(kw) =>{
                 url: `/movie2/list/${kw}/${index}`,
                 method: 'get',
             })
-            k.push(res.data)    
+            k.append(res.data)    
         }
         console.log(k)
         return k
