@@ -112,22 +112,42 @@ const initializeHLS = async (url) => {
 }
 
 
+const getdata = async(kw) =>{
+    let k = []
+    const i = 3
+    try {   
+        for (let index = 0; index < i; index++) {
+            const res = await service3({
+                url: `/movie2/list/${kw}/${index}`,
+                method: 'get',
+            })
+            k.push(res.data)    
+        }
+        console.log(k)
+        return k
+    } catch (error) {
+        return k
+    }
+}
+
+
 
 
 const getMovieList = async (keyword) => {
     try {
         showVideo.value = true
-        const res = await service3({
-            url: `/movie2/list/${keyword}/0`,
-            method: 'get',
-        })
-        console.log(res.data)
+        // const res = await service3({
+        //     url: `/movie2/list/${keyword}/0`,
+        //     method: 'get',
+        // })
+        // console.log(res.data)
         // k = res.data[0]
         // // 为k的每个元素添加一个$index属性
         // k.forEach((item, index) => {
         //     item.$index = index + 1
         // })
-        movieList.value = res.data
+        const data = await getdata(keyword)
+        movieList.value = data
         showVideo.value = false
     } catch (error) {
         console.log(error)
