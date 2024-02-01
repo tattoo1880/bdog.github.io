@@ -146,7 +146,7 @@ const getdata2 = async(kw) =>{
     cpage.value = 1
     let k = []
     let promiselist = []
-    const i = 10
+    const i = 20
     try {
         for (let index = 0; index < i; index++) {
             promiselist.push(service3({
@@ -208,7 +208,7 @@ const getMovieList = async (keyword) => {
         //     item.$index = index + 1
         // })
         let starttime = new Date().getTime()
-        const data = await getdata1(keyword)
+        const data = await getdata2(keyword)
         movieList.value = data
         viewdata.value = movieList.value.slice(0, pageSize.value)
         showVideo.value = false
