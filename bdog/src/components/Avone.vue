@@ -9,20 +9,16 @@
 
     <div :class="{ 'hidden': showVideo }">
         <el-table :data="movieList"  style="width: 100%">
-            <el-table-column label="序号" width="60">
+            <el-table-column prop="id" label="编号" width="150"></el-table-column>
+            <el-table-column label="缩略图" width="300">
                 <template #default="{ row }">
-                    {{ row.$index }}
+                    <el-image :src="row.img" alt="" style="width: 300px; height: 200px" />
                 </template>
             </el-table-column>
-            <el-table-column label="缩略图" width="180">
-                <template #default="{ row }">
-                    <el-image :src="row.img" alt="" style="width: 100px; height: 100px" />
-                </template>
-            </el-table-column>
-            <el-table-column prop="href" label="名称" width="740"></el-table-column>
+            <el-table-column prop="title" label="名称" width="400"></el-table-column>
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
-                    <el-button type="primary" @click="play(row.href)" plain>播放</el-button>
+                    <el-button type="primary" @click="play(row.url)" plain>播放</el-button>
                     <el-button type="warning" @click="fav(row)" plain>收藏</el-button>
                 </template>
 
@@ -31,13 +27,13 @@
     </div>
     <div :class="{ 'hidden': !showVideo }">
         <el-table :data="movieList2"  style="width: 100%">
-            <el-table-column prop="id" label="名称" width="60"></el-table-column>
-            <el-table-column label="缩略图" width="180">
+            <el-table-column prop="id" label="编号" width="150"></el-table-column>
+            <el-table-column label="缩略图" width="300">
                 <template #default="{ row }">
-                    <el-image :src="row.img" alt="" style="width: 100px; height: 100px" />
+                    <el-image :src="row.img" alt="" style="width: 300px; height: 200px" />
                 </template>
             </el-table-column>
-            <el-table-column prop="url" label="名称" width="740"></el-table-column>
+            <el-table-column prop="title" label="名称" width="500"></el-table-column>
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
                     <el-button type="primary" @click="play2(row.hls)" plain>播放</el-button>
@@ -122,16 +118,16 @@ const getMovieList = async (keyword) => {
     try {
         showVideo.value = true
         const res = await service3({
-            url: `/movie/list/${keyword}`,
+            url: `/movie2/list/${keyword}/0`,
             method: 'get',
         })
         console.log(res.data)
-        k = res.data[0]
-        // 为k的每个元素添加一个$index属性
-        k.forEach((item, index) => {
-            item.$index = index + 1
-        })
-        movieList.value = k
+        // k = res.data[0]
+        // // 为k的每个元素添加一个$index属性
+        // k.forEach((item, index) => {
+        //     item.$index = index + 1
+        // })
+        movieList.value = res.data
         showVideo.value = false
     } catch (error) {
         console.log(error)
@@ -140,6 +136,7 @@ const getMovieList = async (keyword) => {
 
 const play = async (href) => {
     try {
+        // console.log(href)
         dialogVisible.value = true
         // showVideo2.value = true
         const res = await service3({
@@ -149,8 +146,8 @@ const play = async (href) => {
                 url: href
             }
         })
-        console.log(res.data)
-        console.log(res.data)
+        // console.log(res.data)
+        // console.log(res.data)
         initializeHLS(res.data)
     } catch (error) {
         console.log(error)
@@ -187,14 +184,17 @@ const gethls = async (href) => {
 const fav = async (row) => {
     try {
         console.log(row)
-        const hls = await gethls(row.href)
+        const hls = await gethls(row.url)
         const data = {
-            url: row.href,
+            id: row.id,
+            title: row.title,
+            url: row.url,
             img: row.img,
             hls: hls
         }
+        console.log(data)
         const res = await service3({
-            url: '/movie/save',
+            url: '/movie2/save',
             method: 'post',
             data: data
         })
@@ -213,7 +213,7 @@ const fav = async (row) => {
 const findfav = async () => {
     try {
         const res = await service3({
-            url: '/movie/findall',
+            url: '/movie2/findall',
             method: 'get'
         })
         console.log(res.data)
@@ -228,7 +228,7 @@ const de = async (row) => {
     try {
         console.log(row)
         const res = await service3({
-            url: `/movie/delete/${row.id}`,
+            url: `/movie2/delete/${row.id}`,
             method: 'get'
         })
         console.log(res)
