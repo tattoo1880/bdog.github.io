@@ -142,8 +142,34 @@ const initializeHLS = async (url) => {
     }
 }
 
+const getdata2 = async(kw) =>{
+    cpage.value = 1
+    let k = []
+    let promiselist = []
+    const i = 10
+    try {
+        for (let index = 0; index < i; index++) {
+            promiselist.push(service3({
+                url: `/movie2/list/${kw}/${index}`,
+                method: 'get',
+            }))
+        }
+        const res = await Promise.all(promiselist)
+        res.forEach((item) => {
+            k = k.concat(item.data)
+        })
+        console.log(k.length)
+        totalItem.value = k.length
+        return k
+    } catch (error) {
+        return k
+    }
+}
 
-const getdata = async (kw) => {
+
+
+
+const getdata1 = async (kw) => {
     cpage.value = 1
     let k = []
     const i = 10
@@ -181,10 +207,13 @@ const getMovieList = async (keyword) => {
         // k.forEach((item, index) => {
         //     item.$index = index + 1
         // })
-        const data = await getdata(keyword)
+        let starttime = new Date().getTime()
+        const data = await getdata1(keyword)
         movieList.value = data
         viewdata.value = movieList.value.slice(0, pageSize.value)
         showVideo.value = false
+        let endtime = new Date().getTime()
+        console.log(endtime - starttime)
     } catch (error) {
         console.log(error)
     }
