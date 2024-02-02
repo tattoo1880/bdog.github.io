@@ -425,4 +425,9 @@ onMounted(async () => {
     margin-top: 10px;
     margin-left: 40px;
 }
+
+.el-loading-mask {
+  background-color: rgba(101, 96, 96, 0.43) !important; /* 半透明背景 */
+  z-index: 99999 !important; /* 使加载层在最上层 */
+}
 </style>
