@@ -417,9 +417,10 @@ onMounted(async () => {
 }
 
 .container {
-    width: 70vw;
+    width: 90vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 </style>
