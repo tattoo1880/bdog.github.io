@@ -8,7 +8,7 @@
                 <el-aside width="200px">
                     <SideBar />
                 </el-aside>
-                <el-main>
+                <el-main style="margin-left: 30px;">
                     <PornStarC/>
                 </el-main>
             </el-container>
