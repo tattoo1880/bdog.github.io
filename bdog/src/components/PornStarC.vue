@@ -13,8 +13,7 @@
                 <el-input v-model="search" placeholder="请输入明星名字"/>
                 <el-button type="primary" @click="searchStar">搜索</el-button>
         </el-row>
-        <hr>
-        <el-row v-if="!condition">
+        <el-row v-if="!condition" style="margin-top: 40px;">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6" :offset="1">
                 <el-card :body-style="{ padding: '0px' }" class="card">
                     <img :src="item.img" class="image" />
