@@ -40,6 +40,7 @@
             </el-col>
         </el-row>
         <el-row v-if="condition">
+            <el-button type="info" plain @click="changecondition">Info</el-button>
             <el-container>
                 <el-row>
                     <el-table :data="starmovielist" style="width: 100%">
@@ -264,6 +265,11 @@ const listonestar = async (item) => {
     } catch (error) {
         console.log("error")
     }
+}
+
+const changecondition = () => {
+    condition.value = false
+    starmovielist.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
 }
 
 const savestarmovie = async (row) => {
