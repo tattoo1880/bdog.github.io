@@ -30,7 +30,6 @@
             </el-col>
         </el-row>
         <el-row v-if="!condition" style="margin-top: 10px;">
-            <div>
                 <el-pagination v-model:current-page="cpage"
                     hide-on-single-page 
                     style="justify-content: center;"
@@ -38,7 +37,6 @@
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
                     @current-change="handleCurrentChange" 
                     />
-            </div>
         </el-row>
         <el-row v-if="condition">
             <el-container>
