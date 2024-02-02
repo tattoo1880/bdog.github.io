@@ -8,7 +8,7 @@
         <el-switch v-model="value1" active-text="查看收藏" inactive-text="浏览" style="margin-left: 950px;" />
     </el-row>
     <el-row v-if="!value1">
-            <el-input v-model="search" placeholder="请输入明星名字" style="width: 500px; margin-left: 800px;"/>
+            <el-input v-model="search" placeholder="请输入明星名字" style="width: 500px; margin-left: 700px;"/>
             <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
     </el-row>
     <el-container  v-loading="loading" v-if="!value1">
