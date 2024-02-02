@@ -40,7 +40,7 @@
             </el-col>
         </el-row>
         <el-row v-if="condition">
-            <el-button type="info" plain @click="changecondition">Info</el-button>
+            <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
             <el-container>
                 <el-row>
                     <el-table :data="starmovielist" style="width: 100%">
