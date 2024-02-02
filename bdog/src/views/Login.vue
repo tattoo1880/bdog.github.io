@@ -1,7 +1,7 @@
 <template>
     <div class="login-container">
         <el-form class="login-form">
-            <h1 class="title">Welcome</h1>
+            <h1 class="title">Clean The World</h1>
             <el-input v-model="form.username" placeholder="Username"></el-input>
             <el-input v-model="form.password" type="password" placeholder="Password"></el-input>
             <el-button @click="handleLogin" type="primary" style="margin-left: 112px;">Login</el-button>

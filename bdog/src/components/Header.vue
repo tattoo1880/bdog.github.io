@@ -4,7 +4,7 @@
     <el-row>
       <el-col :span="16">
         <div class="grid-content bg-purple fonnnn" style=" margin-left: 650px">
-          <h1 class="atitle">Tattoo B-Dog</h1>
+          <h1 class="atitle"> If Error != nil </h1>
           <el-button type="success" @click="handleLogout" class="logout" plain>Logout</el-button>
         </div>
       </el-col>
