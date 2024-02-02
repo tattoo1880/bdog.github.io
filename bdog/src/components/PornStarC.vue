@@ -11,7 +11,7 @@
         <el-input v-model="search" placeholder="请输入明星名字" style="width: 300px; margin-left: 600px;" />
         <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
     </el-row>
-    <el-container v-loading="loading" fullscreen v-if="!value1" class="container">
+    <el-container v-loading.fullscreen.lock="loading" fullscreen v-if="!value1" class="container">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
             <el-col v-for="(item, index) in stardata" :key="index" :span="7">
@@ -426,8 +426,4 @@ onMounted(async () => {
     margin-left: 40px;
 }
 
-.el-loading-mask {
-  background-color: rgba(101, 96, 96, 0.43) !important; /* 半透明背景 */
-  z-index: 99999 !important; /* 使加载层在最上层 */
-}
 </style>
