@@ -10,12 +10,8 @@
     <el-container  v-loading="loading" v-if="!value1">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row>
-            <el-col :span="12">
                 <el-input v-model="search" placeholder="请输入明星名字"/>
-            </el-col>
-            <el-col :span="1">
                 <el-button type="primary" @click="searchStar">搜索</el-button>
-            </el-col>
         </el-row>
         <hr>
         <el-row v-if="!condition">
