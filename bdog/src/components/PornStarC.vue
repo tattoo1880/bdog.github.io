@@ -371,7 +371,7 @@ onMounted(async () => {
     width: 100%;
     height: 150px;
     display: block;
-    padding-left: 0;
+    padding-left: ;
 }
 
 .card {
@@ -380,7 +380,7 @@ onMounted(async () => {
     flex-direction: column;
     width: 220px;
     margin-top: 20px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     height: 250px;
     border: 1px solid rgb(36, 104, 36);
     border-radius: 5px;
