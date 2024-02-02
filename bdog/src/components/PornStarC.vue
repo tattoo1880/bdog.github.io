@@ -29,6 +29,17 @@
                 </el-card>
             </el-col>
         </el-row>
+        <el-row v-if="!condition">
+            <div>
+                <el-pagination v-model:current-page="cpage"
+                    hide-on-single-page 
+                    style="justify-content: center;"
+                    :page-sizes="[15]"  
+                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange" 
+                    />
+            </div>
+        </el-row>
         <el-row v-if="condition">
             <el-container>
                 <el-row>
@@ -101,6 +112,7 @@ const alldata = ref([])
 const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
+const cpage = ref(1)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -131,10 +143,21 @@ const initializeHLS = async (url) => {
         });
     }
 }
+const totalItem = ref(0)
+const handleSizeChange = (val) => {
+    console.log(`每页 ${val} 条`);
+}
 
+const handleCurrentChange = (val) => {
+    console.log(`当前页: ${val}`);
+    cpage.value = val
+    //计算现实的数据
+    stardata.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
+}
 
 const getStar = async () => {
     try {
+        cpage.value = 1
         loading.value = true
         const res = await service4({
             url: '/movie3/star',
@@ -142,6 +165,7 @@ const getStar = async () => {
         })
         console.log("====")
         console.log(res.data);
+        totalItem.value = res.data.length
         alldata.value = res.data
         stardata.value = alldata.value
         loading.value = false
