@@ -7,12 +7,12 @@
     <el-row>
         <el-switch v-model="value1" active-text="查看收藏" inactive-text="浏览" style="margin-left: 950px;" />
     </el-row>
+    <el-row v-if="!value1">
+            <el-input v-model="search" placeholder="请输入明星名字" />
+            <el-button type="primary" @click="searchStar">搜索</el-button>
+    </el-row>
     <el-container  v-loading="loading" v-if="!value1">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
-        <el-row>
-                <el-input v-model="search" placeholder="请输入明星名字"/>
-                <el-button type="primary" @click="searchStar">搜索</el-button>
-        </el-row>
         <el-row v-if="!condition" style="margin-top: 40px;">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6" :offset="1">
                 <el-card :body-style="{ padding: '0px' }" class="card">
