@@ -8,10 +8,10 @@
         <el-switch v-model="value1" active-text="查看收藏" inactive-text="浏览" style="margin-left: 950px;" />
     </el-row>
     <el-row v-if="!value1">
-            <el-input v-model="search" placeholder="请输入明星名字" style="width: 300px; margin-left: 600px;"/>
-            <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
+        <el-input v-model="search" placeholder="请输入明星名字" style="width: 300px; margin-left: 600px;" />
+        <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
     </el-row>
-    <el-container  v-loading="loading" v-if="!value1">
+    <el-container v-loading="loading" v-if="!value1">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6" :offset="2">
@@ -21,42 +21,43 @@
                         <p class="title">{{ item.name }}</p>
                         <div class="bottom">
                             <!-- <p class="sum" :sapn="3">&emsp;&emsp;&emsp;{{ item.url }}</p> -->
-                            <el-button @click="listonestar(item)" type="success" class="button" :sapn="2" plain>查看</el-button>
-                            <el-button v-if="!isFav" @click="fav(item)" type="success" class="button" :sapn="2" plain>收藏</el-button>
-                            <el-button v-if="isFav" @click="del(item)" type="success" class="button" :sapn="2" plain>删除</el-button>
+                            <el-button @click="listonestar(item)" type="success" class="button" :sapn="2"
+                                plain>查看</el-button>
+                            <el-button v-if="!isFav" @click="fav(item)" type="success" class="button" :sapn="2"
+                                plain>收藏</el-button>
+                            <el-button v-if="isFav" @click="del(item)" type="success" class="button" :sapn="2"
+                                plain>删除</el-button>
                         </div>
                     </div>
                 </el-card>
             </el-col>
         </el-row>
         <el-row v-if="!condition" style="margin-top: 10px;">
-                <el-pagination v-model:current-page="cpage"
-                    hide-on-single-page 
-                    style="justify-content: center;"
-                    :page-sizes="[15]"  
-                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange" 
-                    />
+            <el-col :span="24"> <el-pagination v-model:current-page="cpage" hide-on-single-page
+                style="justify-content: center;" :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper"
+                :total="totalItem" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+            
+            </el-col>
         </el-row>
         <el-row v-if="condition">
             <el-container>
                 <el-row>
                     <el-table :data="starmovielist" style="width: 100%">
-                <el-table-column prop="id" label="编号" width="150"></el-table-column>
-                <el-table-column label="缩略图" width="200">
-                    <template #default="{ row }">
-                        <el-image :src="row.img" alt="" style="width: 200px; height: 100px" />
-                    </template>
-                </el-table-column>
-                <el-table-column prop="name" label="名称" width="500"></el-table-column>
-                <el-table-column label="操作" width="200">
-                    <template #default="{ row }">
-                        <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
-                        <el-button type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
-                    </template>
+                        <el-table-column prop="id" label="编号" width="150"></el-table-column>
+                        <el-table-column label="缩略图" width="200">
+                            <template #default="{ row }">
+                                <el-image :src="row.img" alt="" style="width: 200px; height: 100px" />
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="name" label="名称" width="500"></el-table-column>
+                        <el-table-column label="操作" width="200">
+                            <template #default="{ row }">
+                                <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
+                                <el-button type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
+                            </template>
 
-                </el-table-column>
-            </el-table>
+                        </el-table-column>
+                    </el-table>
                 </el-row>
             </el-container>
         </el-row>
@@ -97,7 +98,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted,watch } from 'vue'
+import { ref, reactive, onMounted, watch } from 'vue'
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
 const dialogVisible = ref(false)
@@ -120,7 +121,7 @@ const searchStar = () => {
             console.log(item.name)
             //忽略大小写
             return item.name.toLowerCase().includes(search.value.toLowerCase())
-            })
+        })
     }
 }
 const initializeHLS = async (url) => {
@@ -188,7 +189,7 @@ const getfav = async () => {
     }
 }
 
-const del = async(item) => {
+const del = async (item) => {
     console.log(item);
     try {
         const res = await service4({
@@ -203,7 +204,7 @@ const del = async(item) => {
 
 
 }
-    
+
 
 const fav = async (item) => {
     console.log(item);
@@ -232,7 +233,7 @@ const toggleFav = () => {
 }
 
 //监听isFav的变化，如果isFav为true，就显示favdata，否则显示alldata
-watch(isFav, async(newVal) => {
+watch(isFav, async (newVal) => {
     if (newVal) {
         await getfav()
         stardata.value = favdata.value
@@ -242,12 +243,12 @@ watch(isFav, async(newVal) => {
 })
 
 const starmovielist = ref([])
-watch(value1, async(newVal) => {
+watch(value1, async (newVal) => {
     if (newVal) {
         await getstarmoviefavlist()
     }
 })
-const listonestar = async(item) => {
+const listonestar = async (item) => {
     // console.log(item);
     console.log(item);
     try {
@@ -265,7 +266,7 @@ const listonestar = async(item) => {
     }
 }
 
-const savestarmovie = async(row) => {
+const savestarmovie = async (row) => {
 
     console.log(row)
     try {
@@ -279,15 +280,15 @@ const savestarmovie = async(row) => {
             alert("收藏成功")
         }
         console.log(res.data);
-        } catch (error) {
-            console.log("error")
-        }
+    } catch (error) {
+        console.log("error")
+    }
 
 
 }
 
 
-const playitem = async(row) =>{
+const playitem = async (row) => {
     let url = row.url
     title.value = row.name
     console.log(url)
@@ -309,7 +310,7 @@ const playitem = async(row) =>{
 
 }
 
-const deleteByid = async(row)=>{
+const deleteByid = async (row) => {
     console.log(row)
     try {
         const res = await service4({
@@ -414,6 +415,7 @@ onMounted(async () => {
     align-items: center;
     /* 垂直居中 */
 }
+
 .container {
     width: 100vw;
     height: 100vh;
