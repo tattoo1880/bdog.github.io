@@ -371,7 +371,6 @@ onMounted(async () => {
     width: 100%;
     height: 150px;
     display: block;
-    padding-left: ;
 }
 
 .card {
@@ -405,7 +404,7 @@ onMounted(async () => {
     /* 距离父组件底部2px */
     margin-bottom: 2px;
     /* 距离父组件左边距离2px */
-    margin-left: 50px;
+    margin-left: 40px;
     margin-top: 20px;
 }
 
