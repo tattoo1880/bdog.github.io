@@ -105,7 +105,10 @@ const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
     } else {
-        stardata.value = alldata.value.filter(item => item.name.includes(search.value))
+        stardata.value = alldata.value.filter(item => {
+            console.log(search.value)
+            console.log(item.name)
+            item.name.includes(search.value)})
     }
 }
 const initializeHLS = async (url) => {
