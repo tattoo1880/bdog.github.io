@@ -108,7 +108,9 @@ const searchStar = () => {
         stardata.value = alldata.value.filter(item => {
             console.log(search.value)
             console.log(item.name)
-            item.name.includes(search.value)})
+            //忽略大小写
+            return item.name.toLowerCase().includes(search.value.toLowerCase())
+            })
     }
 }
 const initializeHLS = async (url) => {
