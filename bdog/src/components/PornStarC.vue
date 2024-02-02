@@ -404,7 +404,7 @@ onMounted(async () => {
     /* 距离父组件底部2px */
     margin-bottom: 2px;
     /* 距离父组件左边距离2px */
-    margin-left: 40px;
+    margin-left: 35px;
     margin-top: 20px;
 }
 
@@ -422,6 +422,7 @@ onMounted(async () => {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
     margin-left: 40px;
 }
 </style>
