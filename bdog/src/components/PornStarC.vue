@@ -29,7 +29,7 @@
                 </el-card>
             </el-col>
         </el-row>
-        <el-row v-if="!condition">
+        <el-row v-if="!condition" style="margin-top: 10px;">
             <div>
                 <el-pagination v-model:current-page="cpage"
                     hide-on-single-page 
@@ -167,7 +167,7 @@ const getStar = async () => {
         console.log(res.data);
         totalItem.value = res.data.length
         alldata.value = res.data
-        stardata.value = alldata.value
+        stardata.value = alldata.value.slice(0, 15)
         loading.value = false
     } catch (error) {
         console.log(error);
