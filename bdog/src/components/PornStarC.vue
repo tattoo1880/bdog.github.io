@@ -11,7 +11,7 @@
         <el-input v-model="search" placeholder="请输入明星名字" style="width: 300px; margin-left: 600px;" />
         <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
     </el-row>
-    <el-container v-loading="loading" v-if="!value1">
+    <el-container v-loading="loading" v-if="!value1" class="container">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6">
@@ -373,7 +373,7 @@ onMounted(async () => {
 }
 
 .card {
-    width: 300px;
+    /* width: 300px; */
     display: flex;
     flex-direction: column;
     /* width: 220px; */
