@@ -13,7 +13,7 @@
     </el-row>
     <el-container  v-loading="loading" v-if="!value1">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
-        <el-row v-if="!condition" style="margin-top: 20px;" :gutter="20">
+        <el-row v-if="!condition" style="margin-top: 20px;" :gutter="20" width="100%">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6" :offset="2">
                 <el-card :body-style="{ padding: '0px' }" class="card">
                     <img :src="item.img" class="image" />
