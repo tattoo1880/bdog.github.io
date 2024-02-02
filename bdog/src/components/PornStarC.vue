@@ -17,6 +17,7 @@
                 <el-button type="primary" @click="searchStar">搜索</el-button>
             </el-col>
         </el-row>
+        <hr>
         <el-row v-if="!condition">
             <el-col v-for="(item, index) in stardata" :key="index" :span="6" :offset="1">
                 <el-card :body-style="{ padding: '0px' }" class="card">
