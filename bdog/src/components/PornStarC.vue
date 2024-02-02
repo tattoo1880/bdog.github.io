@@ -14,7 +14,7 @@
     <el-container v-loading="loading" v-if="!value1" class="container">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
-            <el-col v-for="(item, index) in stardata" :key="index" :span="6">
+            <el-col v-for="(item, index) in stardata" :key="index" :span="7">
                 <el-card :body-style="{ padding: '0px' }" class="card">
                     <img :src="item.img" class="image" />
                     <div style="padding: 10px">
