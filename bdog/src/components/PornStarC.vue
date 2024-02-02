@@ -367,7 +367,8 @@ onMounted(async () => {
 
 <style scoped>
 .image {
-    width: 290px;
+    /* width: 290px; */
+    width: 100%;
     height: 150px;
     display: block;
 }
