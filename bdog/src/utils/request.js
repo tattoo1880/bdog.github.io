@@ -17,6 +17,11 @@ const service3 = axios.create({
     timeout: 50000,
 })
 
+const service4 = axios.create({
+    baseURL: 'http://127.0.0.1:8080',
+    // baseURL: 'http://45.147.48.43:8080',
+    timeout: 50000,
+})
 
 export default service
-export { service2,service3}
+export { service2,service3,service4}

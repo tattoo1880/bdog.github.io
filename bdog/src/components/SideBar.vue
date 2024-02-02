@@ -20,6 +20,9 @@
           <a href="/av">AV库</a>
         </li>
         <li>
+          <a href="/pornstar">star库</a>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>
