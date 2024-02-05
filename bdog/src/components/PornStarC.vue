@@ -118,8 +118,8 @@ const searchStar = () => {
         stardata.value = alldata.value
     } else {
         stardata.value = alldata.value.filter(item => {
-            console.log(search.value)
-            console.log(item.name)
+            // console.log(search.value)
+            // console.log(item.name)
             //忽略大小写
             return item.name.toLowerCase().includes(search.value.toLowerCase())
         })
@@ -130,7 +130,7 @@ const initializeHLS = async (url) => {
 
     if (Hls.isSupported()) {
         var hls = new Hls();
-        console.log('hls', url);
+        // console.log('hls', url);
         hls.loadSource(url);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
@@ -145,19 +145,19 @@ const initializeHLS = async (url) => {
 }
 const totalItem = ref(0)
 const handleSizeChange = (val) => {
-    console.log(`每页 ${val} 条`);
+    // console.log(`每页 ${val} 条`);
 
 }
 
 const handleCurrentChange = (val) => {
-    console.log(`当前页: ${val}`);
+    // console.log(`当前页: ${val}`);
     cpage.value = val
     //计算现实的数据
-    console.log(alldata.value.length)
-    console.log((cpage.value - 1) * 15, cpage.value * 15)
+    // console.log(alldata.value.length)
+    // console.log((cpage.value - 1) * 15, cpage.value * 15)
     stardata.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
-    console.log(stardata.value);
-    console.log(alldata.value);
+    // console.log(stardata.value);
+    // console.log(alldata.value);
 }
 
 const getStar = async () => {
@@ -168,8 +168,8 @@ const getStar = async () => {
             url: '/movie3/star',
             method: 'get',
         })
-        console.log("====")
-        console.log(res.data);
+        // console.log("====")
+        // console.log(res.data);
         totalItem.value = res.data.length
         alldata.value = res.data
         stardata.value = alldata.value.slice(0, 15)
@@ -185,8 +185,8 @@ const getfav = async () => {
             url: '/movie3/findall',
             method: 'get',
         })
-        console.log("====")
-        console.log(res.status);
+        // console.log("====")
+        // console.log(res.status);
 
 
         favdata.value = res.data
@@ -196,7 +196,7 @@ const getfav = async () => {
 }
 
 const del = async (item) => {
-    console.log(item);
+    // console.log(item);
     try {
         const res = await service4({
             url: `/movie3/delete/${item.id}`,
@@ -213,14 +213,14 @@ const del = async (item) => {
 
 
 const fav = async (item) => {
-    console.log(item);
+    // console.log(item);
     try {
         const res = await service4({
             url: '/movie3/create',
             method: 'post',
             data: item
         })
-        console.log(res.status)
+        // console.log(res.status)
         if (res.status == 200) {
             alert("收藏成功")
         }
@@ -256,15 +256,14 @@ watch(value1, async (newVal) => {
 })
 const listonestar = async (item) => {
     // console.log(item);
-    console.log(item);
     try {
         const res = await service4({
             url: `/movie4/onestarlist`,
             method: 'post',
             data: item
         })
-        console.log(res.status);
-        console.log(res.data);
+        // console.log(res.status);
+        // console.log(res.data);
         condition.value = true
         starmovielist.value = res.data
     } catch (error) {
@@ -279,18 +278,18 @@ const changecondition = () => {
 
 const savestarmovie = async (row) => {
 
-    console.log(row)
+    // console.log(row)
     try {
         const res = await service4({
             url: '/movie4/create',
             method: 'post',
             data: row
         })
-        console.log(res.status)
+        // console.log(res.status)
         if (res.status == 200) {
             alert("收藏成功")
         }
-        console.log(res.data);
+        // console.log(res.data);
     } catch (error) {
         console.log("error")
     }
@@ -302,7 +301,7 @@ const savestarmovie = async (row) => {
 const playitem = async (row) => {
     let url = row.url
     title.value = row.name
-    console.log(url)
+    // console.log(url)
     try {
         const res = await service3({
             url: '/movie/geturl',
@@ -311,7 +310,7 @@ const playitem = async (row) => {
                 url: url
             }
         })
-        console.log(res.data)
+        // console.log(res.data)
         const playurl = res.data
         dialogVisible.value = true
         initializeHLS(playurl)
@@ -322,7 +321,7 @@ const playitem = async (row) => {
 }
 
 const deleteByid = async (row) => {
-    console.log(row)
+    // console.log(row)
     try {
         const res = await service4({
             url: `/movie4/delete`,
@@ -357,8 +356,8 @@ const getstarmoviefavlist = async () => {
             url: '/movie4/findall',
             method: 'get',
         })
-        console.log(res.status);
-        console.log(res.data);
+        // console.log(res.status);
+        // console.log(res.data);
         starmoviefavlist.value = res.data
     } catch (error) {
         console.log("error")
