@@ -154,6 +154,7 @@ const handleCurrentChange = (val) => {
     cpage.value = val
     //计算现实的数据
     console.log(alldata.value.length)
+    console.log((cpage.value - 1) * 15, cpage.value * 15)
     stardata.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
     console.log(stardata.value);
     console.log(alldata.value);
