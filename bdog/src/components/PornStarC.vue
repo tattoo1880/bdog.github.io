@@ -147,6 +147,7 @@ const totalItem = ref(0)
 const handleSizeChange = (val) => {
     console.log(`每页 ${val} 条`);
     console.log(stardata.value);
+    console.log(alldata.value);
 }
 
 const handleCurrentChange = (val) => {
