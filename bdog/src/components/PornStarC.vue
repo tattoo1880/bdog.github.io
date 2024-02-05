@@ -146,6 +146,7 @@ const initializeHLS = async (url) => {
 const totalItem = ref(0)
 const handleSizeChange = (val) => {
     console.log(`每页 ${val} 条`);
+    console.log(stardata.value);
 }
 
 const handleCurrentChange = (val) => {
