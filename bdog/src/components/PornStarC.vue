@@ -146,8 +146,7 @@ const initializeHLS = async (url) => {
 const totalItem = ref(0)
 const handleSizeChange = (val) => {
     console.log(`每页 ${val} 条`);
-    console.log(stardata.value);
-    console.log(alldata.value);
+
 }
 
 const handleCurrentChange = (val) => {
@@ -155,6 +154,8 @@ const handleCurrentChange = (val) => {
     cpage.value = val
     //计算现实的数据
     stardata.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
+    console.log(stardata.value);
+    console.log(alldata.value);
 }
 
 const getStar = async () => {
