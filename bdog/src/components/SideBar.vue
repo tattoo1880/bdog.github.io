@@ -3,7 +3,7 @@
     <!-- 个人简介 -->
     <section class="profile">
       <img src="../assets/joker.jpeg" alt="Your Name" width="180px" height="180px"
-        style="border-radius: 50%; margin-left:15px;margin-top: 2px;" />
+        style="border-radius: 50%; margin-left:17px;margin-top: 2px;" />
       <h3 style="margin-left: 10px;" class="atitle">Townly Stone</h3>
       <p style="margin-left: 10px;" class="atitle">----------------</p>
     </section>
