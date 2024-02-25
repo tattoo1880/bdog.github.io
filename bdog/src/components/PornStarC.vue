@@ -384,14 +384,13 @@ onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     //循环 10 次
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 10; i++) {
         await sleep(1000)
-        for (let i = 1; i < 21; i++) {
+        for (let i = 1; i < 10; i++) {
             //i 变成字符串
             let stri = i.toString()
             await refreshdata(stri)
         }
-        totalItem.value = alldata.value.length
     }
 })
 
@@ -410,8 +409,8 @@ const refreshdata = async (page) => {
         console.log(res.data)
         console.log(alldata.value)
         alldata.value.push(...res.data)
-        // alldata.value += res.data
         console.log(alldata.value)
+        totalItem.value = alldata.value.length
     } catch (error) {
         console.log(error)
     }
