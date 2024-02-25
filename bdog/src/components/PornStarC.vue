@@ -160,7 +160,7 @@ const handleCurrentChange = (val) => {
     // console.log(alldata.value);
 }
 
-const getStar = async (page=0) => {
+const getStar = async () => {
     try {
         cpage.value = 1
         loading.value = true
@@ -373,8 +373,32 @@ const getstarmoviefavlist = async () => {
 onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
+    //循环 10 次
+    for (let i = 1; i < 10; i++) {
+        //i 变成字符串
+        let stri = i.toString()
+        await refreshdata(stri)
+    }
 })
 
+
+const refreshdata = async (page) => {
+
+    try{
+        const res = await service4({
+            url: '/movie3/star',
+            method: 'get',
+            params: {
+                page: page,
+            }
+        })
+
+        totalItem.value += res.data.length
+        alldata.value += res.data
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 </script>
