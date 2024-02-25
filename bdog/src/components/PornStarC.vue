@@ -394,7 +394,9 @@ const refreshdata = async (page) => {
         })
 
         totalItem.value += res.data.length
-        alldata.value += res.data
+        console.log(res.data)
+        console.log(alldata.value)
+        // alldata.value += res.data
         console.log(alldata.value)
     }catch(error){
         console.log(error)
