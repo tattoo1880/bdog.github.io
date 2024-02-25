@@ -33,10 +33,14 @@
             </el-col>
         </el-row>
         <el-row v-if="!condition" style="margin-top: 10px;">
-            <el-col :span="24"> <el-pagination v-model:current-page="cpage" hide-on-single-page
-                style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper"
-                :total="totalItem" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
-            
+            <el-col :span="24">
+                <el-pagination v-model:current-page="cpage" v-model="pageSize1" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
+                    :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
+                    @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+                <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
+                    :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
+                    @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
+
             </el-col>
         </el-row>
         <el-row v-if="condition">
@@ -113,6 +117,7 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
+const pageSize1 = ref(15)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -164,7 +169,7 @@ const getStar = async () => {
     try {
         cpage.value = 1
         loading.value = true
-        
+
         const res = await service4({
             url: '/movie3/star',
             method: 'get',
@@ -385,7 +390,7 @@ onMounted(async () => {
 
 const refreshdata = async (page) => {
 
-    try{
+    try {
         const res = await service4({
             url: '/movie3/star',
             method: 'get',
@@ -399,7 +404,7 @@ const refreshdata = async (page) => {
         alldata.value.push(...res.data)
         // alldata.value += res.data
         console.log(alldata.value)
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
@@ -467,5 +472,4 @@ const refreshdata = async (page) => {
     margin-top: 10px;
     margin-left: 40px;
 }
-
 </style>
