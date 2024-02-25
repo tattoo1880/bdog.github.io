@@ -379,6 +379,7 @@ onMounted(async () => {
         let stri = i.toString()
         await refreshdata(stri)
     }
+    totalItem.value = alldata.value.length
 })
 
 
@@ -393,7 +394,6 @@ const refreshdata = async (page) => {
             }
         })
 
-        totalItem.value += res.data.length
         console.log(res.data)
         console.log(alldata.value)
         alldata.value.push(...res.data)
