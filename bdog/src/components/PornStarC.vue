@@ -164,9 +164,13 @@ const getStar = async () => {
     try {
         cpage.value = 1
         loading.value = true
+        
         const res = await service4({
             url: '/movie3/star',
-            method: 'get',
+            method: 'post',
+            data: {
+                page: '0'
+            }
         })
         // console.log("====")
         // console.log(res.data);
