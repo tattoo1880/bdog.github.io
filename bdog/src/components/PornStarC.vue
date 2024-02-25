@@ -35,7 +35,7 @@
         <el-row v-if="!condition" style="margin-top: 10px;">
             <el-col :span="24">
                 <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
-                    :page-sizes="[20,40]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
+                    :page-sizes="[15,30]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
                     @size-change="handleSizeChange" @current-change="handleCurrentChange" />
                 <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
                     :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
@@ -117,7 +117,7 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
-const pageSize1 = ref(20)
+const pageSize1 = ref(15)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
