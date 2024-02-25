@@ -34,9 +34,10 @@
         </el-row>
         <el-row v-if="!condition" style="margin-top: 10px;">
             <el-col :span="24">
-                <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
-                    :page-sizes="[15,30]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
-                    @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+                <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page
+                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15, 30]"
+                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange" />
                 <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
                     :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
                     @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
@@ -372,19 +373,26 @@ const getstarmoviefavlist = async () => {
         console.log("error")
     }
 }
-
+const sleep = async (ms) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    })
+}
 
 
 onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     //循环 10 次
-    for (let i = 1; i < 21; i++) {
-        //i 变成字符串
-        let stri = i.toString()
-        await refreshdata(stri)
+    for (let i = 1; i < 4; i++) {
+        await sleep(1000)
+        for (let i = 1; i < 21; i++) {
+            //i 变成字符串
+            let stri = i.toString()
+            await refreshdata(stri)
+        }
+        totalItem.value = alldata.value.length
     }
-    totalItem.value = alldata.value.length
 })
 
 
