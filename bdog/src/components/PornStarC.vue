@@ -374,7 +374,7 @@ onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     //循环 10 次
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 21; i++) {
         //i 变成字符串
         let stri = i.toString()
         await refreshdata(stri)
