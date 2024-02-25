@@ -173,7 +173,7 @@ const getStar = async () => {
             }
         })
         // console.log("====")
-        // console.log(res.data);
+        console.log(res.data);
         totalItem.value = res.data.length
         alldata.value = res.data
         stardata.value = alldata.value.slice(0, 15)
