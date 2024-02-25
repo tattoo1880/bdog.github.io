@@ -160,16 +160,16 @@ const handleCurrentChange = (val) => {
     // console.log(alldata.value);
 }
 
-const getStar = async () => {
+const getStar = async (page=0) => {
     try {
         cpage.value = 1
         loading.value = true
         
         const res = await service4({
             url: '/movie3/star',
-            method: 'post',
-            data: {
-                page: '0'
+            method: 'get',
+            params: {
+                page: "0",
             }
         })
         // console.log("====")
