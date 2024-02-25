@@ -181,7 +181,7 @@ const getStar = async () => {
         console.log(res.data);
         totalItem.value = res.data.length
         alldata.value = res.data
-        stardata.value = alldata.value.slice(0, 15)
+        stardata.value = alldata.value.slice(0, pageSize1.value)
         loading.value = false
     } catch (error) {
         console.log(error);
