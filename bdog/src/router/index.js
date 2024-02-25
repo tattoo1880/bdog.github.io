@@ -43,6 +43,11 @@ const router = createRouter({
       name: 'pornstar',
       path: '/pornstar',
       component: () => import('../views/PornStar.vue')
+    },
+    {
+      name: 'channel',
+      path: '/channel',
+      component: () => import('../views/Channel.vue')
     }
   ]
 })

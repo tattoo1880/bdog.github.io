@@ -23,6 +23,9 @@
           <a href="/pornstar">star库</a>
         </li>
         <li>
+          <RouterLink :to="{ name: 'channel' }">P 频道</RouterLink>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>
@@ -72,6 +75,7 @@
 
 <script setup>
 import { ref, onBeforeMount, watchEffect } from 'vue'
+import { RouterLink } from 'vue-router'
 import { FormdataStore } from "@/stores/formdata"
 const formData = FormdataStore()
 
