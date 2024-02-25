@@ -151,7 +151,7 @@ const initializeHLS = async (url) => {
 const totalItem = ref(0)
 const handleSizeChange = (val) => {
     // console.log(`每页 ${val} 条`);
-
+    stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 
 const handleCurrentChange = (val) => {
