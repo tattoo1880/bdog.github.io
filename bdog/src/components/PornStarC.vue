@@ -35,7 +35,7 @@
         <el-row v-if="!condition" style="margin-top: 10px;">
             <el-col :span="24">
                 <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
-                    :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
+                    :page-sizes="[20,40]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
                     @size-change="handleSizeChange" @current-change="handleCurrentChange" />
                 <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
                     :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
@@ -117,7 +117,7 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
-const pageSize1 = ref(15)
+const pageSize1 = ref(20)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -160,7 +160,7 @@ const handleCurrentChange = (val) => {
     //计算现实的数据
     // console.log(alldata.value.length)
     // console.log((cpage.value - 1) * 15, cpage.value * 15)
-    stardata.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
+    stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     // console.log(stardata.value);
     // console.log(alldata.value);
 }
@@ -282,7 +282,7 @@ const listonestar = async (item) => {
 
 const changecondition = () => {
     condition.value = false
-    starmovielist.value = alldata.value.slice((cpage.value - 1) * 15, cpage.value * 15)
+    starmovielist.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 
 const savestarmovie = async (row) => {
