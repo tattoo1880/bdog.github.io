@@ -1,7 +1,7 @@
 <template>
     <el-row class="oel">
         <el-input v-model="input" placeholder="请输入内容" class="sinput"></el-input>
-        <el-button @click="download" type="warning" plain>下载</el-button>
+        <el-button v-loading.fullscreen.lock="fullscreenLoading" @click="download" type="warning" plain>下载</el-button>
     </el-row>
 </template>
 
@@ -10,9 +10,11 @@ import { ref, reactive } from 'vue'
 import { service6 } from '@/utils/request'
 import jsonpath from "jsonpath";
 import axios from 'axios'
+const fullscreenLoading = ref(false)
 const input = ref('')
 const newurls = ref([])
 const download = async () => {
+    fullscreenLoading.value = true
     const statusurl = input.value
     const keyValue = statusurl.split('/').pop()
 
@@ -65,6 +67,8 @@ const download = async () => {
         }
     } catch (e) {
         console.log(e)
+    }finally{
+        fullscreenLoading.value = false
     }
 }
 
