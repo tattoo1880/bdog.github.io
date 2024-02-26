@@ -3,12 +3,6 @@
         <el-input v-model="input" placeholder="请输入内容" class="sinput"></el-input>
         <el-button @click="download" type="warning" plain>下载</el-button>
     </el-row>
-
-    <el-row>
-        <url>
-            <li v-if="newurls != null" v-for="item in newurls" :key="item">{{ item }}</li>
-        </url>
-    </el-row>
 </template>
 
 <script setup>
@@ -41,7 +35,7 @@ const download = async () => {
             if (item.includes('1280')) {
                 console.log(item)
                 return true
-            }else{
+            } else {
                 return false
             }
         })
@@ -52,19 +46,23 @@ const download = async () => {
         const inurl = newurls[0].split('?')[0]
         console.log(inurl)
         //使用浏览器下载这个 inurl
-        const res2 = await axios({
-            url: inurl,
-            method: 'get',
-            responseType: 'blob'
-        })
-        const blob = new Blob([res2.data], { type: 'video/mp4' })
-        const url = window.URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = 'video.mp4'
-        a.click()
-        window.URL.revokeObjectURL(url)
-        alert('下载成功')
+        try {
+            const res2 = await axios({
+                url: inurl,
+                method: 'get',
+                responseType: 'blob'
+            })
+            const blob = new Blob([res2.data], { type: 'video/mp4' })
+            const url = window.URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'video.mp4'
+            a.click()
+            window.URL.revokeObjectURL(url)
+            alert('下载成功')
+        } catch (e) {
+            console.log(e)
+        }
     } catch (e) {
         console.log(e)
     }
