@@ -1,6 +1,7 @@
 <template>
     <el-row class="oel">
         <el-input v-model="input" placeholder="请输入内容" class="sinput"></el-input>
+        <el-input v-model="filename" placeholder="请输入文件名" class="nameinput" />
         <el-button v-loading.fullscreen.lock="fullscreenLoading" @click="download" type="warning" plain>下载</el-button>
     </el-row>
 </template>
@@ -13,6 +14,7 @@ import axios from 'axios'
 const fullscreenLoading = ref(false)
 const input = ref('')
 const newurls = ref([])
+const filename = ref('')
 const download = async () => {
     fullscreenLoading.value = true
     const statusurl = input.value
@@ -58,7 +60,7 @@ const download = async () => {
             const url = window.URL.createObjectURL(blob)
             const a = document.createElement('a')
             a.href = url
-            a.download = 'video.mp4'
+            a.download = `${filename.value}.mp4`
             a.click()
             window.URL.revokeObjectURL(url)
             alert('下载成功')
@@ -67,7 +69,9 @@ const download = async () => {
         }
     } catch (e) {
         console.log(e)
-    }finally{
+    } finally {
+        filename.value = ''
+        input.value = ''
         fullscreenLoading.value = false
     }
 }
@@ -77,7 +81,15 @@ const download = async () => {
 <style scoped>
 .sinput {
     width: 600px;
+    border: 1px solid #13eb2c;
 }
+
+.nameinput {
+    width: 150px;
+    border: 1px solid #13eb2c;
+
+}
+
 
 .oel {
     margin-top: 120px;
