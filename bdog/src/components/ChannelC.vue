@@ -58,7 +58,7 @@
                         <el-table-column prop="name" label="名称" width="500"></el-table-column>
                         <el-table-column label="操作" width="200">
                             <template #default="{ row }">
-                                <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
+                                <el-button type="primary" @click="playitemnewpage(row)" plain>播放</el-button>
                                 <el-button type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
                             </template>
 
@@ -106,8 +106,10 @@
 <script setup>
 import { ref, reactive, onMounted, watch } from 'vue'
 import Hls from 'hls.js'
+import {useRouter} from 'vue-router'
 import { service3, service4 } from '@/utils/request';
 import {useChannel} from '@/hook/useChannel'   // 引入自定义的hooks
+const router = useRouter()
 const useChannelData = useChannel()
 let { getChannelpage,getFav,addFavChannel, deleteFavChannel,listOneChannelMovies } = useChannelData
 const dialogVisible = ref(false)
@@ -329,6 +331,17 @@ onMounted(async () => {
         totalItem.value = alldata.value.length
     }
 })
+
+const playitemnewpage = async (row) => {
+    console.log("2222",row)
+    router.push({name:'play',
+        query: {
+            url: row.url,
+            name: row.name
+        }
+    })
+}
+
 
 
 

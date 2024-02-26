@@ -48,7 +48,17 @@ const router = createRouter({
       name: 'channel',
       path: '/channel',
       component: () => import('../views/Channel.vue')
-    }
+    },
+    {
+      name: 'play',
+      path: '/play',
+      component: () => import('../views/Play.vue'),
+      //传递参数
+      props: (route) => ({
+        name: route.query.name,
+        url: route.query.url,
+      })
+  },
   ]
 })
 
