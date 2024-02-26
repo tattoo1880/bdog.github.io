@@ -59,6 +59,11 @@ const router = createRouter({
         url: route.query.url,
       })
   },
+  {
+    name: 'dltw',
+    path: '/dltw',
+    component: () => import('../views/DownLoadTw.vue')
+  }
   ]
 })
 

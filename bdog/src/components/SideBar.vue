@@ -26,6 +26,9 @@
           <RouterLink :to="{ name: 'channel' }">P 频道</RouterLink>
         </li>
         <li>
+          <RouterLink :to="{ name: 'dltw' }">x下载</RouterLink>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>
