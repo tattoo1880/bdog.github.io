@@ -68,7 +68,9 @@ const closevideo = async () => {
     const video = document.getElementById('videoPlayer');
     video.pause();
     video.src = '';
-    useroute.push({ name: 'channel' })
+    // 回退到上一页面
+    useroute.back()
+    // useroute.push({ name: 'channel' })
 
 }
 

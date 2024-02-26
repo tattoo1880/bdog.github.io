@@ -58,7 +58,7 @@
                         <el-table-column prop="name" label="名称" width="500"></el-table-column>
                         <el-table-column label="操作" width="200">
                             <template #default="{ row }">
-                                <el-button type="primary" @click="playitemnewpage(row)" plain>播放</el-button>
+                                <el-button type="primary" @click="pl(row)" plain>播放</el-button>
                                 <el-button type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
                             </template>
 
@@ -93,7 +93,7 @@
             <el-table-column prop="name" label="名称" width="500"></el-table-column>
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
-                    <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
+                    <el-button type="primary" @click="pl(row)" plain>播放</el-button>
                     <el-button v-if="!value1" type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
                     <el-button v-if="value1" type="danger" @click="deleteByid(row)" plain>删除</el-button>
                 </template>
@@ -109,7 +109,8 @@ import Hls from 'hls.js'
 import {useRouter} from 'vue-router'
 import { service3, service4 } from '@/utils/request';
 import {useChannel} from '@/hook/useChannel'   // 引入自定义的hooks
-const router = useRouter()
+import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
+const {playitemnewpage} = usePlaypage()
 const useChannelData = useChannel()
 let { getChannelpage,getFav,addFavChannel, deleteFavChannel,listOneChannelMovies } = useChannelData
 const dialogVisible = ref(false)
@@ -244,28 +245,6 @@ const savestarmovie = async (row) => {
 }
 
 
-const playitem = async (row) => {
-    let url = row.url
-    title.value = row.name
-    // console.log(url)
-    try {
-        const res = await service3({
-            url: '/movie/geturl',
-            method: 'post',
-            data: {
-                url: url
-            }
-        })
-        // console.log(res.data)
-        const playurl = res.data
-        dialogVisible.value = true
-        initializeHLS(playurl)
-    } catch (error) {
-        console.log("error")
-    }
-
-}
-
 const deleteByid = async (row) => {
     // console.log(row)
     try {
@@ -338,18 +317,21 @@ onMounted(async () => {
     totalItem.value = alldata.value.length
 })
 
-const playitemnewpage = async (row) => {
-    console.log("2222",row)
-    router.push({name:'play',
-        query: {
-            url: row.url,
-            name: row.name
-        }
-    })
+// const playitemnewpage = async (row) => {
+//     console.log("2222",row)
+//     router.push({name:'play',
+//         query: {
+//             url: row.url,
+//             name: row.name
+//         }
+//     })
+// }
+
+
+const pl = async (row) => {
+    console.log(row)
+    await playitemnewpage(row)
 }
-
-
-
 
 
 </script>

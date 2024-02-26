@@ -105,8 +105,10 @@
 
 <script setup>
 import { ref, reactive, onMounted, watch } from 'vue'
+import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
+const {playitemnewpage} = usePlaypage()
 const dialogVisible = ref(false)
 const title = ref()
 const condition = ref(false)
@@ -307,28 +309,35 @@ const savestarmovie = async (row) => {
 
 }
 
-
-const playitem = async (row) => {
-    let url = row.url
-    title.value = row.name
-    // console.log(url)
-    try {
-        const res = await service3({
-            url: '/movie/geturl',
-            method: 'post',
-            data: {
-                url: url
-            }
-        })
-        // console.log(res.data)
-        const playurl = res.data
-        dialogVisible.value = true
-        initializeHLS(playurl)
-    } catch (error) {
-        console.log("error")
-    }
-
+const playitem = async(row)=>{
+    await playitemnewpage(row)
 }
+
+
+
+// const playitem = async (row) => {
+//     let url = row.url
+//     title.value = row.name
+//     // console.log(url)
+//     try {
+//         const res = await service3({
+//             url: '/movie/geturl',
+//             method: 'post',
+//             data: {
+//                 url: url
+//             }
+//         })
+//         // console.log(res.data)
+//         const playurl = res.data
+//         dialogVisible.value = true
+//         initializeHLS(playurl)
+//     } catch (error) {
+//         console.log("error")
+//     }
+
+// }
+
+
 
 const deleteByid = async (row) => {
     // console.log(row)
@@ -384,12 +393,15 @@ onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     //循环 10 次
+    const promise = []
     for (let i = 1; i < 99; i++) {
-            await sleep(1000)
+            // await sleep(1000)
             //i 变成字符串
-            let stri = i.toString()
-            await refreshdata(stri)
+            // let stri = i.toString()
+            // await refreshdata(stri)
+            promise.push(refreshdata(i.toString()))
         }
+        await Promise.all(promise)
 })
 
 
