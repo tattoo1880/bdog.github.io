@@ -323,13 +323,19 @@ onMounted(async () => {
     totalItem.value = alldata.value.length
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 
-
+    const promise = []
     for (let i = 1; i < 10; i++) {
+        promise.push(useChannelData.getChannelpage(i.toString()))
         // await sleep(1000)
-        const data = await useChannelData.getChannelpage(i.toString())
-        alldata.value = alldata.value.concat(data)
-        totalItem.value = alldata.value.length
+        // const data = await useChannelData.getChannelpage(i.toString())
+        // alldata.value = alldata.value.concat(data)
+        // totalItem.value = alldata.value.length
     }
+    const data2 = await Promise.all(promise)
+    for (let i = 0; i < data2.length; i++) {
+        alldata.value = alldata.value.concat(data2[i])
+    }
+    totalItem.value = alldata.value.length
 })
 
 const playitemnewpage = async (row) => {
