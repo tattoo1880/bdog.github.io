@@ -325,7 +325,7 @@ onMounted(async () => {
 
 
     for (let i = 1; i < 10; i++) {
-        await sleep(1000)
+        // await sleep(1000)
         const data = await useChannelData.getChannelpage(i.toString())
         alldata.value = alldata.value.concat(data)
         totalItem.value = alldata.value.length
