@@ -20,7 +20,6 @@
                     <div style="padding: 10px">
                         <p class="title">{{ item.name }}</p>
                         <div class="bottom">
-                            <!-- <p class="sum" :sapn="3">&emsp;&emsp;&emsp;{{ item.url }}</p> -->
                             <el-button @click="listonechannel(item)" type="success" class="button" :sapn="2"
                                 plain>查看</el-button>
                             <el-button v-if="!isFav" @click="fav(item)" type="success" class="button" :sapn="2"
@@ -38,10 +37,6 @@
                     style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15, 30, 90]"
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
                     @current-change="handleCurrentChange" />
-                <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
-                    :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
-                    @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
-
             </el-col>
         </el-row>
         <el-row v-if="condition">
@@ -220,7 +215,6 @@ const listonechannel = async (item) => {
 
 const changecondition = () => {
     condition.value = false
-    // channelMovielist.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 
 const savestarmovie = async (row) => {
@@ -232,11 +226,9 @@ const savestarmovie = async (row) => {
             method: 'post',
             data: row
         })
-        // console.log(res.status)
         if (res.status == 200) {
             alert("收藏成功")
         }
-        // console.log(res.data);
     } catch (error) {
         console.log("error")
     }
@@ -281,8 +273,6 @@ const getstarmoviefavlist = async () => {
             url: '/movie4/findall',
             method: 'get',
         })
-        // console.log(res.status);
-        // console.log(res.data);
         starmoviefavlist.value = res.data
     } catch (error) {
         console.log("error")
@@ -305,10 +295,6 @@ onMounted(async () => {
     const promise = []
     for (let i = 1; i < 41; i++) {
         promise.push(useChannelData.getChannelpage(i.toString()))
-        // await sleep(1000)
-        // const data = await useChannelData.getChannelpage(i.toString())
-        // alldata.value = alldata.value.concat(data)
-        // totalItem.value = alldata.value.length
     }
     const data2 = await Promise.all(promise)
     for (let i = 0; i < data2.length; i++) {
@@ -316,17 +302,6 @@ onMounted(async () => {
     }
     totalItem.value = alldata.value.length
 })
-
-// const playitemnewpage = async (row) => {
-//     console.log("2222",row)
-//     router.push({name:'play',
-//         query: {
-//             url: row.url,
-//             name: row.name
-//         }
-//     })
-// }
-
 
 const pl = async (row) => {
     console.log(row)
