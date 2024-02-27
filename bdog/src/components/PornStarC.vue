@@ -419,8 +419,7 @@ const refreshdata = async (page) => {
             }
         })
 
-        // alldata.value.push(...res.data)
-        alldate.value = alldata.value.concat(res.data)
+        alldata.value.push(...res.data)
     } catch (error) {
         console.log(error)
     }
