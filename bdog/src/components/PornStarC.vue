@@ -120,7 +120,7 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
-const pageSize1 = ref(15)
+const pageSize1 = ref(90)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -394,7 +394,7 @@ onMounted(async () => {
     await Promise.all([getStar(), getfav()])
     //循环 10 次
     const promise = []
-    for (let i = 1; i < 99; i++) {
+    for (let i = 1; i < 130; i++) {
             // await sleep(1000)
             //i 变成字符串
             // let stri = i.toString()

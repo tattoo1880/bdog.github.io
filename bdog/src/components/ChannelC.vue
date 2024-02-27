@@ -303,7 +303,7 @@ onMounted(async () => {
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 
     const promise = []
-    for (let i = 1; i < 21; i++) {
+    for (let i = 1; i < 41; i++) {
         promise.push(useChannelData.getChannelpage(i.toString()))
         // await sleep(1000)
         // const data = await useChannelData.getChannelpage(i.toString())
