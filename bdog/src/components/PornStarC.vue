@@ -108,7 +108,7 @@ import { ref, reactive, onMounted, watch } from 'vue'
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
-const {playitemnewpage} = usePlaypage()
+const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
 const title = ref()
 const condition = ref(false)
@@ -309,7 +309,7 @@ const savestarmovie = async (row) => {
 
 }
 
-const playitem = async(row)=>{
+const playitem = async (row) => {
     await playitemnewpage(row)
 }
 
@@ -392,16 +392,18 @@ const sleep = async (ms) => {
 onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
-    //循环 10 次
+    
     const promise = []
     for (let i = 1; i < 130; i++) {
-            // await sleep(1000)
-            //i 变成字符串
-            // let stri = i.toString()
-            // await refreshdata(stri)
-            promise.push(refreshdata(i.toString()))
-        }
-        await Promise.all(promise)
+        // await sleep(1000)
+        //i 变成字符串
+        // let stri = i.toString()
+        // await refreshdata(stri)
+        promise.push(refreshdata(i.toString()))
+    }
+    await Promise.all(promise)
+    totalItem.value = alldata.value.length
+
 })
 
 
@@ -416,11 +418,8 @@ const refreshdata = async (page) => {
             }
         })
 
-        console.log(res.data)
-        console.log(alldata.value)
-        alldata.value.push(...res.data)
-        console.log(alldata.value)
-        totalItem.value = alldata.value.length
+        // alldata.value.push(...res.data)
+        alldate.value = alldata.value.concat(res.data)
     } catch (error) {
         console.log(error)
     }
