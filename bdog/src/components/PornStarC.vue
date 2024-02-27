@@ -120,7 +120,7 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
-const pageSize1 = ref(90)
+const pageSize1 = ref(60)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -131,24 +131,6 @@ const searchStar = () => {
             //忽略大小写
             return item.name.toLowerCase().includes(search.value.toLowerCase())
         })
-    }
-}
-const initializeHLS = async (url) => {
-    var video = document.getElementById('videoPlayer');
-
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        // console.log('hls', url);
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-        video.addEventListener('loadedmetadata', function () {
-            video.play();
-        });
     }
 }
 const totalItem = ref(0)
