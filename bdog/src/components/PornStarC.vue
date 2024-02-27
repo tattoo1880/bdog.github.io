@@ -392,7 +392,8 @@ const sleep = async (ms) => {
 onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
-    
+    totalItem.value = alldata.value.length
+    await sleep(1000)
     const promise = []
     for (let i = 1; i < 130; i++) {
         // await sleep(1000)
