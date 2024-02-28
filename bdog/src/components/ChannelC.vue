@@ -196,6 +196,7 @@ const listonechannel = async (item) => {
     }
     try {
         const data = await Promise.all(permises)
+        console.log('data', data);
         condition.value = true
         channelMovielist.value = data
     } catch (error) {
