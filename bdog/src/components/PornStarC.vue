@@ -258,10 +258,11 @@ const listonestar = async (item) => {
         permises.push(getStarpage(items[i]))
     }
     try {
-        result = await Promise.all(permises)
-        for (const item of result){
-            starmovielist.value.push(item)
+        res = await Promise.all(permises)
+        for (let i=0;i<result.length;i++){
+            result = result.concat(res[i])
         }
+        starmovielist.value = result
         condition.value = true
 
 
