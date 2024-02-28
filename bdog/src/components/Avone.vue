@@ -48,7 +48,7 @@
                 <el-table-column prop="title" label="名称" width="500"></el-table-column>
                 <el-table-column label="操作" width="200">
                     <template #default="{ row }">
-                        <el-button type="primary" @click="play2(row.hls)" plain>播放</el-button>
+                        <el-button type="primary" @click="play2(row)" plain>播放</el-button>
                         <el-button type="danger" @click="de(row)" plain>删除</el-button>
                     </template>
 
@@ -221,10 +221,12 @@ const getMovieList = async (keyword) => {
 import { usePlaypage } from '@/hook/userPlaypage';
 const {playitemnewpage} = usePlaypage()
 const play = async (href) => {
+    console.log(href)
     await playitemnewpage(href)
 }
 
 const play2 = async (href) => {
+    console.log(href)
     await playitemnewpage(href)
 }
 
