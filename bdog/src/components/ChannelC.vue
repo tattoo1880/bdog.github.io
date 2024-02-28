@@ -41,8 +41,8 @@
         </el-row>
         <el-row v-if="condition">
             <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
-            <el-container v-loading.fullscreen.lock="loading2">
-                <el-row>
+            <el-container>
+                <el-row v-loading.fullscreen.lock="loading2">
                     <el-table :data="channelMovielistpage" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
                         <el-table-column label="缩略图" width="200">
