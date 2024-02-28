@@ -61,6 +61,14 @@
                         </el-table-column>
                     </el-table>
                 </el-row>
+                <el-row v-if="condition" style="margin-top: 10px;">
+                    <el-col :span="24">
+                        <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
+                            style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100, 200]"
+                            layout="total, sizes, prev, pager, next, jumper" :total="totalItem2"
+                            @size-change="handleSizeChange2" @current-change="handleCurrentChange2" />
+                    </el-col>
+                </el-row>
             </el-container>
         </el-row>
     </el-container>
@@ -103,7 +111,7 @@ import { ref, reactive, onMounted, watch } from 'vue'
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
-import {useStar} from '@/hook/useStar'
+import { useStar } from '@/hook/useStar'
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
@@ -117,7 +125,9 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
+const cpage2 = ref(1)
 const pageSize1 = ref(60)
+const pageSize2 = ref(100)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
@@ -131,9 +141,14 @@ const searchStar = () => {
     }
 }
 const totalItem = ref(0)
+const totalItem2 = ref(0)
 const handleSizeChange = (val) => {
     // console.log(`每页 ${val} 条`);
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+}
+const handleSizeChange2 = (val) => {
+    // console.log(`每页 ${val} 条`);
+    starmovielist.value = alldata.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 }
 
 const handleCurrentChange = (val) => {
@@ -146,6 +161,20 @@ const handleCurrentChange = (val) => {
     // console.log(stardata.value);
     // console.log(alldata.value);
 }
+
+const handleCurrentChange2 = (val) => {
+    // console.log(`当前页: ${val}`);
+    cpage2.value = val
+    //计算现实的数据
+    // console.log(alldata.value.length)
+    // console.log((cpage.value - 1) * 15, cpage.value * 15)
+    starmovielist.value = alldata.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
+    // console.log(stardata.value);
+    // console.log(alldata.value);
+}
+
+
+
 
 const getStar = async () => {
     try {
@@ -244,7 +273,7 @@ watch(value1, async (newVal) => {
 })
 const listonestar = async (item) => {
     let items = [item]
-    for (let i=1;i<=20;i++){
+    for (let i = 1; i <= 20; i++) {
         items.push({
             name: item.name,
             img: item.img,
@@ -254,14 +283,13 @@ const listonestar = async (item) => {
     }
     let permises = []
     let result = []
-    for (let i=0;i<items.length;i++){
+    for (let i = 0; i < items.length; i++) {
         permises.push(getStarpage(items[i]))
     }
     try {
         let res = await Promise.all(permises)
-        console.log(res)
-        for (let i=0;i<res.length;i++){
-            
+        for (let i = 0; i < res.length; i++) {
+
             result = result.concat(res[i])
         }
         starmovielist.value = result
@@ -302,10 +330,10 @@ const savestarmovie = async (row) => {
 const playitem = async (row) => {
     await playitemnewpage(row)
 }
-const download = async(row) =>{
+const download = async (row) => {
     const url = row.url
-    console.log("==========",url)
-    try{
+    console.log("==========", url)
+    try {
         const res = await service3({
             url: '/movie/geturl',
             method: 'post',
@@ -317,7 +345,7 @@ const download = async(row) =>{
         // console.log(downlaodurl)
         //新窗口打开 downlaodurl
         window.open(downlaodurl)
-    }catch(error){
+    } catch (error) {
         console.log("error")
     }
 }
