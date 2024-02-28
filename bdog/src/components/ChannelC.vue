@@ -181,16 +181,21 @@ watch(value1, async (newVal) => {
 const listonechannel = async (item) => {
     let items = [item]
     // 循环 10 次, 将 item 的 url 变成/0 - /10
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 21; i++) {
         items.push({
+            id: item.id,
             name: item.name,
             img: item.img,
             url: item.url.replace(/\/\d+$/, `/${i}`)
         })
     }
     console.log('items', items);
+    let permises = []
+    for (let i = 0; i < items.length; i++) {
+        permises.push(listOneChannelMovies(items[i]))
+    }
     try {
-        const data = await listOneChannelMovies(item)
+        const data = await Promise.all(permises)
         condition.value = true
         channelMovielist.value = data
     } catch (error) {
