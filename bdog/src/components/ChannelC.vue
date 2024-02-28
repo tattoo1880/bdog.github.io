@@ -41,7 +41,7 @@
         </el-row>
         <el-row v-if="condition">
             <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
-            <el-container>
+            <el-container v-loading.fullscreen.lock="loading2">
                 <el-row>
                     <el-table :data="channelMovielistpage" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
@@ -122,6 +122,7 @@ const title = ref()
 const condition = ref(false)
 let isFav = ref(false)
 const loading = ref(false)
+const loading2 = ref(false)
 // const stardata = ref([])
 const ListData = ref([])
 const alldata = ref([])
@@ -197,6 +198,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
+    loading2.value = true
     let items = [item]
     // 循环 10 次, 将 item 的 url 变成/0 - /10
     for (let i = 1; i < 21; i++) {
@@ -225,6 +227,8 @@ const listonechannel = async (item) => {
         channelMovielistpage.value = channelMovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
     } catch (error) {
         console.log("error")
+    }finally{
+        loading2.value = false
     }
 }
 
