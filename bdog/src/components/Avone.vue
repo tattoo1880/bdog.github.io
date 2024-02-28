@@ -233,7 +233,7 @@ const play = async (href) => {
         })
         // console.log(res.data)
         // console.log(res.data)
-        initializeHLS(res.data)
+        initializeHLS(res.data[0].hls)
     } catch (error) {
         console.log(error)
     }

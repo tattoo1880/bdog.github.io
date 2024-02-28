@@ -53,7 +53,8 @@ const playitem = async (url) => {
             }
         })
         // console.log(res.data)
-        const playurl = res.data
+        const playurl = res.data[0].hls
+        console.log(playurl)
         initializeHLS(playurl)
     } catch (error) {
         console.log("error")

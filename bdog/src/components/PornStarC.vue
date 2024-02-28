@@ -56,9 +56,10 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="name" label="名称" width="500"></el-table-column>
-                        <el-table-column label="操作" width="200">
+                        <el-table-column label="操作" width="300">
                             <template #default="{ row }">
                                 <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
+                                <el-button type="success" @click="download(row)" plain>下载</el-button>
                                 <el-button type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
                             </template>
 
@@ -94,8 +95,8 @@
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
                     <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
-                    <el-button v-if="!value1" type="warning" @click="savestarmovie(row)" plain>收藏</el-button>
-                    <el-button v-if="value1" type="danger" @click="deleteByid(row)" plain>删除</el-button>
+                    <!-- <el-button v-if="!value1" type="warning" @click="savestarmovie(row)" plain>收藏</el-button> -->
+                    <el-button type="danger" @click="deleteByid(row)" plain>删除</el-button>
                 </template>
 
             </el-table-column>
@@ -295,7 +296,25 @@ const playitem = async (row) => {
     await playitemnewpage(row)
 }
 
-
+const download = async(row) =>{
+    const url = row.url
+    console.log("==========",url)
+    try{
+        const res = await service3({
+            url: '/movie/geturl',
+            method: 'post',
+            data: {
+                url: url
+            }
+        })
+        const downlaodurl = res.data[0].mp4
+        // console.log(downlaodurl)
+        //新窗口打开 downlaodurl
+        window.open(downlaodurl)
+    }catch(error){
+        console.log("error")
+    }
+}
 
 // const playitem = async (row) => {
 //     let url = row.url
