@@ -20,7 +20,7 @@
                 <el-table-column prop="title" label="名称" width="500"></el-table-column>
                 <el-table-column label="操作" width="200">
                     <template #default="{ row }">
-                        <el-button type="primary" @click="play(row.url)" plain>播放</el-button>
+                        <el-button type="primary" @click="play(row)" plain>播放</el-button>
                         <el-button type="warning" @click="fav(row)" plain>收藏</el-button>
                     </template>
 
@@ -218,36 +218,14 @@ const getMovieList = async (keyword) => {
         console.log(error)
     }
 }
-
+import { usePlaypage } from '@/hook/userPlaypage';
+const {playitemnewpage} = usePlaypage()
 const play = async (href) => {
-    try {
-        // console.log(href)
-        dialogVisible.value = true
-        // showVideo2.value = true
-        const res = await service3({
-            url: '/movie/geturl',
-            method: 'post',
-            data: {
-                url: href
-            }
-        })
-        // console.log(res.data)
-        // console.log(res.data)
-        initializeHLS(res.data[0].hls)
-    } catch (error) {
-        console.log(error)
-    }
+    await playitemnewpage(href)
 }
 
 const play2 = async (href) => {
-    try {
-        dialogVisible.value = true
-        // showVideo2.value = true
-        console.log(href)
-        initializeHLS(href)
-    } catch (error) {
-        console.log(error)
-    }
+    await playitemnewpage(href)
 }
 
 const gethls = async (href) => {
