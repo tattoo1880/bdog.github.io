@@ -291,6 +291,7 @@ const listonestar = async (item) => {
         starmovielist.value = result
         condition.value = true
         showVal.value = starmovielist.value.slice(0, pageSize2.value)
+        totalItem2.value = starmovielist.value.length
 
     } catch (error) {
         console.log(error);
