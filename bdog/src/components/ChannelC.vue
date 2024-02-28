@@ -197,8 +197,12 @@ const listonechannel = async (item) => {
     try {
         const data = await Promise.all(permises)
         console.log('data', data);
+        let result = []
+        for (let i = 0; i < data.length; i++) {
+            result = result.concat(data[i])
+        }
         condition.value = true
-        channelMovielist.value = data
+        channelMovielist.value = result
     } catch (error) {
         console.log("error")
     }
