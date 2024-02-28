@@ -241,7 +241,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonestar = async (item) => {
-    // console.log(item);
+    console.log(item);
     try {
         const res = await service4({
             url: `/movie4/onestarlist`,
