@@ -149,7 +149,7 @@ const handleCurrentChange = (val) => {
     // console.log(alldata.value);
 }
 
-const handleCurrentChange2 = () =>{
+const handleCurrentChange2 = (val) =>{
     cpage2.value = val
     showVal.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 
