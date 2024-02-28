@@ -258,7 +258,7 @@ const listonestar = async (item) => {
         permises.push(getStarpage(items[i]))
     }
     try {
-        res = await Promise.all(permises)
+        let res = await Promise.all(permises)
         for (let i=0;i<result.length;i++){
             result = result.concat(res[i])
         }
