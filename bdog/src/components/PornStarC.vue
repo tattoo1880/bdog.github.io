@@ -64,7 +64,7 @@
                 <el-row v-if="condition" style="margin-top: 10px;">
                     <el-col :span="24">
                         <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
-                            style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100, 200]"
+                            style="margin-top: 10px;margin-left: 150px;" :page-sizes="[30,60]"
                             layout="total, sizes, prev, pager, next, jumper" :total="totalItem2"
                             @size-change="handleSizeChange2" @current-change="handleCurrentChange2" />
                     </el-col>
@@ -127,7 +127,7 @@ const search = ref('')
 const cpage = ref(1)
 const cpage2 = ref(1)
 const pageSize1 = ref(60)
-const pageSize2 = ref(100)
+const pageSize2 = ref(60)
 const searchStar = () => {
     if (search.value == '') {
         stardata.value = alldata.value
