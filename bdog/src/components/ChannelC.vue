@@ -131,24 +131,7 @@ const searchChannel = () => {
         })
     }
 }
-const initializeHLS = async (url) => {
-    var video = document.getElementById('videoPlayer');
 
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        // console.log('hls', url);
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-        video.addEventListener('loadedmetadata', function () {
-            video.play();
-        });
-    }
-}
 const totalItem = ref(0)
 const handleSizeChange = (val) => {
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
@@ -163,7 +146,6 @@ const handleCurrentChange = (val) => {
 
 
 const del = async (item) => {
-    // console.log(item);
     try {
         await deleteFavChannel(item)
         favdata.value = await getFav()
@@ -171,22 +153,15 @@ const del = async (item) => {
     } catch (error) {
         console.log(error);
     }
-
-
 }
-
-
 const fav = async (item) => {
-    console.log(item);
     const data = await addFavChannel(item)
-    console.log(data);
 }
 const toggleFav = () => {
     condition.value = false
     value1.value = false
     isFav.value = !isFav.value
 }
-
 //监听isFav的变化，如果isFav为true，就显示favdata，否则显示alldata
 watch(isFav, async (newVal) => {
     if (newVal) {
@@ -204,7 +179,6 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
-    console.log(item);
     try {
         const data = await listOneChannelMovies(item)
         condition.value = true
@@ -220,7 +194,6 @@ const changecondition = () => {
 
 const savestarmovie = async (row) => {
 
-    // console.log(row)
     try {
         const res = await service4({
             url: '/movie4/create',
@@ -239,7 +212,6 @@ const savestarmovie = async (row) => {
 
 
 const deleteByid = async (row) => {
-    // console.log(row)
     try {
         const res = await service4({
             url: `/movie4/delete`,
@@ -305,13 +277,11 @@ onMounted(async () => {
 })
 
 const pl = async (row) => {
-    console.log(row)
     await playitemnewpage(row)
 }
 
 const download = async(row) =>{
     const url = row.url
-    console.log("==========",url)
     try{
         const res = await service3({
             url: '/movie/geturl',
@@ -321,7 +291,6 @@ const download = async(row) =>{
             }
         })
         const downlaodurl = res.data[0].mp4
-        // console.log(downlaodurl)
         //新窗口打开 downlaodurl
         window.open(downlaodurl)
     }catch(error){

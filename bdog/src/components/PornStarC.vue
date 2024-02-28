@@ -295,7 +295,6 @@ const savestarmovie = async (row) => {
 const playitem = async (row) => {
     await playitemnewpage(row)
 }
-
 const download = async(row) =>{
     const url = row.url
     console.log("==========",url)

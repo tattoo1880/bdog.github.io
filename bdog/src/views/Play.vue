@@ -26,7 +26,6 @@ const initializeHLS = async (url) => {
 
     if (Hls.isSupported()) {
         var hls = new Hls();
-        // console.log('hls', url);
         hls.loadSource(url);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
@@ -41,8 +40,6 @@ const initializeHLS = async (url) => {
 }
 //接受路由传递参数
 const { name, url } = defineProps(["name", "url"])
-console.log(name, url)
-
 const playitem = async (url) => {
     try {
         const res = await service3({
@@ -52,9 +49,7 @@ const playitem = async (url) => {
                 url: url
             }
         })
-        // console.log(res.data)
         const playurl = res.data[0].hls
-        console.log(playurl)
         initializeHLS(playurl)
     } catch (error) {
         console.log("error")
