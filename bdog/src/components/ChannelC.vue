@@ -43,7 +43,7 @@
             <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
             <el-container>
                 <el-row>
-                    <el-table :data="channelMovielist" style="width: 100%">
+                    <el-table :data="channelMovielistpage" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
                         <el-table-column label="缩略图" width="200">
                             <template #default="{ row }">
@@ -62,6 +62,14 @@
                     </el-table>
                 </el-row>
             </el-container>
+        </el-row>
+        <el-row v-if="condition" style="margin-top: 10px;">
+            <el-col :span="24">
+                <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
+                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100,200]"
+                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem2" @size-change="handleSizeChange2"
+                    @current-change="handleCurrentChange2" />
+            </el-col>
         </el-row>
     </el-container>
     <el-dialog v-model="dialogVisible" :title="title" width="80%">
@@ -121,7 +129,9 @@ const favdata = ref([])
 const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
+const cpage2 = ref(1)
 const pageSize1 = ref(15)
+const pageSize2 = ref(100)
 const searchChannel = () => {
     if (search.value == '') {
         ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
@@ -133,15 +143,22 @@ const searchChannel = () => {
 }
 
 const totalItem = ref(0)
+const totalItem2 = ref(0)
 const handleSizeChange = (val) => {
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+}
+const handleSizeChange2 = (val) => {
+    channelMovielistpage.value = channelMovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 }
 
 const handleCurrentChange = (val) => {
     cpage.value = val
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
-
+const handleCurrentChange2 = (val) => {
+    cpage2.value = val
+    channelMovielistpage.value = channelMovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
+}
 
 
 
