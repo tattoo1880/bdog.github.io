@@ -180,10 +180,13 @@ watch(value1, async (newVal) => {
 })
 const listonechannel = async (item) => {
     let items = [item]
-    for (let i = 0; i < 10; i++) {
-        let newItem = item
-        newItem.url = newItem.url.replace('/0', `/${i}`)
-        items.push(newItem)
+    // 循环 10 次, 将 item 的 url 变成/0 - /10
+    for (let i = 1; i < 10; i++) {
+        items.push({
+            name: item.name,
+            img: item.img,
+            url: item.url.replace(/\/\d+$/, `/${i}`)
+        })
     }
     console.log('items', items);
     try {
