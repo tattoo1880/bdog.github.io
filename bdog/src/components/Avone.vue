@@ -233,7 +233,7 @@ const play2 = async (href) => {
     console.log(href)
     const data = {
         name: href.title,
-        url: href.hls
+        url: href.url
     }
     await playitemnewpage(data)
 }
