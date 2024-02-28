@@ -103,6 +103,8 @@ import { ref, reactive, onMounted, watch } from 'vue'
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
+import {useStar} from '@/hook/useStar'
+const {getStarpage} = useStar()
 const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
 const title = ref()
@@ -241,19 +243,30 @@ watch(value1, async (newVal) => {
     }
 })
 const listonestar = async (item) => {
-    console.log(item);
-    try {
-        const res = await service4({
-            url: `/movie4/onestarlist`,
-            method: 'post',
-            data: item
+    let items = [item]
+    for (let i=1;i<=20,i++){
+        items.push({
+            name: item.name,
+            img: item.img,
+            url: item.url,
+            id: item.id
         })
-        // console.log(res.status);
-        // console.log(res.data);
+    }
+    let permises = []
+    let result = []
+    for (const item of items){
+        permises.push(getStarpage(item))
+    }
+    try {
+        result = await Promise.all(permises)
+        for (const item of result){
+            starmovielist.value.push(item)
+        }
         condition.value = true
-        starmovielist.value = res.data
+        
+
     } catch (error) {
-        console.log("error")
+        console.log(error);
     }
 }
 
