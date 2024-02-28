@@ -179,7 +179,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
-    let items = []
+    let items = [item]
     for (let i = 0; i < 10; i++) {
         let newItem = item
         newItem.url = newItem.url.replace('/0', `/${i}`)
