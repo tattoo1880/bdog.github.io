@@ -222,12 +222,20 @@ import { usePlaypage } from '@/hook/userPlaypage';
 const {playitemnewpage} = usePlaypage()
 const play = async (href) => {
     console.log(href)
-    await playitemnewpage(href)
+    const data = {
+        name: href.title,
+        url: href.url
+    }
+    await playitemnewpage(data)
 }
 
 const play2 = async (href) => {
     console.log(href)
-    await playitemnewpage(href)
+    const data = {
+        name: href.title,
+        url: href.hls
+    }
+    await playitemnewpage(data)
 }
 
 const gethls = async (href) => {
