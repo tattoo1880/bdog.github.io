@@ -61,31 +61,17 @@
                         </el-table-column>
                     </el-table>
                 </el-row>
-                <el-row v-if="condition" style="margin-top: 10px;">
-                    <el-col :span="24">
-                        <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
-                            style="margin-top: 10px;margin-left: 150px;" :page-sizes="[30,60]"
-                            layout="total, sizes, prev, pager, next, jumper" :total="totalItem2"
-                            @size-change="handleSizeChange2" @current-change="handleCurrentChange2" />
-                    </el-col>
-                </el-row>
             </el-container>
         </el-row>
+        <el-row v-if="condition" style="margin-top: 10px;">
+            <el-col :span="24">
+                <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
+                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[30,60]"
+                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem2"
+                    @size-change="handleSizeChange2" @current-change="handleCurrentChange2" />
+            </el-col>
+        </el-row>
     </el-container>
-    <el-dialog v-model="dialogVisible" :title="title" width="80%">
-        <!-- <div :class="{'hidden2':!showVideo2}"> -->
-        <div class="videobox">
-            <video id="videoPlayer" controls width="900" height="600"></video>
-        </div>
-        <!-- </div> -->
-        <template #footer>
-            <span class="dialog-footer">
-                <el-button type="success" @click="handleclosewindow" plain>
-                    关闭视频
-                </el-button>
-            </span>
-        </template>
-    </el-dialog>
     <el-container v-if="value1">
         <el-table :data="starmoviefavlist" style="width: 100%">
             <el-table-column prop="id" label="编号" width="150"></el-table-column>
