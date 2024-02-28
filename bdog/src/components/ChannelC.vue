@@ -132,6 +132,7 @@ const cpage = ref(1)
 const cpage2 = ref(1)
 const pageSize1 = ref(15)
 const pageSize2 = ref(100)
+const channelMovielistpage = ref([])
 const searchChannel = () => {
     if (search.value == '') {
         ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
@@ -220,6 +221,8 @@ const listonechannel = async (item) => {
         }
         condition.value = true
         channelMovielist.value = result
+        totalItem2.value = result.length
+        channelMovielistpage.value = channelMovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
     } catch (error) {
         console.log("error")
     }
