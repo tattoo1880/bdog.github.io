@@ -179,7 +179,13 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
-    console.log('item', item.url);
+    let items = []
+    for (let i = 0; i < 10; i++) {
+        item.url = item.url.replace('/0', `/${i}`)
+        console.log('item', item.url);
+        items.push(item)
+    }
+    console.log('items', items);
     try {
         const data = await listOneChannelMovies(item)
         condition.value = true
