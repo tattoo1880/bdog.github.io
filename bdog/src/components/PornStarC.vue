@@ -43,7 +43,7 @@
             <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
             <el-container>
                 <el-row>
-                    <el-table :data="starmovielist" style="width: 100%">
+                    <el-table :data="showValue" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
                         <el-table-column label="缩略图" width="200">
                             <template #default="{ row }">
@@ -142,13 +142,14 @@ const searchStar = () => {
 }
 const totalItem = ref(0)
 const totalItem2 = ref(0)
+const showValue = ref()
 const handleSizeChange = (val) => {
     // console.log(`每页 ${val} 条`);
-    stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    showValue.value = starmovielist.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 const handleSizeChange2 = (val) => {
     // console.log(`每页 ${val} 条`);
-    starmovielist.value = alldata.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
+    showValue.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 }
 
 const handleCurrentChange = (val) => {
