@@ -234,6 +234,7 @@ const listonechannel = async (item) => {
 
 const changecondition = () => {
     condition.value = false
+    cpage2.value = 1
 }
 
 const savestarmovie = async (row) => {
