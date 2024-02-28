@@ -259,7 +259,9 @@ const listonestar = async (item) => {
     }
     try {
         let res = await Promise.all(permises)
+        console.log(res)
         for (let i=0;i<result.length;i++){
+            
             result = result.concat(res[i])
         }
         starmovielist.value = result
