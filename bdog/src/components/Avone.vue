@@ -119,28 +119,9 @@ const dialogVisible = ref(false)
 
 
 onMounted(async () => {
-    initializeHLS(' ');
 })
 
 
-const initializeHLS = async (url) => {
-    var video = document.getElementById('videoPlayer');
-
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        console.log('hls', url);
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-        video.addEventListener('loadedmetadata', function () {
-            video.play();
-        });
-    }
-}
 
 const getdata2 = async(kw) =>{
     cpage.value = 1
@@ -197,16 +178,6 @@ const getdata1 = async (kw) => {
 const getMovieList = async (keyword) => {
     try {
         showVideo.value = true
-        // const res = await service3({
-        //     url: `/movie2/list/${keyword}/0`,
-        //     method: 'get',
-        // })
-        // console.log(res.data)
-        // k = res.data[0]
-        // // 为k的每个元素添加一个$index属性
-        // k.forEach((item, index) => {
-        //     item.$index = index + 1
-        // })
         let starttime = new Date().getTime()
         const data = await getdata2(keyword)
         movieList.value = data
