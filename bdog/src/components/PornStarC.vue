@@ -20,7 +20,6 @@
                     <div style="padding: 10px">
                         <p class="title">{{ item.name }}</p>
                         <div class="bottom">
-                            <!-- <p class="sum" :sapn="3">&emsp;&emsp;&emsp;{{ item.url }}</p> -->
                             <el-button @click="listonestar(item)" type="success" class="button" :sapn="2"
                                 plain>查看</el-button>
                             <el-button v-if="!isFav" @click="fav(item)" type="success" class="button" :sapn="2"
@@ -38,10 +37,6 @@
                     style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15, 30, 90]"
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
                     @current-change="handleCurrentChange" />
-                <!-- <el-pagination v-model:current-page="cpage" hide-on-single-page style="margin-top: 10px;margin-left: 150px;"
-                    :page-sizes="[15]" layout="total, sizes, prev, pager, next, jumper" :total="totalItem"
-                    @size-change="handleSizeChange" @current-change="handleCurrentChange" /> -->
-
             </el-col>
         </el-row>
         <el-row v-if="condition">
@@ -95,7 +90,6 @@
             <el-table-column label="操作" width="200">
                 <template #default="{ row }">
                     <el-button type="primary" @click="playitem(row)" plain>播放</el-button>
-                    <!-- <el-button v-if="!value1" type="warning" @click="savestarmovie(row)" plain>收藏</el-button> -->
                     <el-button type="danger" @click="deleteByid(row)" plain>删除</el-button>
                 </template>
 
@@ -154,8 +148,6 @@ const handleCurrentChange = (val) => {
 const getStar = async () => {
     try {
         cpage.value = 1
-        loading.value = true
-
         const res = await service4({
             url: '/movie3/star',
             method: 'get',
@@ -168,7 +160,6 @@ const getStar = async () => {
         totalItem.value = res.data.length
         alldata.value = res.data
         stardata.value = alldata.value.slice(0, pageSize1.value)
-        loading.value = false
     } catch (error) {
         console.log(error);
     }
@@ -315,29 +306,6 @@ const download = async(row) =>{
     }
 }
 
-// const playitem = async (row) => {
-//     let url = row.url
-//     title.value = row.name
-//     // console.log(url)
-//     try {
-//         const res = await service3({
-//             url: '/movie/geturl',
-//             method: 'post',
-//             data: {
-//                 url: url
-//             }
-//         })
-//         // console.log(res.data)
-//         const playurl = res.data
-//         dialogVisible.value = true
-//         initializeHLS(playurl)
-//     } catch (error) {
-//         console.log("error")
-//     }
-
-// }
-
-
 
 const deleteByid = async (row) => {
     // console.log(row)
@@ -390,6 +358,7 @@ const sleep = async (ms) => {
 
 
 onMounted(async () => {
+    loading.value = true
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     totalItem.value = alldata.value.length
@@ -404,6 +373,7 @@ onMounted(async () => {
     }
     await Promise.all(promise)
     totalItem.value = alldata.value.length
+    loading.value = false
 
 })
 

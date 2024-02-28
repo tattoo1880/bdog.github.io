@@ -102,13 +102,13 @@
 <script setup>
 import { ref, reactive, onMounted, watch } from 'vue'
 import Hls from 'hls.js'
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 import { service3, service4 } from '@/utils/request';
-import {useChannel} from '@/hook/useChannel'   // 引入自定义的hooks
+import { useChannel } from '@/hook/useChannel'   // 引入自定义的hooks
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
-const {playitemnewpage} = usePlaypage()
+const { playitemnewpage } = usePlaypage()
 const useChannelData = useChannel()
-let { getChannelpage,getFav,addFavChannel, deleteFavChannel,listOneChannelMovies } = useChannelData
+let { getChannelpage, getFav, addFavChannel, deleteFavChannel, listOneChannelMovies } = useChannelData
 const dialogVisible = ref(false)
 const title = ref()
 const condition = ref(false)
@@ -258,9 +258,10 @@ const sleep = async (ms) => {
 }
 
 onMounted(async () => {
+    loading.value = true
     let data1 = await getFav();
     favdata.value = data1
-    const data =  await useChannelData.getChannelpage("0")
+    const data = await useChannelData.getChannelpage("0")
     alldata.value = data
     totalItem.value = alldata.value.length
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
@@ -274,15 +275,16 @@ onMounted(async () => {
         alldata.value = alldata.value.concat(data2[i])
     }
     totalItem.value = alldata.value.length
+    loading.value = false
 })
 
 const pl = async (row) => {
     await playitemnewpage(row)
 }
 
-const download = async(row) =>{
+const download = async (row) => {
     const url = row.url
-    try{
+    try {
         const res = await service3({
             url: '/movie/geturl',
             method: 'post',
@@ -293,7 +295,7 @@ const download = async(row) =>{
         const downlaodurl = res.data[0].mp4
         //新窗口打开 downlaodurl
         window.open(downlaodurl)
-    }catch(error){
+    } catch (error) {
         console.log("error")
     }
 }
