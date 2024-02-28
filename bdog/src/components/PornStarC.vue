@@ -360,9 +360,7 @@ const sleep = async (ms) => {
 onMounted(async () => {
     loading.value = true
     //同时执行getStar和getfav
-    await Promise.all([getStar(), getfav()])
-    totalItem.value = alldata.value.length
-    await sleep(1000)
+    // await Promise.all([getStar(), getfav()])
     const promise = []
     for (let i = 1; i < 130; i++) {
         // await sleep(1000)
@@ -371,10 +369,9 @@ onMounted(async () => {
         // await refreshdata(stri)
         promise.push(refreshdata(i.toString()))
     }
-    await Promise.all(promise)
+    await Promise.all(promise,getfav())
     totalItem.value = alldata.value.length
     loading.value = false
-
 })
 
 
