@@ -104,8 +104,7 @@ import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
 import {useStar} from '@/hook/useStar'
-const usestar = useStar()
-const { getStarpage } = usestar
+const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
 const title = ref()

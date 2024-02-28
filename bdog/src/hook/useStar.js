@@ -1,7 +1,7 @@
 import { service4 } from "@/utils/request";
 
 
-export const useStar = async() => {
+export const useStar = () => {
 
     const getStarpage = async (item) => {
         try {
