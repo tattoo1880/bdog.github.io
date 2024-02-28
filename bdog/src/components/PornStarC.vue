@@ -286,7 +286,8 @@ const listonestar = async (item) => {
 
 const changecondition = () => {
     condition.value = false
-    starmovielist.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    // starmovielist.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    cpage2.value = 1
 }
 
 const savestarmovie = async (row) => {
