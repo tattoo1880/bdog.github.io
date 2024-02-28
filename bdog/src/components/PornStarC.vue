@@ -244,7 +244,7 @@ watch(value1, async (newVal) => {
 })
 const listonestar = async (item) => {
     let items = [item]
-    for (let i=1;i<=20,i++){
+    for (let i=1;i<=20;i++){
         items.push({
             name: item.name,
             img: item.img,
@@ -263,7 +263,7 @@ const listonestar = async (item) => {
             starmovielist.value.push(item)
         }
         condition.value = true
-        
+
 
     } catch (error) {
         console.log(error);
