@@ -99,7 +99,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue'
+import { ref, reactive, onMounted, watch,onBeforeMount } from 'vue'
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
@@ -357,10 +357,11 @@ const sleep = async (ms) => {
 }
 
 
-onMounted(async () => {
+onBeforeMount(async () => {
     loading.value = true
     //同时执行getStar和getfav
-    // await Promise.all([getStar(), getfav()])
+    await Promise.all([getStar(), getfav()])
+    totalItem.value = alldata.value.length
     const promise = []
     for (let i = 1; i < 130; i++) {
         // await sleep(1000)
@@ -369,7 +370,7 @@ onMounted(async () => {
         // await refreshdata(stri)
         promise.push(refreshdata(i.toString()))
     }
-    await Promise.all(promise,getfav())
+    await Promise.all(promise)
     totalItem.value = alldata.value.length
     loading.value = false
 })
