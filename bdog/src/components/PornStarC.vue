@@ -259,7 +259,7 @@ const listonestar = async (item) => {
         items.push({
             name: item.name,
             img: item.img,
-            url: item.url,
+            url: item.url.replace(/\/\d+$/, `/${i}`)
             id: item.id
         })
     }
