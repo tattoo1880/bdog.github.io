@@ -179,6 +179,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
+    console.log(item)
     try {
         const data = await listOneChannelMovies(item)
         condition.value = true
