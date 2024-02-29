@@ -158,7 +158,6 @@ const handleSizeChange2 = (val) => {
 const handleCurrentChange = (val) => {
     cpage.value = val
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-    totalItem.value = alldata.value.length
 }
 const handleCurrentChange2 = (val) => {
     cpage2.value = val
@@ -328,23 +327,16 @@ onMounted(async () => {
     loading.value = false
 })
 
-watch(totalItem, (newVal) => {
+watch(totalItem, async(newVal) => {
     console.log('newVal', newVal);
     console.log('totalItem', totalItem.value);
     if(newVal<=80){
-        getAllChanneldata()
+        await getAllChanneldata()
+        console.log('allchanneldata', allchanneldata.value.length);
     }
 }
 )
 
-watch(cpage,(newVal) => {
-    if(newVal >=2){
-        console.log('newVal====', alldata.value.length);
-        alldata.value = []
-        alldata.value = allchanneldata.value
-        console.log('newVal+++++', alldata.value.length);
-    }    
-})
 
 const pl = async (row) => {
     await playitemnewpage(row)
