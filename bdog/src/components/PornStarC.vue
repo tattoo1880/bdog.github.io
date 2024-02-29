@@ -140,10 +140,10 @@ const handleSizeChange2 = (val) => {
     showVal.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 }
 
-const handleCurrentChange = (val) => {
+const handleCurrentChange = async(val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
-    getStarSpage(val)
+    await getStarSpage(val)
     console.log(allstardata)
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
