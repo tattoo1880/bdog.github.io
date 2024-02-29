@@ -307,6 +307,14 @@ const sleep = async (ms) => {
     })
 }
 
+watch(allchanneldata,async(newVal)=>{
+    console.log('allchanneldata',allchanneldata.value)
+    if(allchanneldata.value.length==0){
+        await getAllChanneldata()
+    }
+})
+
+
 onMounted(async () => {
     console.log('onMounted',allchanneldata.value)
     loading.value = true
@@ -326,7 +334,7 @@ onMounted(async () => {
     //     alldata.value = alldata.value.concat(data2[i])
     // }
     // totalItem.value = alldata.value.length
-    // loading.value = false
+    loading.value = false
 })
 
 const pl = async (row) => {
