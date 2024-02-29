@@ -336,7 +336,8 @@ watch(totalItem, (newVal) => {
         // console.log ('allchanneldata',allchanneldata)
         //清空alldata
         alldata.value = []
-        alldata.value.push(...allchanneldata)
+        //重新赋值alldata
+        alldata.value = allchanneldata.value
         console.log('alldata',alldata.value.length)
     }
 }
