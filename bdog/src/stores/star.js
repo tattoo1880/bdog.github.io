@@ -16,7 +16,7 @@ export const useStarStore = defineStore('star', () => {
                     page: page,
                 }
             })
-            res.map(item => {
+            res.data.map(item => {
                 allstardata.value.push(item)
             })
         } catch (error) {
