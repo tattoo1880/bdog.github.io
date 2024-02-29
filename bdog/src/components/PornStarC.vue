@@ -120,7 +120,11 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = async() => {
-        console.log(ssearchdata)
+        // console.log(ssearchdata)
+        if(ssearchdata.value.length==0){
+            await getSearchData()
+            console.log(ssearchdata.value)
+        }
         // loading.value = true
         // const promise = []
         // for (let i = 1; i < 130; i++) {
