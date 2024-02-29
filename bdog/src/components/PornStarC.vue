@@ -271,10 +271,11 @@ const listonestar = async (item) => {
     permises = items.map(item => getStarpage(item))
     try {
         let res = await Promise.all(permises)
-        for (let i = 0; i < res.length; i++) {
+        // for (let i = 0; i < res.length; i++) {
 
-            result = result.concat(res[i])
-        }
+        //     result = result.concat(res[i])
+        // }
+        result = res.reduce((acc, val) => acc.concat(val), []);
         starmovielist.value = result
         condition.value = true
         showVal.value = starmovielist.value.slice(0, pageSize2.value)
