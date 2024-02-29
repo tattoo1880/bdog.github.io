@@ -98,7 +98,7 @@ import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import Hls from 'hls.js'
 import { service3, service4 } from '@/utils/request';
 import { useStar } from '@/hook/useStar'
-import {useStarStore} from '@/store/star'
+import {useStarStore} from '@/stores/star'
 const {allstardata,getStarSpage} = useStarStore()
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
@@ -144,12 +144,7 @@ const handleCurrentChange = (val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
     console.log(allstardata)
-    //计算现实的数据
-    // console.log(alldata.value.length)
-    // console.log((cpage.value - 1) * 15, cpage.value * 15)
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-    // console.log(stardata.value);
-    // console.log(alldata.value);
 }
 
 const handleCurrentChange2 = (val) =>{
