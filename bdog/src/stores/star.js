@@ -2,7 +2,7 @@ import { ref,reactive} from 'vue'
 import { defineStore } from 'pinia'
 import { service4 } from '@/utils/request'
 
-export const useStarStore = defineStore('star', async() => {
+export const useStarStore = defineStore('star', () => {
 
     let allstardata = ref([])
     
