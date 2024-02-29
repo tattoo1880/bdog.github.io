@@ -255,7 +255,7 @@ watch(value1, async (newVal) => {
 })
 const listonestar = async (item) => {
     let items = [item]
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 40; i++) {
         items.push({
             name: item.name,
             img: item.img,
