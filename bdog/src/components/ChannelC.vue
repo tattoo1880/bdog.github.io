@@ -201,7 +201,7 @@ const listonechannel = async (item) => {
     loading2.value = true
     let items = [item]
     // 循环 10 次, 将 item 的 url 变成/0 - /10
-    for (let i = 1; i < 21; i++) {
+    for (let i = 1; i < 41; i++) {
         items.push({
             id: item.id,
             name: item.name,
