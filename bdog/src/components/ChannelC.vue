@@ -307,11 +307,12 @@ const sleep = async (ms) => {
     })
 }
 
-watch(allchanneldata,async(newVal)=>{
+watchEffect(async()=>{
     console.log('allchanneldata',allchanneldata.value)
     if(allchanneldata.value.length==0){
         await getAllChanneldata()
     }
+
 })
 
 
