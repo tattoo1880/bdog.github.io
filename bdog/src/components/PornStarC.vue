@@ -117,7 +117,7 @@ const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
 const cpage2 = ref(1)
-const pageSize1 = ref(60)
+const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = () => {
     if (search.value == '') {
