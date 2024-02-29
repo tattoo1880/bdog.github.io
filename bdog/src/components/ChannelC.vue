@@ -158,6 +158,7 @@ const handleSizeChange2 = (val) => {
 const handleCurrentChange = (val) => {
     cpage.value = val
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    totalItem.value = alldata.value.length
 }
 const handleCurrentChange2 = (val) => {
     cpage2.value = val
@@ -335,7 +336,6 @@ watch(totalItem, async(newVal) => {
         // console.log ('allchanneldata',allchanneldata)
         //清空alldata
         alldata.value = allchanneldata.value
-        console.log('alldata',alldata.value.length)
     }
 }
 )
