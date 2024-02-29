@@ -108,7 +108,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue'
+import { ref, reactive, onMounted, watch,watchEffect } from 'vue'
 import Hls from 'hls.js'
 import { useRouter } from 'vue-router'
 import { service3, service4 } from '@/utils/request';
