@@ -335,7 +335,7 @@ watch(totalItem, async(newVal) => {
         console.log('allchanneldata', allchanneldata.length);
         alldata.value.push(...allchanneldata)
         console.log('alldata', alldata.value.length);
-        
+        totalItem.value = alldata.value.length
     }
 }
 )
