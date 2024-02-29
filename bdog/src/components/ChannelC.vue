@@ -340,7 +340,8 @@ watch(totalItem, (newVal) => {
 watch(cpage,(newVal) => {
     if(newVal >=2){
         console.log('newVal====', alldata.value.length);
-        alldata.value = alldata.value.concat(allchanneldata.value)
+        alldata.value = []
+        alldata.value.push(...allchanneldata.value)
         console.log('newVal+++++', alldata.value.length);
     }    
 })
