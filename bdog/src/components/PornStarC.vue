@@ -101,7 +101,7 @@ import { storeToRefs } from 'pinia'
 import { useStar } from '@/hook/useStar'
 import { useStarStore } from '@/stores/star'
 const usestarstore = useStarStore()
-const { allstardata } = storeToRefs(usestarstore)
+const { allstardata ,ssearchdata} = storeToRefs(usestarstore)
 const { getStarSpage } = usestarstore
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
@@ -120,30 +120,30 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = async() => {
-        loading.value = true
-        const promise = []
-        for (let i = 1; i < 130; i++) {
-            // await sleep(1000)
-            //i 变成字符串
-            // let stri = i.toString()
-            // await refreshdata(stri)
-            promise.push(refreshdata(i.toString()))
-        }
-        const data = await Promise.all(promise)
-        data.map(item => {
-            alldata.value.push(...item)
-        })
+        // loading.value = true
+        // const promise = []
+        // for (let i = 1; i < 130; i++) {
+        //     // await sleep(1000)
+        //     //i 变成字符串
+        //     // let stri = i.toString()
+        //     // await refreshdata(stri)
+        //     promise.push(refreshdata(i.toString()))
+        // }
+        // const data = await Promise.all(promise)
+        // data.map(item => {
+        //     alldata.value.push(...item)
+        // })
     if (search.value == '') {
-        currentStarData.value = alldata.value
+        currentStarData.value = ssearchdata
     } else {
-        currentStarData.value = alldata.value.filter(item => {
+        currentStarData.value = ssearchdata.filter(item => {
             // console.log(search.value)
             // console.log(item.name)
             //忽略大小写
             return item.name.toLowerCase().includes(search.value.toLowerCase())
         })
     }
-    loading.value = false
+    // loading.value = false
 }
 const totalItem = ref(0)
 const totalItem2 = ref(0)
