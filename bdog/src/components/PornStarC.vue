@@ -265,9 +265,10 @@ const listonestar = async (item) => {
     }
     let permises = []
     let result = []
-    for (let i = 0; i < items.length; i++) {
-        permises.push(getStarpage(items[i]))
-    }
+    //for (let i = 0; i < items.length; i++) {
+      //  permises.push(getStarpage(items[i]))
+    //}
+    permises = items.map(item => getStarpage(item))
     try {
         let res = await Promise.all(permises)
         for (let i = 0; i < res.length; i++) {
