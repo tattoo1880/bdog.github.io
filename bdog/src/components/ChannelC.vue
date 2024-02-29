@@ -328,20 +328,23 @@ onMounted(async () => {
     loading.value = false
 })
 
-watch(totalItem, async(newVal) => {
+watch(totalItem, (newVal) => {
     console.log('newVal', newVal);
     console.log('totalItem', totalItem.value);
     if(newVal<=80){
-        await getAllChanneldata()
-        // console.log ('allchanneldata',allchanneldata)
-        //清空alldata
-        //重新赋值alldata
-        alldata.value = []
-        alldata.value.push(...allchanneldata.value)
-        console.log('alldata',alldata.value.length)
+        getAllChanneldata()
     }
 }
 )
+
+watch(cpage,(newVal) => {
+    if(newVal >=2){
+        console.log('newVal====', alldata.value.length);
+        alldata.value = alldata.value.concat(allchanneldata.value)
+        console.log('newVal+++++', alldata.value.length);
+    }    
+})
+
 const pl = async (row) => {
     await playitemnewpage(row)
 }
