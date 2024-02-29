@@ -18,7 +18,7 @@ export const useChannelStore = defineStore('channel', () => {
     const getAllChanneldata = async () => {
         try {
             let permises = []
-            for (let i = 0; i < 101; i++) {
+            for (let i = 1; i < 101; i++) {
                 permises.push(getChannelpage(i))
             }
             const res = await Promise.all(permises)

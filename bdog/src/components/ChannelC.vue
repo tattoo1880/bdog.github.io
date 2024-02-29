@@ -333,6 +333,9 @@ watch(totalItem, async(newVal) => {
     if(newVal<=80){
         await getAllChanneldata()
         console.log('allchanneldata', allchanneldata.length);
+        alldata.value.push(...allchanneldata)
+        console.log('alldata', alldata.value.length);
+        
     }
 }
 )
