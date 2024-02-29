@@ -335,6 +335,7 @@ watch(totalItem, async(newVal) => {
             await getAllChanneldata()
             alldata.value.push(...allchanneldata)
             totalItem.value = alldata.value.length
+            ElMessage.success('加载成功')
         }else{
             alldata.value.push(...allchanneldata)
             totalItem.value = alldata.value.length
