@@ -102,7 +102,7 @@ import { useStar } from '@/hook/useStar'
 import { useStarStore } from '@/stores/star'
 const usestarstore = useStarStore()
 const { allstardata ,ssearchdata} = storeToRefs(usestarstore)
-const { getStarSpage } = usestarstore
+const { getStarSpage, getSearchData } = usestarstore
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
@@ -120,6 +120,7 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = async() => {
+        console.log(ssearchdata)
         // loading.value = true
         // const promise = []
         // for (let i = 1; i < 130; i++) {
@@ -134,14 +135,14 @@ const searchStar = async() => {
         //     alldata.value.push(...item)
         // })
     if (search.value == '') {
-        currentStarData.value = ssearchdata
+        // currentStarData.value = ssearchdata
     } else {
-        currentStarData.value = ssearchdata.filter(item => {
-            // console.log(search.value)
-            // console.log(item.name)
-            //忽略大小写
-            return item.name.toLowerCase().includes(search.value.toLowerCase())
-        })
+        // currentStarData.value = ssearchdata.filter(item => {
+        //     // console.log(search.value)
+        //     // console.log(item.name)
+        //     //忽略大小写
+        //     return item.name.toLowerCase().includes(search.value.toLowerCase())
+        // })
     }
     // loading.value = false
 }

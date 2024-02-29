@@ -37,11 +37,11 @@ export const useStarStore = defineStore('star', () => {
         }
     }
 
-    onMounted(() => {
-        if(ssearchdata.length === 0){
-            getSearchData()
-        }
-    })
+    // onMounted(() => {
+    //     if(ssearchdata.length === 0){
+    //         getSearchData()
+    //     }
+    // })
 
 
     const getStarSpage = async (page) => {
@@ -65,7 +65,8 @@ export const useStarStore = defineStore('star', () => {
     return {
         allstardata,
         getStarSpage,
-        ssearchdata
+        ssearchdata,
+        getSearchData
     }
 
 })
