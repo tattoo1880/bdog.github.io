@@ -14,7 +14,7 @@
     <el-container v-loading.fullscreen.lock="loading" fullscreen v-if="!value1" class="container">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
-            <el-col v-for="(item, index) in stardata" :key="index" :span="7">
+            <el-col v-for="(item, index) in currentStarData" :key="index" :span="7">
                 <el-card :body-style="{ padding: '0px' }" class="card">
                     <img :src="item.img" class="image" />
                     <div style="padding: 10px">
@@ -44,7 +44,7 @@
             <el-container>
                 <el-row>
                     <!-- <el-table :data="showVal" style="width: 100%"> -->
-                    <el-table :data="currentStarData" style="width: 100%">
+                    <el-table :data="showVal" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
                         <el-table-column label="缩略图" width="200">
                             <template #default="{ row }">
