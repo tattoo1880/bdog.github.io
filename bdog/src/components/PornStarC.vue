@@ -135,7 +135,7 @@ const searchStar = async() => {
             return item.name.toLowerCase().includes(search.value.toLowerCase())
         })
     }
-    // loading.value = false
+    loading.value = false
 }
 const totalItem = ref(0)
 const totalItem2 = ref(0)
