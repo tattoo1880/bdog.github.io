@@ -145,6 +145,8 @@ const handleCurrentChange = async(val) => {
     cpage.value = val
     await getStarSpage(val)
     console.log(allstardata)
+    console.log(allstardata.value)
+    console.log(allstardata.length)
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 
