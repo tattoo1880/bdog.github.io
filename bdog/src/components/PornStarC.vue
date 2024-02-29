@@ -119,7 +119,7 @@ const cpage = ref(1)
 const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
-const searchStar = () => {
+const searchStar = async() => {
         loading.value = true
         const promise = []
         for (let i = 1; i < 130; i++) {
