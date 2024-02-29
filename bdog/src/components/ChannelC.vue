@@ -334,9 +334,8 @@ watch(totalItem, async(newVal) => {
         await getAllChanneldata()
         // console.log ('allchanneldata',allchanneldata)
         //清空alldata
-        alldata.value = []
         alldata.value = allchanneldata.value
-        totalItem.value = alldata.value.length
+        console.log('alldata',alldata.value.length)
     }
 }
 )
