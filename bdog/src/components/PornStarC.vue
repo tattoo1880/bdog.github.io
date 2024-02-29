@@ -398,7 +398,7 @@ onMounted(async () => {
     loading.value = true
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
-    totalItem.value = alldata.value.length
+    totalItem.value = 500
     loading.value = false
 
 })
