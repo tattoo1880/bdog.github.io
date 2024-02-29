@@ -22,9 +22,9 @@ export const useChannelStore = defineStore('channel', () => {
                 permises.push(getChannelpage(i))
             }
             const res = await Promise.all(permises)
-            console.log(res);
+            // console.log(res);
             res.map(item => {
-                allchanneldata.value = allchanneldata.value.concat(item)
+                allchanneldata.value = allchanneldata.value.push(...item)
             })
         } catch (error) {
             console.log(error);
