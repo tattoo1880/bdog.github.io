@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { service5 } from '@/utils/request'
 
 export const useChannelStore = defineStore('channel', () => {
 
