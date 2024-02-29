@@ -115,11 +115,10 @@ import { service3, service4 } from '@/utils/request';
 import { useChannel } from '@/hook/useChannel'   // 引入自定义的hooks
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import { useChannelStore } from '@/stores/channel';
-const useChannelStore = useChannelStore()
 const {
     allchanneldata,
     getAllChanneldata
-} = useChannelStore
+} = useChannelStore()
 const { playitemnewpage } = usePlaypage()
 const useChannelData = useChannel()
 let { getChannelpage, getFav, addFavChannel, deleteFavChannel, listOneChannelMovies } = useChannelData
