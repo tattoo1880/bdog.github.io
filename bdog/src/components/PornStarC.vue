@@ -149,7 +149,7 @@ const currentStarData = ref([])
 const handleCurrentChange = async (val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
-    await getStarSpage(val)
+    await getStarSpage(val-1)
     console.log(allstardata)
     console.log(allstardata.value)
     currentStarData.value = allstardata.value
