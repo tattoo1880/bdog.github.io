@@ -66,7 +66,7 @@
         <el-row v-if="condition" style="margin-top: 10px;">
             <el-col :span="24">
                 <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
-                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100,200]"
+                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100, 200]"
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem2" @size-change="handleSizeChange2"
                     @current-change="handleCurrentChange2" />
             </el-col>
@@ -114,6 +114,12 @@ import { useRouter } from 'vue-router'
 import { service3, service4 } from '@/utils/request';
 import { useChannel } from '@/hook/useChannel'   // 引入自定义的hooks
 import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
+import { useChannelStore } from '@/stores/channel';
+const useChannelStore = useChannelStore()
+const {
+    allchanneldata,
+    getAllChanneldata
+} = useChannelStore
 const { playitemnewpage } = usePlaypage()
 const useChannelData = useChannel()
 let { getChannelpage, getFav, addFavChannel, deleteFavChannel, listOneChannelMovies } = useChannelData
@@ -227,7 +233,7 @@ const listonechannel = async (item) => {
         channelMovielistpage.value = channelMovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
     } catch (error) {
         console.log("error")
-    }finally{
+    } finally {
         loading2.value = false
     }
 }
@@ -303,6 +309,7 @@ const sleep = async (ms) => {
 }
 
 onMounted(async () => {
+    console.log('onMounted',allchanneldata.value)
     loading.value = true
     let data1 = await getFav();
     favdata.value = data1
@@ -311,16 +318,16 @@ onMounted(async () => {
     totalItem.value = alldata.value.length
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 
-    const promise = []
-    for (let i = 1; i < 101; i++) {
-        promise.push(useChannelData.getChannelpage(i.toString()))
-    }
-    const data2 = await Promise.all(promise)
-    for (let i = 0; i < data2.length; i++) {
-        alldata.value = alldata.value.concat(data2[i])
-    }
-    totalItem.value = alldata.value.length
-    loading.value = false
+    // const promise = []
+    // for (let i = 1; i < 101; i++) {
+    //     promise.push(useChannelData.getChannelpage(i.toString()))
+    // }
+    // const data2 = await Promise.all(promise)
+    // for (let i = 0; i < data2.length; i++) {
+    //     alldata.value = alldata.value.concat(data2[i])
+    // }
+    // totalItem.value = alldata.value.length
+    // loading.value = false
 })
 
 const pl = async (row) => {
