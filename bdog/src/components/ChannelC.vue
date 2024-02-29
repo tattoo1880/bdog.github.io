@@ -327,13 +327,10 @@ onMounted(async () => {
     loading.value = false
 })
 
-onBeforeUpdate(async()=>{
-    console.log('allchanneldata', allchanneldata)
-    if (allchanneldata.value == undefined) {
-        await getAllChanneldata()
-        console.log('allchanneldata', allchanneldata.value);
-    }
-})
+watch(totalItem, (newVal) => {
+    console.log('newVal', newVal);
+    console.log('totalItem', totalItem.value);
+}
 
 const pl = async (row) => {
     await playitemnewpage(row)
