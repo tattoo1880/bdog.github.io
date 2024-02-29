@@ -109,7 +109,7 @@
 
 <script setup>
 import { ref, reactive, onMounted, watch,onBeforeUpdate } from 'vue'
-import Hls from 'hls.js'
+import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { service3, service4 } from '@/utils/request';
 import { useChannel } from '@/hook/useChannel'   // 引入自定义的hooks
@@ -336,6 +336,7 @@ watch(totalItem, async(newVal) => {
         alldata.value.push(...allchanneldata)
         console.log('alldata', alldata.value.length);
         totalItem.value = alldata.value.length
+        ElMessage.success('数据加载完成')
     }
 }
 )
