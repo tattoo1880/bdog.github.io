@@ -108,7 +108,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch,watchEffect } from 'vue'
+import { ref, reactive, onMounted, watch,onBeforeUpdate } from 'vue'
 import Hls from 'hls.js'
 import { useRouter } from 'vue-router'
 import { service3, service4 } from '@/utils/request';
@@ -307,17 +307,9 @@ const sleep = async (ms) => {
     })
 }
 
-watchEffect(async()=>{
-    console.log('allchanneldata',allchanneldata.value)
-    if(!allchanneldata.value){
-        await getAllChanneldata()
-    }
-
-})
-
+// 页面正常挂在后 5 秒后执行getallchanneldata
 
 onMounted(async () => {
-    console.log('onMounted',allchanneldata.value)
     loading.value = true
     let data1 = await getFav();
     favdata.value = data1
@@ -336,6 +328,13 @@ onMounted(async () => {
     // }
     // totalItem.value = alldata.value.length
     loading.value = false
+})
+
+onBeforeUpdate(async()=>{
+    if (allchanneldata.value.length == 0 || allchanneldata.value == undefined) {
+        await getAllChanneldata()
+        console.log('allchanneldata', allchanneldata.value);
+    }
 })
 
 const pl = async (row) => {
