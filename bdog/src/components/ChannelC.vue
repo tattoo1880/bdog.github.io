@@ -328,14 +328,15 @@ onMounted(async () => {
     loading.value = false
 })
 
-watch(totalItem, async(newVal) => {
+watch(totalItem, (newVal) => {
     console.log('newVal', newVal);
     console.log('totalItem', totalItem.value);
     if(newVal<=80){
-        await getAllChanneldata()
+        getAllChanneldata()
         // console.log ('allchanneldata',allchanneldata)
         //清空alldata
         alldata.value = allchanneldata.value
+        totalItem.value = alldata.value.length
     }
 }
 )
