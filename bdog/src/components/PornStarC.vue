@@ -143,7 +143,7 @@ const handleSizeChange2 = (val) => {
 const handleCurrentChange = (val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
-    
+    console.log(allstardata)
     //计算现实的数据
     // console.log(alldata.value.length)
     // console.log((cpage.value - 1) * 15, cpage.value * 15)

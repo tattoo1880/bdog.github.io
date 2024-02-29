@@ -4,7 +4,7 @@ import { service4 } from '@/utils/request'
 
 export const useStarStore = defineStore('star', async() => {
 
-    let allstardata = reactive([])
+    let allstardata = ref([])
     
     const getStarSpage = async (page) => {
         try {
@@ -16,7 +16,6 @@ export const useStarStore = defineStore('star', async() => {
                 }
             })
             console.log(res.data);
-            allstardata.push(...res.data)
             console.log(allstardata);
         } catch (error) {
             console.log(error);
