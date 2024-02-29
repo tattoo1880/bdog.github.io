@@ -309,7 +309,7 @@ const sleep = async (ms) => {
 
 watchEffect(async()=>{
     console.log('allchanneldata',allchanneldata.value)
-    if(allchanneldata.value.length==0){
+    if(!allchanneldata.value){
         await getAllChanneldata()
     }
 
