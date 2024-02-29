@@ -327,9 +327,14 @@ onMounted(async () => {
     loading.value = false
 })
 
-watch(totalItem, (newVal) => {
+watch(totalItem, async(newVal) => {
     console.log('newVal', newVal);
     console.log('totalItem', totalItem.value);
+    if(newVal<=80){
+        await getAllChanneldata()
+        console.log ('allchanneldata',allchanneldata)
+
+    }
 }
 )
 const pl = async (row) => {
