@@ -25,6 +25,7 @@ export const useChannelStore = defineStore('channel', () => {
             for (let i=0; i<res.length; i++){
                 allchanneldata.value = allchanneldata.value.concat(res[i].data)
             }
+            console.log(allchanneldata.value);
         } catch (error) {
             console.log(error);
         }
