@@ -333,6 +333,8 @@ watch(totalItem, async(newVal) => {
     if(newVal<=80){
         await getAllChanneldata()
         // console.log ('allchanneldata',allchanneldata)
+        //清空alldata
+        alldata.value = []
         alldata.value = allchanneldata.value
         totalItem.value = alldata.value.length
     }
