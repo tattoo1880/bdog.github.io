@@ -16,7 +16,7 @@ export const useStarStore = defineStore('star', () => {
                 }
             })
             console.log(res.data);
-            allstardata.value = res.data
+            allstardata.value.push(...res.data)
         } catch (error) {
             console.log(error);
         }
