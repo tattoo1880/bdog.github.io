@@ -400,7 +400,10 @@ onMounted(async () => {
         // await refreshdata(stri)
         promise.push(refreshdata(i.toString()))
     }
-    await Promise.all(promise)
+    const data = await Promise.all(promise)
+    data.map(item => {
+        alldata.value.push(...item)
+    })
     totalItem.value = alldata.value.length
     loading.value = false
 
@@ -417,8 +420,8 @@ const refreshdata = async (page) => {
                 page: page,
             }
         })
-
-        alldata.value.push(...res.data)
+        return res.data
+        // alldata.value.push(...res.data)
     } catch (error) {
         console.log(error)
     }
