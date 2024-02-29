@@ -331,7 +331,8 @@ onMounted(async () => {
 })
 
 onBeforeUpdate(async()=>{
-    if (allchanneldata.value.length == 0 || allchanneldata.value == undefined) {
+    console.log('allchanneldata', allchanneldata)
+    if (allchanneldata.value == undefined) {
         await getAllChanneldata()
         console.log('allchanneldata', allchanneldata.value);
     }
