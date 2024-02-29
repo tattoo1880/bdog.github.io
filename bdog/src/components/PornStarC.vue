@@ -101,7 +101,8 @@ import { storeToRefs } from 'pinia'
 import { useStar } from '@/hook/useStar'
 import {useStarStore} from '@/stores/star'
 const {usestarstore} = useStarStore()
-const { allstardata, getStarSpage } = storeToRefs(usestarstore)
+const { allstardata} = storeToRefs(usestarstore)
+const { getStarSpage } = usestarstore()
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
 const dialogVisible = ref(false)
