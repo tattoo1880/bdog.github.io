@@ -143,6 +143,7 @@ const handleSizeChange2 = (val) => {
 const handleCurrentChange = (val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
+    getStarSpage(val)
     console.log(allstardata)
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }

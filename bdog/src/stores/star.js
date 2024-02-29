@@ -12,7 +12,7 @@ export const useStarStore = defineStore('star', () => {
                 url: '/movie3/star',
                 method: 'get',
                 params: {
-                    page: "0",
+                    page: page,
                 }
             })
             console.log(res.data);
