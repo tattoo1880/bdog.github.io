@@ -100,7 +100,7 @@ import { service3, service4 } from '@/utils/request';
 import { storeToRefs } from 'pinia'
 import { useStar } from '@/hook/useStar'
 import {useStarStore} from '@/stores/star'
-const usestarstore = useStarStore()
+const {usestarstore} = useStarStore()
 const { allstardata, getStarSpage } = storeToRefs(usestarstore)
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
