@@ -37,4 +37,6 @@ export const useChannelStore = defineStore('channel', () => {
         getAllChanneldata
     }
 
+},{
+    persist: true
 })
