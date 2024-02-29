@@ -331,12 +331,14 @@ watch(totalItem, async(newVal) => {
     console.log('newVal', newVal);
     console.log('totalItem', totalItem.value);
     if(newVal<=80){
-        await getAllChanneldata()
-        console.log('allchanneldata', allchanneldata.length);
-        alldata.value.push(...allchanneldata)
-        console.log('alldata', alldata.value.length);
-        totalItem.value = alldata.value.length
-        ElMessage.success('数据加载完成')
+        if(allchanneldata.length==0){
+            await getAllChanneldata()
+            alldata.value.push(...allchanneldata)
+            totalItem.value = alldata.value.length
+        }else{
+            alldata.value.push(...allchanneldata)
+            totalItem.value = alldata.value.length
+        }
     }
 }
 )
