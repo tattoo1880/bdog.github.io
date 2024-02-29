@@ -337,7 +337,7 @@ watch(totalItem, (newVal) => {
         //清空alldata
         alldata.value = []
         alldata.value.push(...allchanneldata)
-        totalItem.value = alldata.value.length
+        console.log('alldata',alldata.value.length)
     }
 }
 )
