@@ -120,16 +120,30 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = () => {
+        loading.value = true
+        const promise = []
+        for (let i = 1; i < 130; i++) {
+            // await sleep(1000)
+            //i 变成字符串
+            // let stri = i.toString()
+            // await refreshdata(stri)
+            promise.push(refreshdata(i.toString()))
+        }
+        const data = await Promise.all(promise)
+        data.map(item => {
+            alldata.value.push(...item)
+        })
     if (search.value == '') {
-        stardata.value = alldata.value
+        currentStarData.value = alldata.value
     } else {
-        stardata.value = alldata.value.filter(item => {
+        currentStarData.value = alldata.value.filter(item => {
             // console.log(search.value)
             // console.log(item.name)
             //忽略大小写
             return item.name.toLowerCase().includes(search.value.toLowerCase())
         })
     }
+    loading.value = false
 }
 const totalItem = ref(0)
 const totalItem2 = ref(0)
@@ -407,18 +421,6 @@ onMounted(async () => {
 watch(allstardata, async (newVal) => {
     if (newVal) {
         // currentStarData.value = allstardata.value
-        // const promise = []
-        // for (let i = 1; i < 130; i++) {
-        //     // await sleep(1000)
-        //     //i 变成字符串
-        //     // let stri = i.toString()
-        //     // await refreshdata(stri)
-        //     promise.push(refreshdata(i.toString()))
-        // }
-        // const data = await Promise.all(promise)
-        // data.map(item => {
-        //     alldata.value.push(...item)
-        // })
         // totalItem.value = alldata.value.length
         console.log("allstardata change")
     }
