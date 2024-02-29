@@ -8,6 +8,7 @@ export const useStarStore = defineStore('star', () => {
     
     const getStarSpage = async (page) => {
         try {
+            allstardata.value = []
             const res = await service4({
                 url: '/movie3/star',
                 method: 'get',
