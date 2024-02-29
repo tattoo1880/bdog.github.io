@@ -341,7 +341,7 @@ watch(cpage,(newVal) => {
     if(newVal >=2){
         console.log('newVal====', alldata.value.length);
         alldata.value = []
-        alldata.value.push(...allchanneldata.value)
+        alldata.value = allchanneldata.value
         console.log('newVal+++++', alldata.value.length);
     }    
 })
