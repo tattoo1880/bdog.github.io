@@ -126,7 +126,7 @@ const searchStar = async() => {
             console.log(ssearchdata.value)
         }
     if (search.value == '') {
-        currentStarData.value = ssearchdata
+        currentStarData.value = ssearchdata.value
     } else {
         currentStarData.value = ssearchdata.value.filter(item => {
             // console.log(search.value)
