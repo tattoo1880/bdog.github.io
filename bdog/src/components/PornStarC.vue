@@ -120,33 +120,20 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 const searchStar = async() => {
-        // console.log(ssearchdata)
-        if(ssearchdata.value.length==0){
+    loading.value = true
+    if(ssearchdata.value.length==0){
             await getSearchData()
             console.log(ssearchdata.value)
         }
-        // loading.value = true
-        // const promise = []
-        // for (let i = 1; i < 130; i++) {
-        //     // await sleep(1000)
-        //     //i 变成字符串
-        //     // let stri = i.toString()
-        //     // await refreshdata(stri)
-        //     promise.push(refreshdata(i.toString()))
-        // }
-        // const data = await Promise.all(promise)
-        // data.map(item => {
-        //     alldata.value.push(...item)
-        // })
     if (search.value == '') {
-        // currentStarData.value = ssearchdata
+        currentStarData.value = ssearchdata
     } else {
-        // currentStarData.value = ssearchdata.filter(item => {
-        //     // console.log(search.value)
-        //     // console.log(item.name)
-        //     //忽略大小写
-        //     return item.name.toLowerCase().includes(search.value.toLowerCase())
-        // })
+        currentStarData.value = ssearchdata.value.filter(item => {
+            // console.log(search.value)
+            // console.log(item.name)
+            //忽略大小写
+            return item.name.toLowerCase().includes(search.value.toLowerCase())
+        })
     }
     // loading.value = false
 }

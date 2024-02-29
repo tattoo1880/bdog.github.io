@@ -11,7 +11,7 @@ export const useStarStore = defineStore('star', () => {
     const getSearchData = async() => {
         try{
             let permises = []
-            for (let i = 1; i < 101; i++) {
+            for (let i = 0; i < 150; i++) {
                 permises.push(searchOnePage(i))
             }
             await Promise.all(permises)
