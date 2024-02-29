@@ -43,7 +43,8 @@
             <el-button type="info" plain @click="changecondition" style="margin-left:900px;">back</el-button>
             <el-container>
                 <el-row>
-                    <el-table :data="showVal" style="width: 100%">
+                    <!-- <el-table :data="showVal" style="width: 100%"> -->
+                    <el-table :data="currentStarData" style="width: 100%">
                         <el-table-column prop="id" label="编号" width="150"></el-table-column>
                         <el-table-column label="缩略图" width="200">
                             <template #default="{ row }">
@@ -66,9 +67,9 @@
         <el-row v-if="condition" style="margin-top: 10px;">
             <el-col :span="24">
                 <el-pagination v-model:current-page="cpage2" v-model:page-size="pageSize2" hide-on-single-page
-                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100,200]"
-                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem2"
-                    @size-change="handleSizeChange2" @current-change="handleCurrentChange2" />
+                    style="margin-top: 10px;margin-left: 150px;" :page-sizes="[100, 200]"
+                    layout="total, sizes, prev, pager, next, jumper" :total="totalItem2" @size-change="handleSizeChange2"
+                    @current-change="handleCurrentChange2" />
             </el-col>
         </el-row>
     </el-container>
@@ -98,9 +99,9 @@ import { usePlaypage } from '@/hook/userPlaypage'   // 引入自定义的hooks
 import { service3, service4 } from '@/utils/request';
 import { storeToRefs } from 'pinia'
 import { useStar } from '@/hook/useStar'
-import {useStarStore} from '@/stores/star'
+import { useStarStore } from '@/stores/star'
 const usestarstore = useStarStore()
-const { allstardata} = storeToRefs(usestarstore)
+const { allstardata } = storeToRefs(usestarstore)
 const { getStarSpage } = usestarstore
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
@@ -142,17 +143,20 @@ const handleSizeChange2 = (val) => {
     showVal.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 }
 
-const handleCurrentChange = async(val) => {
+const currentStarData = ref([])
+
+
+const handleCurrentChange = async (val) => {
     // console.log(`当前页: ${val}`);
     cpage.value = val
     await getStarSpage(val)
     console.log(allstardata)
     console.log(allstardata.value)
-    console.log(allstardata.length)
+    currentStarData.value = allstardata.value
     stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 
-const handleCurrentChange2 = (val) =>{
+const handleCurrentChange2 = (val) => {
     cpage2.value = val
     showVal.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 
@@ -269,7 +273,7 @@ const listonestar = async (item) => {
     let permises = []
     let result = []
     //for (let i = 0; i < items.length; i++) {
-      //  permises.push(getStarpage(items[i]))
+    //  permises.push(getStarpage(items[i]))
     //}
     permises = items.map(item => getStarpage(item))
     try {
@@ -395,22 +399,31 @@ onMounted(async () => {
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
     totalItem.value = alldata.value.length
-    const promise = []
-    for (let i = 1; i < 130; i++) {
-        // await sleep(1000)
-        //i 变成字符串
-        // let stri = i.toString()
-        // await refreshdata(stri)
-        promise.push(refreshdata(i.toString()))
-    }
-    const data = await Promise.all(promise)
-    data.map(item => {
-        alldata.value.push(...item)
-    })
-    totalItem.value = alldata.value.length
     loading.value = false
 
 })
+
+
+watch(allstardata, async (newVal) => {
+    if (newVal) {
+        // currentStarData.value = allstardata.value
+        // const promise = []
+        // for (let i = 1; i < 130; i++) {
+        //     // await sleep(1000)
+        //     //i 变成字符串
+        //     // let stri = i.toString()
+        //     // await refreshdata(stri)
+        //     promise.push(refreshdata(i.toString()))
+        // }
+        // const data = await Promise.all(promise)
+        // data.map(item => {
+        //     alldata.value.push(...item)
+        // })
+        // totalItem.value = alldata.value.length
+        console.log("allstardata change")
+    }
+})
+
 
 
 const refreshdata = async (page) => {
