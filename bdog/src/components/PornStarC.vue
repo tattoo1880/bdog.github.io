@@ -180,6 +180,7 @@ const getStar = async () => {
     if(ssearchdata.value.length == 0){
         try {
         cpage.value = 1
+        pageSize1.value = 60
         const res = await service4({
             url: '/movie3/star',
             method: 'get',
@@ -196,6 +197,7 @@ const getStar = async () => {
         console.log(error);
     }
     }else{
+        pageSize1.value = 90
         currentStarData.value = ssearchdata.value.slice(0, pageSize1.value) 
     }
     
@@ -410,7 +412,7 @@ onMounted(async () => {
     loading.value = true
     //同时执行getStar和getfav
     await Promise.all([getStar(), getfav()])
-    totalItem.value = 10400
+    // totalItem.value = 10400
     loading.value = false
     //判断是否已经获取了数据
     await isGetdataEmpty()
