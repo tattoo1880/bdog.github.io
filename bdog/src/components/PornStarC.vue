@@ -264,9 +264,9 @@ const toggleFav = () => {
 watch(isFav, async (newVal) => {
     if (newVal) {
         await getfav()
-        stardata.value = favdata.value
+        currentStarData.value = favdata.value
     } else {
-        stardata.value = alldata.value
+        currentStarData.value = ssearchdata.value.slice(cpage.value - 1*pageSize1.value, cpage.value*pageSize1.value)
     }
 })
 
