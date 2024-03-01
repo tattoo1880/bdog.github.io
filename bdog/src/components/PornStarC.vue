@@ -195,7 +195,7 @@ const getStar = async () => {
     }
     }else{
         pageSize1.value = 90
-        currentStarData.value = ssearchdata.value.slice(0, pageSize1.value) 
+        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value) 
     }
     
 }
