@@ -153,16 +153,18 @@ const currentStarData = ref([])
 
 const handleCurrentChange = async (val) => {
     // console.log(`当前页: ${val}`);
-    if (ssearchdata.value.length == 0) {
-        await getStarSpage(val - 1)
-        console.log(allstardata)
-        console.log(allstardata.value)
-        currentStarData.value = allstardata.value
-        // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-    }else{
-        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-        // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-    }
+    // if (ssearchdata.value.length == 0) {
+    //     await getStarSpage(val - 1)
+    //     console.log(allstardata)
+    //     console.log(allstardata.value)
+    //     currentStarData.value = allstardata.value
+    //     // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    // }else{
+    //     currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    //     // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    // }
+    await getStarSpage(val - 1)
+    currentStarData.value = allstardata.value
 }
 
 const handleCurrentChange2 = (val) => {
@@ -172,29 +174,29 @@ const handleCurrentChange2 = (val) => {
 
 const getStar = async () => {
     currentStarData.value = []
-    if(ssearchdata.value.length == 0){
+    if (ssearchdata.value.length == 0) {
         try {
+            cpage.value = 1
+            // pageSize1.value = 60
+            const res = await service4({
+                url: '/movie3/star',
+                method: 'get',
+                params: {
+                    page: "0",
+                }
+            })
+            console.log(res.data);
+            totalItem.value = res.data.length
+            currentStarData.value = res.data
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
         cpage.value = 1
-        // pageSize1.value = 60
-        const res = await service4({
-            url: '/movie3/star',
-            method: 'get',
-            params: {
-                page: "0",
-            }
-        })
-        console.log(res.data);
-        totalItem.value = res.data.length
-        currentStarData.value = res.data
-    } catch (error) {
-        console.log(error);
-    }
-    }else{
-        cpage.value = 1
-        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value) 
+        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
         totalItem.value = ssearchdata.value.length
     }
-    
+
 }
 
 const getfav = async () => {
@@ -256,7 +258,7 @@ watch(isFav, async (newVal) => {
         await getfav()
         currentStarData.value = favdata.value
     } else {
-        currentStarData.value = ssearchdata.value.slice((cpage.value - 1)*pageSize1.value, cpage.value*pageSize1.value)
+        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     }
 })
 
