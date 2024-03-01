@@ -190,7 +190,9 @@ const getStar = async () => {
         console.log(error);
     }
     }else{
+        cpage.value = 1
         currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value) 
+        totalItem.value = ssearchdata.value.length
     }
     
 }
