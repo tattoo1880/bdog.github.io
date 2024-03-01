@@ -36,7 +36,7 @@
                 <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page
                     style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15, 30, 90]"
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange" />
+                    @current-change="handleCurrentChange" :disabled="isDisable" />
             </el-col>
         </el-row>
         <el-row v-if="condition">
@@ -136,6 +136,7 @@ const cpage2 = ref(1)
 const pageSize1 = ref(15)
 const pageSize2 = ref(100)
 const channelMovielistpage = ref([])
+const isDisable = ref(false)
 const searchChannel = () => {
     if (search.value == '') {
         ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
@@ -298,13 +299,6 @@ const getstarmoviefavlist = async () => {
         console.log("error")
     }
 }
-const sleep = async (ms) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms)
-    })
-}
-
-// 页面正常挂在后 5 秒后执行getallchanneldata
 
 onMounted(async () => {
     loading.value = true
@@ -314,16 +308,6 @@ onMounted(async () => {
     alldata.value = data
     totalItem.value = alldata.value.length
     ListData.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-
-    // const promise = []
-    // for (let i = 1; i < 101; i++) {
-    //     promise.push(useChannelData.getChannelpage(i.toString()))
-    // }
-    // const data2 = await Promise.all(promise)
-    // for (let i = 0; i < data2.length; i++) {
-    //     alldata.value = alldata.value.concat(data2[i])
-    // }
-    // totalItem.value = alldata.value.length
     loading.value = false
 })
 
@@ -332,9 +316,11 @@ watch(totalItem, async(newVal) => {
     console.log('totalItem', totalItem.value);
     if(newVal<=80){
         if(allchanneldata.length==0){
+            isDisable.value = true
             await getAllChanneldata()
             alldata.value.push(...allchanneldata)
             totalItem.value = alldata.value.length
+            isDisable.value = false
             ElMessage.success('加载成功')
         }else{
             alldata.value.push(...allchanneldata)
