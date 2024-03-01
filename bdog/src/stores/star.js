@@ -13,7 +13,7 @@ export const useStarStore = defineStore('star', () => {
         ssearchdata.value = []
         try{
             let permises = []
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < 200; i++) {
                 // await searchOnePage(i)
                 permises.push(searchOnePage(i))
             }
