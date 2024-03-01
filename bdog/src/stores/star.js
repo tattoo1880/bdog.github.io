@@ -6,11 +6,11 @@ import { ElMessage } from 'element-plus'
 export const useStarStore = defineStore('star', () => {
 
     let allstardata = ref([])
-    let ssearchdata = reactive([])
+    let ssearchdata = ref([])
     
 
     const getSearchData = async() => {
-        ssearchdata = []
+        ssearchdata.value = []
         try{
             let permises = []
             for (let i = 0; i < 150; i++) {
@@ -33,7 +33,7 @@ export const useStarStore = defineStore('star', () => {
                 }
             })
             res.data.map(item => {
-                ssearchdata.push(item)
+                ssearchdata.value.push(item)
             })
         } catch (error) {
             console.log(error);
