@@ -9,6 +9,7 @@ export const useStarStore = defineStore('star', () => {
     
 
     const getSearchData = async() => {
+        ssearchdata = []
         try{
             let permises = []
             for (let i = 0; i < 150; i++) {
