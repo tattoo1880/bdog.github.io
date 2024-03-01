@@ -159,7 +159,7 @@ const handleCurrentChange = async (val) => {
         console.log(allstardata)
         console.log(allstardata.value)
         currentStarData.value = allstardata.value
-        stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+        // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     }else{
         cpage.value = val
         currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
