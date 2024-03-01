@@ -1,4 +1,4 @@
-import { ref,reactive,watchEffect()} from 'vue'
+import { ref,reactive,watchEffect} from 'vue'
 import { defineStore } from 'pinia'
 import { service4 } from '@/utils/request'
 
@@ -12,6 +12,7 @@ export const useStarStore = defineStore('star', () => {
             getSearchData()
         }
     })
+    
 
     const getSearchData = async() => {
         try{
