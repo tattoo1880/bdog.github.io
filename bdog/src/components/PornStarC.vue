@@ -11,7 +11,6 @@
         <el-input v-model="search" placeholder="请输入明星名字" style="width: 300px; margin-left: 600px;" />
         <el-button type="success" @click="searchStar" style="margin-left: 10px;" plain>搜索</el-button>
     </el-row>
-    <el-backtop :right="100" :bottom="100" />
     <el-container v-loading.fullscreen.lock="loading" fullscreen v-if="!value1" class="container">
         <!-- 搜索栏，输入名字，从stardata中筛选出符合的对象 -->
         <el-row v-if="!condition" style="margin-top: 20px;">
@@ -178,7 +177,8 @@ const handleCurrentChange2 = (val) => {
 
 
 const getStar = async () => {
-    try {
+    if(ssearchdata.value.length == 0){
+        try {
         cpage.value = 1
         const res = await service4({
             url: '/movie3/star',
@@ -195,6 +195,8 @@ const getStar = async () => {
     } catch (error) {
         console.log(error);
     }
+    }
+    
 }
 
 const getfav = async () => {
