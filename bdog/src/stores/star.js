@@ -14,10 +14,10 @@ export const useStarStore = defineStore('star', () => {
         try{
             let permises = []
             for (let i = 0; i < 150; i++) {
-                await searchOnePage(i)
-                // permises.push(searchOnePage(i))
+                // await searchOnePage(i)
+                permises.push(searchOnePage(i))
             }
-            // await Promise.all(permises)
+            await Promise.all(permises)
             ElMessage.success('数据获取成功')
         }catch(error){
             console.log(error);
