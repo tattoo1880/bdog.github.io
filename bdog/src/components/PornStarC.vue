@@ -36,7 +36,7 @@
                 <el-pagination v-model:current-page="cpage" v-model:page-size="pageSize1" hide-on-single-page
                     style="margin-top: 10px;margin-left: 150px;" :page-sizes="[15, 30, 90]"
                     layout="total, sizes, prev, pager, next, jumper" :total="totalItem" @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange" />
+                    @current-change="handleCurrentChange" :disabled="isDisable" />
             </el-col>
         </el-row>
         <el-row v-if="condition">
@@ -120,7 +120,7 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 let wheterGetdata = ref(false)
-
+let isDisable = ref(false)
 const searchStar = async () => {
     console.log("searchStar", ssearchdata.value)
     loading.value = true
@@ -415,32 +415,13 @@ onMounted(async () => {
 watch(wheterGetdata, async (newVal) => {
     console.log(newVal)
     if (wheterGetdata.value == true) {
+        isDisable.value = true
         await getSearchData()
         wheterGetdata.value = false
         totalItem.value = ssearchdata.value.length
-
+        isDisable.value = false
     }
 })
-
-
-
-const refreshdata = async (page) => {
-
-    try {
-        const res = await service4({
-            url: '/movie3/star',
-            method: 'get',
-            params: {
-                page: page,
-            }
-        })
-        return res.data
-        // alldata.value.push(...res.data)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 
 </script>
 
