@@ -34,7 +34,7 @@ export const useStarStore = defineStore('star', () => {
                 }
             })
             res.data.map(item => {
-                ssearchdata.value.unshift(item)
+                ssearchdata.value.push(item)
             })
         } catch (error) {
             console.log(error);
