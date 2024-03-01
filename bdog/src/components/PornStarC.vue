@@ -408,9 +408,9 @@ watch(wheterGetdata, async (newVal) => {
     if (wheterGetdata.value == true) {
         isDisable.value = true
         await getSearchData()
-        wheterGetdata.value = false
         totalItem.value = ssearchdata.value.length
         isDisable.value = false
+        wheterGetdata.value = false
     }
 })
 
