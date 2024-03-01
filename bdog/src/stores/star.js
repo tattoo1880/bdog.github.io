@@ -1,6 +1,7 @@
 import { ref,reactive} from 'vue'
 import { defineStore } from 'pinia'
 import { service4 } from '@/utils/request'
+import { ElMessage } from 'element-plus'
 
 export const useStarStore = defineStore('star', () => {
 
@@ -16,6 +17,7 @@ export const useStarStore = defineStore('star', () => {
                 permises.push(searchOnePage(i))
             }
             await Promise.all(permises)
+            ElMessage.success('数据获取成功')
         }catch(error){
             console.log(error);
         }
