@@ -200,7 +200,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonechannel = async (item) => {
-    loading2.value = true
+    loading.value = true
     let items = [item]
     // 循环 10 次, 将 item 的 url 变成/0 - /10
     for (let i = 1; i < 41; i++) {
@@ -230,7 +230,7 @@ const listonechannel = async (item) => {
     } catch (error) {
         console.log("error")
     } finally {
-        loading2.value = false
+        loading.value = false
     }
 }
 
