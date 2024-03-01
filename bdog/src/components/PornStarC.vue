@@ -173,9 +173,6 @@ const handleCurrentChange2 = (val) => {
 
 }
 
-
-
-
 const getStar = async () => {
     if(ssearchdata.value.length == 0){
         try {
