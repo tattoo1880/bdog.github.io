@@ -1,4 +1,4 @@
-import { ref,reactive,watch} from 'vue'
+import { ref,reactive,watchEffect()} from 'vue'
 import { defineStore } from 'pinia'
 import { service4 } from '@/utils/request'
 
@@ -6,10 +6,10 @@ export const useStarStore = defineStore('star', () => {
 
     let allstardata = ref([])
     let ssearchdata = reactive([])
-    watch(ssearchdata, async (oldVal,newVal) => {
-        console.log("ssearchdata change",oldVal)
-        if (newVal.length == 0) {
-            await getSearchData()
+   
+    watchEffect(() => {
+        if(ssearchdata.length === 0){
+            getSearchData()
         }
     })
 
