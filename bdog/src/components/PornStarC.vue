@@ -414,6 +414,7 @@ onMounted(async () => {
 
 
 watch(wheterGetdata, async (newVal) => {
+    console.log(newVal)
     if (wheterGetdata.value == true) {
         await getSearchData()
         wheterGetdata.value = false
