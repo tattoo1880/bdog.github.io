@@ -180,7 +180,7 @@ const getStar = async () => {
     if(ssearchdata.value.length == 0){
         try {
         cpage.value = 1
-        pageSize1.value = 60
+        // pageSize1.value = 60
         const res = await service4({
             url: '/movie3/star',
             method: 'get',
