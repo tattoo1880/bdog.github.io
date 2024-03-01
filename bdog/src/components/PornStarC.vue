@@ -119,6 +119,7 @@ const cpage = ref(1)
 const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
+let wheterGetdata = ref(false)
 
 const searchStar = async() => {
     loading.value = true
@@ -407,15 +408,15 @@ onMounted(async () => {
     await Promise.all([getStar(), getfav()])
     totalItem.value = 10400
     loading.value = false
+    wheterGetdata.value = true
 
 })
 
 
-watch(allstardata, async (newVal) => {
-    if (newVal) {
-        // currentStarData.value = allstardata.value
-        // totalItem.value = alldata.value.length
-        console.log("allstardata change")
+watch(wheterGetdata, async (newVal) => {
+    if (wheterGetdata.value == true) {
+        await getSearchData()
+        wheterGetdata.value = false
     }
 })
 
