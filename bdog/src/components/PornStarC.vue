@@ -266,6 +266,7 @@ watch(value1, async (newVal) => {
     }
 })
 const listonestar = async (item) => {
+    loading.value = true
     let items = [item]
     for (let i = 1; i <= 40; i++) {
         items.push({
@@ -292,7 +293,7 @@ const listonestar = async (item) => {
         condition.value = true
         showVal.value = starmovielist.value.slice(0, pageSize2.value)
         totalItem2.value = starmovielist.value.length
-
+        loading.value = false
     } catch (error) {
         console.log(error);
     }
