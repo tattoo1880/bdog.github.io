@@ -124,10 +124,6 @@ let wheterGetdata = ref(false)
 const searchStar = async() => {
     console.log("searchStar",ssearchdata.value)
     loading.value = true
-    if(ssearchdata.value.length==0){
-            await getSearchData()
-            console.log(ssearchdata.value)
-        }
     if (search.value == '') {
         currentStarData.value = ssearchdata.value
     } else {
