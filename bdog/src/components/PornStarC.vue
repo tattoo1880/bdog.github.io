@@ -101,7 +101,7 @@ import { storeToRefs } from 'pinia'
 import { useStar } from '@/hook/useStar'
 import { useStarStore } from '@/stores/star'
 const usestarstore = useStarStore()
-const { allstardata ,ssearchdata} = storeToRefs(usestarstore)
+const { allstardata, ssearchdata } = storeToRefs(usestarstore)
 const { getStarSpage, getSearchData } = usestarstore
 const { getStarpage } = useStar()
 const { playitemnewpage } = usePlaypage()
@@ -121,8 +121,8 @@ const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 let wheterGetdata = ref(false)
 
-const searchStar = async() => {
-    console.log("searchStar",ssearchdata.value)
+const searchStar = async () => {
+    console.log("searchStar", ssearchdata.value)
     loading.value = true
     if (search.value == '') {
         currentStarData.value = ssearchdata.value
@@ -153,12 +153,18 @@ const currentStarData = ref([])
 
 const handleCurrentChange = async (val) => {
     // console.log(`当前页: ${val}`);
-    cpage.value = val
-    await getStarSpage(val-1)
-    console.log(allstardata)
-    console.log(allstardata.value)
-    currentStarData.value = allstardata.value
-    stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    if (ssearchdata.value.length == 0) {
+        cpage.value = val
+        await getStarSpage(val - 1)
+        console.log(allstardata)
+        console.log(allstardata.value)
+        currentStarData.value = allstardata.value
+        stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    }esle{
+        cpage.value = val
+        currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+        stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    }
 }
 
 const handleCurrentChange2 = (val) => {
@@ -385,11 +391,11 @@ const sleep = async (ms) => {
         setTimeout(resolve, ms)
     })
 }
-const isGetdataEmpty = async() =>{
+const isGetdataEmpty = async () => {
 
-    if(ssearchdata.value.length == 0){
+    if (ssearchdata.value.length == 0) {
         wheterGetdata.value = true
-    }else{
+    } else {
         wheterGetdata.value = false
     }
 
@@ -411,6 +417,7 @@ watch(wheterGetdata, async (newVal) => {
     if (wheterGetdata.value == true) {
         await getSearchData()
         wheterGetdata.value = false
+
     }
 })
 
