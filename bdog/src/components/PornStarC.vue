@@ -266,7 +266,7 @@ watch(isFav, async (newVal) => {
         await getfav()
         currentStarData.value = favdata.value
     } else {
-        currentStarData.value = ssearchdata.value.slice(cpage.value - 1*pageSize1.value, cpage.value*pageSize1.value)
+        currentStarData.value = ssearchdata.value.slice((cpage.value - 1)*pageSize1.value, cpage.value*pageSize1.value)
     }
 })
 
