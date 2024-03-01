@@ -120,7 +120,8 @@ const cpage2 = ref(1)
 const pageSize1 = ref(80)
 const pageSize2 = ref(100)
 //定义 watch 监听 sssearchdata的变化,如果 ssearchdata 为空，就调用 getSearchData
-watch(ssearchdata, async (newVal) => {
+watch(ssearchdata, async (oldVal,newVal) => {
+    console.log("ssearchdata change",oldVal)
     if (newVal.length == 0) {
         await getSearchData()
     }
