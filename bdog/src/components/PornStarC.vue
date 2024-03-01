@@ -91,6 +91,7 @@
             </el-table-column>
         </el-table>
     </el-container>
+    <el-backtop :right="100" :bottom="100" />
 </template>
 
 <script setup>
