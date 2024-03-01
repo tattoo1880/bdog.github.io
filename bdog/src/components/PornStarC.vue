@@ -366,19 +366,6 @@ const deleteByid = async (row) => {
 
 }
 
-
-
-const handleclosewindow = async () => {
-    try {
-        dialogVisible.value = false
-        const video = document.getElementById('videoPlayer');
-        video.pause();
-        video.src = '';
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 const starmoviefavlist = ref([])
 const getstarmoviefavlist = async () => {
     try {
@@ -398,7 +385,15 @@ const sleep = async (ms) => {
         setTimeout(resolve, ms)
     })
 }
+const isGetdataEmpty = async() =>{
 
+    if(ssearchdata.value.length == 0){
+        wheterGetdata.value = true
+    }else{
+        wheterGetdata.value = false
+    }
+
+}
 
 onMounted(async () => {
     loading.value = true
@@ -406,8 +401,8 @@ onMounted(async () => {
     await Promise.all([getStar(), getfav()])
     totalItem.value = 10400
     loading.value = false
-    wheterGetdata.value = true
-
+    //判断是否已经获取了数据
+    await isGetdataEmpty()
 })
 
 
