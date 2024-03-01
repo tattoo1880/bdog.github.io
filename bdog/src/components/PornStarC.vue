@@ -184,7 +184,11 @@ const getStar = async () => {
                 }
             })
             console.log(res.data);
-            totalItem.value = res.data.length
+            if(ssearchdata.value.length == 0){
+                totalItem.value = res.data.length
+            }else{
+                totalItem.value = ssearchdata.value.length
+            }
             currentStarData.value = res.data
         } catch (error) {
             console.log(error);
