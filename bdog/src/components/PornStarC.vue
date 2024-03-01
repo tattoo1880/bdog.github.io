@@ -117,7 +117,7 @@ const value1 = ref(false)
 const search = ref('')
 const cpage = ref(1)
 const cpage2 = ref(1)
-const pageSize1 = ref(80)
+const pageSize1 = ref(60)
 const pageSize2 = ref(100)
 let wheterGetdata = ref(false)
 let isDisable = ref(false)
@@ -154,26 +154,24 @@ const currentStarData = ref([])
 const handleCurrentChange = async (val) => {
     // console.log(`当前页: ${val}`);
     if (ssearchdata.value.length == 0) {
-        cpage.value = val
         await getStarSpage(val - 1)
         console.log(allstardata)
         console.log(allstardata.value)
         currentStarData.value = allstardata.value
         // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     }else{
-        cpage.value = val
         currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
         // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     }
 }
 
 const handleCurrentChange2 = (val) => {
-    cpage2.value = val
     showVal.value = starmovielist.value.slice((cpage2.value - 1) * pageSize2.value, cpage2.value * pageSize2.value)
 
 }
 
 const getStar = async () => {
+    currentStarData.value = []
     if(ssearchdata.value.length == 0){
         try {
         cpage.value = 1
@@ -185,16 +183,13 @@ const getStar = async () => {
                 page: "0",
             }
         })
-        // console.log("====")
         console.log(res.data);
         totalItem.value = res.data.length
         currentStarData.value = res.data
-        // stardata.value = alldata.value.slice(0, pageSize1.value)
     } catch (error) {
         console.log(error);
     }
     }else{
-        pageSize1.value = 90
         currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value) 
     }
     
@@ -206,10 +201,6 @@ const getfav = async () => {
             url: '/movie3/findall',
             method: 'get',
         })
-        // console.log("====")
-        // console.log(res.status);
-
-
         favdata.value = res.data
     } catch (error) {
         console.log(error);
@@ -217,7 +208,6 @@ const getfav = async () => {
 }
 
 const del = async (item) => {
-    // console.log(item);
     try {
         const res = await service4({
             url: `/movie3/delete/${item.id}`,
@@ -234,7 +224,6 @@ const del = async (item) => {
 
 
 const fav = async (item) => {
-    // console.log(item);
     try {
         const res = await service4({
             url: '/movie3/create',
