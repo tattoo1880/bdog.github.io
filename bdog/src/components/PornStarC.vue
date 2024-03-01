@@ -195,6 +195,8 @@ const getStar = async () => {
     } catch (error) {
         console.log(error);
     }
+    }else{
+        currentStarData.value = ssearchdata.value.slice(0, pageSize1.value) 
     }
     
 }
