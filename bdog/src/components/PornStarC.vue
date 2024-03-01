@@ -141,7 +141,7 @@ const totalItem2 = ref(0)
 const showVal = ref([])
 const handleSizeChange = (val) => {
     // console.log(`每页 ${val} 条`);
-    stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+    currentStarData.value = sssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
 }
 const handleSizeChange2 = (val) => {
     // console.log(`每页 ${val} 条`);
@@ -163,7 +163,7 @@ const handleCurrentChange = async (val) => {
     }else{
         cpage.value = val
         currentStarData.value = ssearchdata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
-        stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
+        // stardata.value = alldata.value.slice((cpage.value - 1) * pageSize1.value, cpage.value * pageSize1.value)
     }
 }
 
@@ -417,7 +417,8 @@ watch(wheterGetdata, async (newVal) => {
     if (wheterGetdata.value == true) {
         await getSearchData()
         wheterGetdata.value = false
-
+        totalItem.value = ssearchdata.value.length
+        
     }
 })
 
