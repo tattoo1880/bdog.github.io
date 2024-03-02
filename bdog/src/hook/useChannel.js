@@ -1,5 +1,5 @@
 import { service5 } from '@/utils/request'
-
+import { ElMessage } from 'element-plus'
 export  const useChannel = () => {
 
     const getChannelpage = async (page) => {
@@ -27,9 +27,11 @@ export  const useChannel = () => {
     const addFavChannel = async(item)=>{
         try {
             const res = await service5.post("/addChannel",item)
+            ElMessage.success('添加成功')
             return res.data
         } catch (error) {
             console.log(error);
+            ElMessage.error('添加失败')
             return null
         }
     }
