@@ -63,6 +63,11 @@ const router = createRouter({
     name: 'dltw',
     path: '/dltw',
     component: () => import('../views/DownLoadTw.vue')
+  },
+  {
+    name: 'texteditor',
+    path: '/texteditor',
+    component: () => import('../views/TextEditor.vue')
   }
   ]
 })

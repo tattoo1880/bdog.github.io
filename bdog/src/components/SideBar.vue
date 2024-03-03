@@ -29,6 +29,9 @@
           <RouterLink :to="{ name: 'dltw' }">x下载</RouterLink>
         </li>
         <li>
+          <RouterLink :to="{ name: 'texteditor' }">editor</RouterLink>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>
