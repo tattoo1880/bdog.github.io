@@ -68,6 +68,11 @@ const router = createRouter({
     name: 'texteditor',
     path: '/texteditor',
     component: () => import('../views/TextEditor.vue')
+  },
+  {
+    name: 'chat',
+    path: '/chat',
+    component: () => import('../views/Chat.vue')
   }
   ]
 })

@@ -32,6 +32,9 @@
           <RouterLink :to="{ name: 'texteditor' }">editor</RouterLink>
         </li>
         <li>
+          <RouterLink :to="{ name: 'chat' }">AI</RouterLink>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>

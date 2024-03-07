@@ -13,6 +13,7 @@
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
     "element-plus": "^2.4.4",
+    "groq-sdk": "^0.3.1",
     "hls.js": "^1.5.1",
     "jsonpath": "^1.1.1",
     "mavon-editor": "^2.10.4",
