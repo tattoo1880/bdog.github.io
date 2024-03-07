@@ -35,6 +35,9 @@
           <RouterLink :to="{ name: 'chat' }">AI</RouterLink>
         </li>
         <li>
+          <RouterLink :to="{ name: 'product' }">工程成本计算</RouterLink>
+        </li>
+        <li>
           <a href="/pdf">pdf转换</a>
         </li>
       </ul>
