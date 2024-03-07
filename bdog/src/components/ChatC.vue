@@ -1,15 +1,16 @@
 <template>
-    <el-container class="chat-container">
-        <el-row class="message-container" ref="messageContainer">
-            <el-card v-for="(message, index) in messages" :key="index" class="message-card">
-                <p>{{ message.text }}</p>
-            </el-card>
+        <el-container class="chat-container">
+            <el-row class="message-container" ref="messageContainer">
+                <el-card v-for="(message, index) in messages" :key="index" class="message-card">
+                    <p>{{ message.text }}</p>
+                </el-card>
+            </el-row>
+        </el-container>
+        <el-row class="input-message">
+            <!-- <el-input v-model="inputMessage" placeholder="请输入消息" @keyup.enter="sendMessage" class="elinput"/> -->
+            <el-input v-model="inputMessage" placeholder="请输入消息"  class="elinput"/>
+            <el-button :span="3" @click="sendMessage" type="success" plain>submit</el-button>
         </el-row>
-    </el-container>
-    <el-row class="input-message">
-        <el-input v-model="inputMessage" placeholder="请输入消息" @keyup.enter="sendMessage" class="elinput"/>
-        <el-button :span="3" @click="sendMessage">submit</el-button>
-    </el-row>
 </template>
 
 <script setup>
@@ -30,7 +31,7 @@ const getReply = async (text) => {
         "messages": [
             {
                 "role": "system",
-                "content": "You are a friendly chatbot."
+                "content": "你是编程以及终端使用的助手,回答必须使用中文"
             },
             {
                 "role": "user",
@@ -83,13 +84,14 @@ const scrollToBottom = () => {
 
 .message-container {
     flex: 1;
+    height: 600px;
     overflow-y: auto;
 }
 
 .message-card {
     width: 70vw;
     height: 200px;
-    margin: 60px auto;
+    margin: 10px auto;
     padding: 10px;
     background-color: black;
     border: 1px solid #d3e0ea;
@@ -108,7 +110,7 @@ const scrollToBottom = () => {
     flex-direction: column;
     width: 30vw;
     height: 30px;
-    margin: 100px 300px;
+    margin: 200px 300px;
     /* 组件间距 */
     justify-content: space-evenly;
     align-items: center;
